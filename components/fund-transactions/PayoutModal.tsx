@@ -195,7 +195,7 @@ export function PayoutModal({ isOpen, onClose, recipientName, amount, bankDetail
                                 <button
                                     onClick={handleConfirm}
                                     disabled={!refNo || isProcessing}
-                                    className="flex-[2] relative overflow-hidden py-3 bg-emerald-600 hover:bg-emerald-700 disabled:bg-muted-bg disabled:text-text-muted/50 text-white rounded-xl font-black text-[10px] uppercase tracking-[0.2em] transition-all shadow-md active:scale-[0.98] flex items-center justify-center gap-2 group"
+                                    className="flex-[2] relative overflow-hidden py-3 bg-primary-600 hover:bg-primary-700 disabled:bg-muted-bg disabled:text-text-muted/50 text-white rounded-xl font-black text-[10px] uppercase tracking-[0.2em] transition-all shadow-md active:scale-[0.98] flex items-center justify-center gap-2 group"
                                 >
                                     {isProcessing ? (
                                         <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />

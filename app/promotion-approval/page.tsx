@@ -272,7 +272,7 @@ export default function PromotionApprovalPage() {
                                                     <div className="flex items-center gap-2">
                                                         <button
                                                             onClick={() => openActionModal(request, 'approve')}
-                                                            className="flex items-center gap-1.5 px-4 py-2 bg-emerald-50 text-emerald-600 rounded-lg text-[9px] font-black uppercase hover:bg-emerald-100 transition-all active:scale-95"
+                                                            className="flex items-center gap-1.5 px-4 py-2 bg-primary-50 text-primary-600 rounded-lg text-[9px] font-black uppercase hover:bg-primary-100 transition-all active:scale-95"
                                                         >
                                                             <Check size={12} strokeWidth={3} /> Verify
                                                         </button>
@@ -306,9 +306,9 @@ export default function PromotionApprovalPage() {
             {showActionModal && selectedRequest && (
                 <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/40 backdrop-blur-md animate-in fade-in duration-300">
                     <div className="bg-white rounded-[1.5rem] shadow-2xl w-full max-w-md overflow-hidden flex flex-col border border-white/50 animate-in zoom-in-95 duration-200">
-                        <div className={`p-8 ${actionType === 'approve' ? 'bg-emerald-50/50' : 'bg-rose-50/50'}`}>
+                        <div className={`p-8 ${actionType === 'approve' ? 'bg-primary-50/50' : 'bg-rose-50/50'}`}>
                             <div className="flex items-center gap-4 mb-6">
-                                <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-white shadow-lg ${actionType === 'approve' ? 'bg-emerald-500' : 'bg-rose-500'}`}>
+                                <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-white shadow-lg ${actionType === 'approve' ? 'bg-primary-500' : 'bg-rose-500'}`}>
                                     {actionType === 'approve' ? <ShieldCheck size={20} /> : <XCircle size={20} />}
                                 </div>
                                 <div>
@@ -327,7 +327,7 @@ export default function PromotionApprovalPage() {
                                 <div className="h-px bg-gray-50" />
                                 <div className="flex items-center justify-between">
                                     <p className="text-[9px] font-black text-gray-300 uppercase tracking-widest">Entry Delta:</p>
-                                    <p className={`text-[10px] font-black uppercase ${actionType === 'approve' ? 'text-emerald-600' : 'text-rose-600'}`}>
+                                    <p className={`text-[10px] font-black uppercase ${actionType === 'approve' ? 'text-primary-600' : 'text-rose-600'}`}>
                                         {(selectedRequest as PromotionRequest).requested_role_name}
                                     </p>
                                 </div>
@@ -358,7 +358,7 @@ export default function PromotionApprovalPage() {
                                 <button
                                     onClick={handleAction}
                                     disabled={actionLoading !== null}
-                                    className={`flex-[1.5] px-6 py-4 rounded-xl text-[10px] font-black uppercase tracking-widest text-white shadow-lg transition-all active:scale-95 ${actionType === 'approve' ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-rose-600 hover:bg-rose-700'}`}
+                                    className={`flex-[1.5] px-6 py-4 rounded-xl text-[10px] font-black uppercase tracking-widest text-white shadow-lg transition-all active:scale-95 ${actionType === 'approve' ? 'bg-primary-600 hover:bg-primary-700' : 'bg-rose-600 hover:bg-rose-700'}`}
                                 >
                                     {actionLoading !== null ? 'EXECUTING...' : `CONFIRM ${actionType?.toUpperCase()}`}
                                 </button>

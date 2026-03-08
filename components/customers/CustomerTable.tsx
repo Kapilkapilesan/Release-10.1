@@ -101,7 +101,7 @@ export function CustomerTable({ customers, onEdit, onDelete, onStatusChange, onV
                             {/* Status */}
                             <div className="col-span-2 text-center">
                                 <span className={`inline-flex items-center px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-widest border ${customer.status === 'active'
-                                    ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20'
+                                    ? 'bg-blue-500/10 text-blue-500 border-blue-500/20'
                                     : customer.status === 'blocked'
                                         ? 'bg-rose-500/10 text-rose-500 border-rose-500/20'
                                         : 'bg-muted-bg text-text-muted border-border-divider/50'
@@ -133,7 +133,7 @@ export function CustomerTable({ customers, onEdit, onDelete, onStatusChange, onV
                                                 onStatusChange(customer, newStatus);
                                             }}
                                             className={`p-1.5 rounded-lg transition-all active:scale-95 ${customer.status === 'blocked'
-                                                ? 'hover:bg-emerald-500/10 text-emerald-500'
+                                                ? 'hover:bg-blue-500/10 text-blue-500'
                                                 : 'hover:bg-amber-500/10 text-amber-500'
                                                 }`}
                                             title={customer.status === 'blocked' ? 'Enable Customer' : 'Disable Customer'}

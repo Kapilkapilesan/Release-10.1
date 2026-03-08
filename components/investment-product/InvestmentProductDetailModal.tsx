@@ -66,10 +66,10 @@ export function InvestmentProductDetailModal({ isOpen, onClose, product }: Props
                     <div className="bg-card p-5 flex flex-col items-center text-center">
                         <span className="text-[9px] font-black text-text-muted uppercase tracking-[0.2em] mb-2">Base Return</span>
                         <div className="flex items-baseline gap-1">
-                            <span className="text-3xl font-black text-emerald-500">
+                            <span className="text-3xl font-black text-primary-500">
                                 {product.interest_rates_json?.[0]?.interest_maturity || Number(product.interest_rate) || 0}
                             </span>
-                            <span className="text-lg font-black text-emerald-500">%</span>
+                            <span className="text-lg font-black text-primary-500">%</span>
                         </div>
                     </div>
                     <div className="bg-card p-5 flex flex-col items-center text-center">
@@ -99,7 +99,7 @@ export function InvestmentProductDetailModal({ isOpen, onClose, product }: Props
                                     {product.interest_rates_json.map((tier, i) => (
                                         <tr key={i} className="hover:bg-card transition-colors font-black text-text-secondary">
                                             <td className="px-4 py-3">{tier.term_months} Mo</td>
-                                            <td className="px-4 py-3 text-center text-emerald-500">{tier.interest_monthly}%</td>
+                                            <td className="px-4 py-3 text-center text-primary-500">{tier.interest_monthly}%</td>
                                             <td className="px-4 py-3 text-center text-primary-500">{tier.interest_maturity}%</td>
                                         </tr>
                                     ))}

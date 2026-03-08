@@ -45,14 +45,14 @@ export const ProcessLeaveModal: React.FC<ProcessLeaveModalProps> = ({
             <div className="bg-card rounded-[2rem] max-w-md w-full shadow-2xl overflow-hidden border border-border-default animate-in zoom-in duration-300">
                 <div
                     className="p-8 flex flex-col items-center text-center"
-                    style={{ backgroundColor: isRejected ? `${colors.danger[500]}10` : `${colors.success[500]}10` }}
+                    style={{ backgroundColor: isRejected ? `${colors.danger[500]}10` : `${colors.primary[500]}10` }}
                 >
                     <div
                         className="w-20 h-20 rounded-2xl flex items-center justify-center mb-6 shadow-lg border"
                         style={{
-                            backgroundColor: isRejected ? `${colors.danger[500]}20` : `${colors.success[500]}20`,
-                            borderColor: isRejected ? `${colors.danger[500]}30` : `${colors.success[500]}30`,
-                            color: isRejected ? colors.danger[600] : colors.success[600]
+                            backgroundColor: isRejected ? `${colors.danger[500]}20` : `${colors.primary[500]}20`,
+                            borderColor: isRejected ? `${colors.danger[500]}30` : `${colors.primary[500]}30`,
+                            color: isRejected ? colors.danger[600] : colors.primary[600]
                         }}
                     >
                         {isRejected ? <XCircle className="w-10 h-10" /> : <CheckCircle className="w-10 h-10" />}
@@ -105,8 +105,8 @@ export const ProcessLeaveModal: React.FC<ProcessLeaveModalProps> = ({
                             disabled={isSubmitting || (isRejected && !reason.trim())}
                             className="flex-1 px-6 py-4 text-white rounded-2xl font-black text-xs uppercase tracking-widest transition-all shadow-lg active:scale-95 disabled:opacity-50 disabled:grayscale disabled:pointer-events-none"
                             style={{
-                                backgroundColor: isRejected ? colors.danger[600] : colors.success[600],
-                                boxShadow: isRejected ? `0 15px 30px -5px ${colors.danger[600]}40` : `0 15px 30px -5px ${colors.success[600]}40`
+                                backgroundColor: isRejected ? colors.danger[600] : colors.primary[600],
+                                boxShadow: isRejected ? `0 15px 30px -5px ${colors.danger[600]}40` : `0 15px 30px -5px ${colors.primary[600]}40`
                             }}
                         >
                             {isSubmitting ? 'Processing...' : (isRejected ? 'Confirm Rejection' : 'Confirm Approval')}

@@ -18,6 +18,9 @@
 :root {
   --background: #f4f7fe;
   --foreground: #1e293b;
+  
+  /* React Toastify Overrides */
+  --toastify-color-success: #0084d1; /* primary-500 */
 
   /* Semantic Colors - Light Mode (from colors.ts -> semantic.light) */
   --app-background: #f4f6fc;
@@ -41,6 +44,9 @@
 .dark {
   --background: #0a1929;
   --foreground: #e3f2fd;
+
+  /* React Toastify Overrides */
+  --toastify-color-success: #0084d1; /* primary-500 */
 
   /* Semantic Colors - Dark Mode (Refined Premium Palette)
      - Softer blues with reduced saturation
@@ -246,6 +252,17 @@
    ======================================== */
 body {
   font-family: var(--font-montserrat), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* React Toastify Success Override (Blue Theme instead of Green) */
+.Toastify__toast--success {
+  border-left: 4px solid var(--color-primary-500) !important;
+}
+.Toastify__toast--success .Toastify__progress-bar {
+  background: var(--color-primary-500) !important;
+}
+.Toastify__toast-icon.Toastify--animate-icon.Toastify__zoom-enter svg {
+  fill: var(--color-primary-500) !important;
 }
 
 /* Custom scrollbar styling */

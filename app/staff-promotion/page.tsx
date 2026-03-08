@@ -247,7 +247,7 @@ export default function StaffPromotionPage() {
                 );
             case 'Approved':
                 return (
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-600 border border-emerald-100 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20">
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary-50 text-primary-600 border border-primary-100 dark:bg-primary-500/10 dark:text-primary-400 dark:border-primary-500/20">
                         <CheckCircle2 className="w-3 h-3" /> Approved
                     </span>
                 );
@@ -365,7 +365,7 @@ export default function StaffPromotionPage() {
                                         <span className="text-2xl font-black text-primary-500">{user?.name?.charAt(0) || 'U'}</span>
                                     )}
                                 </div>
-                                <div className="absolute -bottom-1 -right-1 w-8 h-8 bg-emerald-500 border-4 border-card rounded-full shadow-md flex items-center justify-center">
+                                <div className="absolute -bottom-1 -right-1 w-8 h-8 bg-primary-500 border-4 border-card rounded-full shadow-md flex items-center justify-center">
                                     <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
                                 </div>
                             </div>
@@ -376,7 +376,7 @@ export default function StaffPromotionPage() {
                             <div className="mt-8 pt-6 border-t border-gray-50 space-y-4 text-left">
                                 {[
                                     { label: 'Assignment Level', value: currentRoleDisplay || 'STAFF GRADE', icon: Briefcase, color: 'primary' },
-                                    { label: 'Active Compensation', value: formatCurrency(currentSalary), icon: DollarSign, color: 'emerald' },
+                                    { label: 'Active Compensation', value: formatCurrency(currentSalary), icon: DollarSign, color: 'primary' },
                                     { label: 'Tenure Metric', value: calculateExperience(joiningDate), icon: Calendar, color: 'indigo' }
                                 ].map((item, idx) => (
                                     <div key={idx} className="flex items-center gap-4">
@@ -436,7 +436,7 @@ export default function StaffPromotionPage() {
                                     style={{
                                         background: activeTab === 'promotion'
                                             ? `linear-gradient(135deg, ${colors.primary[600]}, ${colors.indigo[900]})`
-                                            : `linear-gradient(135deg, ${colors.emerald[500]}, ${colors.success[700]})`
+                                            : `linear-gradient(135deg, ${colors.primary[500]}, ${colors.primary[700]})`
                                     }}>
                                     {activeTab === 'promotion' ? <Award className="w-6 h-6 text-white" /> : <Activity className="w-6 h-6 text-white" />}
                                 </div>
@@ -483,7 +483,7 @@ export default function StaffPromotionPage() {
                                             />
                                             <div className="flex items-center justify-between px-1">
                                                 <p className="text-[9px] font-black text-gray-300 uppercase tracking-widest">Formal Documentation Registry</p>
-                                                <p className={`text-[9px] font-black uppercase tracking-widest ${promotionReason.length >= 10 ? 'text-emerald-500' : 'text-primary-400'}`}>
+                                                <p className={`text-[9px] font-black uppercase tracking-widest ${promotionReason.length >= 10 ? 'text-primary-500' : 'text-primary-400'}`}>
                                                     {promotionReason.length} / 10 CHARS
                                                 </p>
                                             </div>
@@ -500,15 +500,15 @@ export default function StaffPromotionPage() {
                                                         type="number"
                                                         value={requestedAmount}
                                                         onChange={(e) => setRequestedAmount(e.target.value)}
-                                                        className="w-full pl-14 pr-6 py-4 bg-input border border-border-default rounded-2xl text-lg font-black text-text-primary tabular-nums outline-none focus:ring-4 focus:ring-emerald-500/5 focus:border-emerald-500/50 shadow-sm"
+                                                        className="w-full pl-14 pr-6 py-4 bg-input border border-border-default rounded-2xl text-lg font-black text-text-primary tabular-nums outline-none focus:ring-4 focus:ring-primary-500/5 focus:border-primary-500/50 shadow-sm"
                                                         placeholder="0.00"
                                                     />
                                                 </div>
                                             </div>
                                             {requestedAmount && (
-                                                <div className="bg-emerald-50/50 rounded-2xl p-4 border border-emerald-100 flex flex-col justify-center">
-                                                    <p className="text-[9px] font-black text-emerald-600 uppercase tracking-widest mb-1">Projected Total</p>
-                                                    <p className="text-xl font-black text-emerald-700 tracking-tight leading-none tabular-nums">
+                                                <div className="bg-primary-50/50 rounded-2xl p-4 border border-primary-100 flex flex-col justify-center">
+                                                    <p className="text-[9px] font-black text-primary-600 uppercase tracking-widest mb-1">Projected Total</p>
+                                                    <p className="text-xl font-black text-primary-700 tracking-tight leading-none tabular-nums">
                                                         {formatCurrency(Number(currentSalary) + (parseFloat(requestedAmount) || 0))}
                                                     </p>
                                                 </div>
@@ -522,7 +522,7 @@ export default function StaffPromotionPage() {
                                                 onChange={(e) => setIncrementReason(e.target.value)}
                                                 rows={5}
                                                 placeholder="Highlight efficiency gains..."
-                                                className="w-full px-6 py-5 bg-input border border-border-default rounded-2xl text-[13px] font-semibold text-text-primary outline-none focus:ring-4 focus:ring-emerald-500/5 focus:border-emerald-500/50 transition-all resize-none shadow-sm placeholder:text-text-muted"
+                                                className="w-full px-6 py-5 bg-input border border-border-default rounded-2xl text-[13px] font-semibold text-text-primary outline-none focus:ring-4 focus:ring-primary-500/5 focus:border-primary-500/50 transition-all resize-none shadow-sm placeholder:text-text-muted"
                                             />
                                         </div>
                                     </div>
@@ -535,7 +535,7 @@ export default function StaffPromotionPage() {
                                     style={{
                                         background: activeTab === 'promotion'
                                             ? `linear-gradient(135deg, ${colors.primary[600]}, ${colors.indigo[900]})`
-                                            : `linear-gradient(135deg, ${colors.emerald[600]}, ${colors.success[700]})`
+                                            : `linear-gradient(135deg, ${colors.primary[600]}, ${colors.primary[700]})`
                                     }}
                                 >
                                     {loading ? (
@@ -580,7 +580,7 @@ export default function StaffPromotionPage() {
                                                     {showPromotionHistory ? (
                                                         <span className="text-sm font-black text-primary-600 uppercase">{(request as PromotionRequest).requested_role_name}</span>
                                                     ) : (
-                                                        <span className="text-sm font-black text-emerald-600">+{formatCurrency((request as SalaryIncrementRequest).requested_amount)}</span>
+                                                        <span className="text-sm font-black text-primary-600">+{formatCurrency((request as SalaryIncrementRequest).requested_amount)}</span>
                                                     )}
                                                     <ArrowUpRight className="w-3.5 h-3.5 text-gray-300" />
                                                 </div>

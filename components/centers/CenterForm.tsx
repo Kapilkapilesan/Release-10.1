@@ -453,16 +453,28 @@ export function CenterForm({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-      <div className="bg-card rounded-xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto border border-border-default">
-        <div className="sticky top-0 bg-card px-6 py-4 border-b border-border-divider flex items-center justify-between z-10 transition-colors">
-          <h2 className="text-xl font-bold text-text-primary">
-            {initialData ? "Edit Center" : "Create New Center"}
-          </h2>
+      <div className="bg-card rounded-[2.5rem] shadow-xl w-full max-w-2xl max-h-[90vh] overflow-hidden border border-border-default flex flex-col">
+        {/* Header */}
+        <div
+          className="px-8 py-6 border-b border-border-divider flex items-center justify-between rounded-t-[2.5rem]"
+          style={{ backgroundImage: `linear-gradient(135deg, ${colors.primary[600]}, ${colors.primary[500]}, ${colors.indigo[600]})` }}
+        >
+          <div className="flex items-center gap-4">
+            <div className="p-2 bg-white/10 rounded-2xl backdrop-blur-xl border border-white/20 shadow-2xl">
+              <Plus className="w-5 h-5 text-white" />
+            </div>
+            <div>
+              <h2 className="text-xl font-black text-white tracking-tight leading-none uppercase">
+                {initialData ? "Edit Center" : "Initialize Center"}
+              </h2>
+              <p className="text-white/70 text-[8px] font-black uppercase tracking-[0.2em] mt-1 opacity-80">Center Architecture & Governance</p>
+            </div>
+          </div>
           <button
             onClick={onClose}
-            className="p-1 hover:bg-hover rounded-full transition-colors text-text-muted"
+            className="p-2 bg-white/10 hover:bg-white/20 border border-white/10 rounded-xl transition-all group active:scale-90"
           >
-            <X size={24} />
+            <X className="w-4 h-4 text-white transition-all group-hover:rotate-90" />
           </button>
         </div>
 
@@ -472,39 +484,40 @@ export function CenterForm({
             <p className="text-text-muted font-bold uppercase tracking-widest text-xs">Loading form details...</p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="p-6 space-y-6">
-            {noBranchAssigned && (
-              <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-800 rounded-xl flex items-start gap-4 animate-in fade-in slide-in-from-top-2">
-                <div className="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/40 flex items-center justify-center shrink-0">
-                  <X className="w-5 h-5 text-red-600 dark:text-red-400" />
+          <form onSubmit={handleSubmit} className="flex flex-col flex-1 overflow-hidden">
+            <div className="p-8 space-y-8 overflow-y-auto custom-scrollbar max-h-[70vh]">
+              {noBranchAssigned && (
+                <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-800 rounded-xl flex items-start gap-4 animate-in fade-in slide-in-from-top-2">
+                  <div className="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/40 flex items-center justify-center shrink-0">
+                    <X className="w-5 h-5 text-red-600 dark:text-red-400" />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-black text-red-900 dark:text-red-400 uppercase tracking-widest">No Branch Assigned</h4>
+                    <p className="text-[11px] text-red-700 dark:text-red-400/70 font-medium mt-1 leading-relaxed">
+                      You are not currently assigned to any branch. Center creation is restricted until a branch is assigned to your profile.
+                      <span className="block mt-2 font-black uppercase underline decoration-2 underline-offset-4">Please contact your Administrator for assistance.</span>
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-sm font-black text-red-900 dark:text-red-400 uppercase tracking-widest">No Branch Assigned</h4>
-                  <p className="text-[11px] text-red-700 dark:text-red-400/70 font-medium mt-1 leading-relaxed">
-                    You are not currently assigned to any branch. Center creation is restricted until a branch is assigned to your profile.
-                    <span className="block mt-2 font-black uppercase underline decoration-2 underline-offset-4">Please contact your Administrator for assistance.</span>
-                  </p>
-                </div>
-              </div>
-            )}
+              )}
 
-            {isBranchInactive && !noBranchAssigned && (
-              <div className="p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-100 dark:border-amber-800 rounded-xl flex items-start gap-4 animate-in fade-in slide-in-from-top-2">
-                <div className="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center shrink-0">
-                  <Info className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+              {isBranchInactive && !noBranchAssigned && (
+                <div className="p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-100 dark:border-amber-800 rounded-xl flex items-start gap-4 animate-in fade-in slide-in-from-top-2">
+                  <div className="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center shrink-0">
+                    <Info className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-black text-amber-900 dark:text-amber-400 uppercase tracking-widest">Branch Inactive</h4>
+                    <p className="text-[11px] text-amber-700 dark:text-amber-400/70 font-medium mt-1 leading-relaxed">
+                      Your assigned branch <strong>{inactiveBranchName}</strong> is currently marked as inactive.
+                      <span className="block mt-2 font-black uppercase underline decoration-2 underline-offset-4">Center creation and updates are disabled for inactive branches.</span>
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-sm font-black text-amber-900 dark:text-amber-400 uppercase tracking-widest">Branch Inactive</h4>
-                  <p className="text-[11px] text-amber-700 dark:text-amber-400/70 font-medium mt-1 leading-relaxed">
-                    Your assigned branch <strong>{inactiveBranchName}</strong> is currently marked as inactive.
-                    <span className="block mt-2 font-black uppercase underline decoration-2 underline-offset-4">Center creation and updates are disabled for inactive branches.</span>
-                  </p>
-                </div>
-              </div>
-            )}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* CSU ID Hidden or Commented as per user's manual edit */}
-              {/* 
+              )}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* CSU ID Hidden or Commented as per user's manual edit */}
+                {/* 
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">
                                     CSU ID <span className="text-red-500">*</span>
@@ -520,300 +533,302 @@ export function CenterForm({
                             </div> 
                             */}
 
-              <div>
-                <label className="block text-xs font-black text-text-muted uppercase tracking-widest mb-1.5">
-                  Center Name <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  name="center_name"
-                  required
-                  value={centerName}
-                  onChange={handleCenterNameChange}
-                  className={`w-full px-4 py-2.5 bg-input border rounded-xl focus:ring-2 transition-all text-text-primary uppercase ${centerNameDuplicateError
-                    ? "border-red-500 focus:ring-red-500"
-                    : "border-border-input focus:ring-primary-500/20"
-                    }`}
-                  style={!centerNameDuplicateError ? { '--tw-ring-color': colors.primary[500] } as any : {}}
-                  placeholder="Enter center name"
-                />
-                {centerNameDuplicateError && (
-                  <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
-                    <Info size={14} />
-                    {centerNameDuplicateError}
-                  </p>
-                )}
-                {isCheckingDuplicate && !centerNameDuplicateError && (
-                  <p className="mt-1 text-xs text-gray-500">
-                    Checking availability...
-                  </p>
-                )}
-              </div>
-
-              <div>
-                <label className="block text-xs font-black text-text-muted uppercase tracking-widest mb-1.5">
-                  Branch <span className="text-red-500">*</span>
-                </label>
-                <select
-                  name="branch_id"
-                  required
-                  value={branchId}
-                  onChange={handleBranchChange}
-                  disabled={!!initialData}
-                  className={`w-full px-4 py-2.5 bg-input border border-border-input rounded-xl focus:ring-2 transition-all text-text-primary outline-none uppercase ${!!initialData ? 'opacity-60 cursor-not-allowed grayscale-[0.5]' : ''}`}
-                  style={{ '--tw-ring-color': colors.primary[500] } as any}
-                >
-                  {branches.length !== 1 && !initialData && (
-                    <option value="">Select Branch</option>
-                  )}
-                  {branches.map((branch) => (
-                    <option key={branch.id} value={branch.id}>
-                      {branch.branch_name}
-                    </option>
-                  ))}
-                </select>
-                {initialData && (
-                  <p className="mt-1 text-[10px] text-text-muted italic flex items-center gap-1">
-                    <Info size={10} />
-                    Branch cannot be modified for existing centers.
-                  </p>
-                )}
-              </div>
-
-              {/* Loan Product - Hidden and defaulted to 'MF' as per user request */}
-              <input type="hidden" name="product_id" value={productId} />
-
-              <div>
-                <label className="block text-xs font-black text-text-muted uppercase tracking-widest mb-1.5">
-                  Location Type <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  name="locationType"
-                  required
-                  defaultValue={initialData?.location}
-                  className="w-full px-4 py-2.5 bg-input border border-border-input rounded-xl focus:ring-2 transition-all text-text-primary outline-none uppercase"
-                  style={{ '--tw-ring-color': colors.primary[500] } as any}
-                  placeholder="e.g. Urban, Rural"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-xs font-black text-text-muted uppercase tracking-widest mb-1.5">
-                Address <span className="text-red-500">*</span>
-              </label>
-              <textarea
-                name="address"
-                required
-                defaultValue={initialData?.address}
-                rows={2}
-                className="w-full px-4 py-2.5 bg-input border border-border-input rounded-xl focus:ring-2 transition-all text-text-primary outline-none resize-none uppercase"
-                style={{ '--tw-ring-color': colors.primary[500] } as any}
-                placeholder="Full address of the center"
-              />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {currentUserRole === "field_officer" ? (
-                <div className="space-y-2">
-                  <label className="block text-xs font-black text-text-muted uppercase tracking-widest">
-                    Assigned Field Officer
-                  </label>
-                  <div className="px-4 py-2.5 bg-input border border-border-divider rounded-xl text-sm font-bold text-text-secondary flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full" style={{ backgroundColor: colors.primary[600] }} />
-                    {currentUser?.full_name ||
-                      currentUser?.name ||
-                      "Loading..."}
-                    <span className="text-[10px] text-text-muted font-mono bg-card px-1.5 py-0.5 rounded border border-border-divider">
-                      {currentUser?.user_name || "..."}
-                    </span>
-                  </div>
-                  <input
-                    type="hidden"
-                    name="contactPerson"
-                    value={currentUser?.user_name || ""}
-                  />
-                  <p className="text-[10px] italic" style={{ color: colors.primary[600] }}>
-                    Self-assigned as creating officer.
-                  </p>
-                </div>
-              ) : (
                 <div>
                   <label className="block text-xs font-black text-text-muted uppercase tracking-widest mb-1.5">
-                    Field Officer <span className="text-red-500">*</span>
+                    Center Name <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="center_name"
+                    required
+                    value={centerName}
+                    onChange={handleCenterNameChange}
+                    className={`w-full px-4 py-2.5 bg-input border rounded-xl focus:ring-2 transition-all text-text-primary uppercase ${centerNameDuplicateError
+                      ? "border-red-500 focus:ring-red-500"
+                      : "border-border-default focus:ring-primary-500/20"
+                      }`}
+                    style={!centerNameDuplicateError ? { '--tw-ring-color': colors.primary[500] } as any : {}}
+                    placeholder="Enter center name"
+                  />
+                  {centerNameDuplicateError && (
+                    <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
+                      <Info size={14} />
+                      {centerNameDuplicateError}
+                    </p>
+                  )}
+                  {isCheckingDuplicate && !centerNameDuplicateError && (
+                    <p className="mt-1 text-xs text-text-muted italic">
+                      Checking availability...
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <label className="block text-xs font-black text-text-muted uppercase tracking-widest mb-1.5">
+                    Branch <span className="text-red-500">*</span>
                   </label>
                   <select
-                    name="contactPerson"
-                    defaultValue={initialData?.staff_id || ""}
-                    onChange={handleStaffChange}
-                    className="w-full px-4 py-2.5 bg-input border border-border-input rounded-xl focus:ring-2 transition-all text-text-primary outline-none uppercase"
-                    style={{ '--tw-ring-color': colors.primary[500] } as any}
+                    name="branch_id"
                     required
+                    value={branchId}
+                    onChange={handleBranchChange}
+                    disabled={!!initialData}
+                    className={`w-full px-4 py-2.5 bg-input border border-border-default rounded-xl focus:ring-2 transition-all text-text-primary outline-none uppercase ${!!initialData ? 'opacity-60 cursor-not-allowed grayscale-[0.5]' : ''}`}
+                    style={{ '--tw-ring-color': colors.primary[500] } as any}
                   >
-                    <option value="">Select Officer</option>
-                    {staffList.map((staff) => (
-                      <option key={staff.staff_id} value={staff.staff_id}>
-                        {staff.full_name} ({staff.staff_id})
+                    {branches.length !== 1 && !initialData && (
+                      <option value="">Select Branch</option>
+                    )}
+                    {branches.map((branch) => (
+                      <option key={branch.id} value={branch.id}>
+                        {branch.branch_name}
                       </option>
                     ))}
                   </select>
+                  {initialData && (
+                    <p className="mt-1 text-[10px] text-text-muted italic flex items-center gap-1">
+                      <Info size={10} />
+                      Branch cannot be modified for existing centers.
+                    </p>
+                  )}
                 </div>
-              )}
 
-              {initialData && currentUserRole !== "field_officer" ? (
-                <div className="p-3 bg-blue-50 border border-blue-100 rounded-lg flex flex-col justify-center">
-                  <div className="flex items-center gap-2 text-blue-700 font-bold text-xs uppercase tracking-tighter">
-                    <Info size={14} />
-                    Center Status
-                  </div>
-                  <p className="text-[10px] text-blue-600 mt-1">
-                    Status management is now handled via the action buttons in
-                    the center table.
-                  </p>
-                </div>
-              ) : !initialData && currentUserRole === "field_officer" ? (
-                <div className="p-3 bg-amber-50 border border-amber-100 rounded-lg flex flex-col justify-center">
-                  <div className="flex items-center gap-2 text-amber-700 font-bold text-xs uppercase tracking-tighter">
-                    <Info size={14} />
-                    Approval Required
-                  </div>
-                  <p className="text-[10px] text-amber-600 mt-1">
-                    This center will be saved as{" "}
-                    <span className="font-bold">Pending</span> and requires
-                    manager activation.
-                  </p>
-                </div>
-              ) : null}
-            </div>
+                {/* Loan Product - Hidden and defaulted to 'MF' as per user request */}
+                <input type="hidden" name="product_id" value={productId} />
 
-            <div className="bg-table-header p-4 rounded-xl border border-border-divider">
-              <div className="flex items-center justify-between mb-3">
-                <label className="block text-xs font-black text-text-muted uppercase tracking-widest">
-                  Meeting Schedules
-                </label>
-                {authService.hasPermission("centers.schedule") && (
-                  <button
-                    type="button"
-                    onClick={handleAddSchedule}
-                    className="text-xs font-black uppercase tracking-widest flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-primary-500/20 bg-primary-500/10 transition-all hover:bg-primary-500/20"
-                    style={{ color: colors.primary[600] }}
-                  >
-                    <Plus size={14} /> Add Schedule
-                  </button>
-                )}
+                <div>
+                  <label className="block text-xs font-black text-text-muted uppercase tracking-widest mb-1.5">
+                    Location Type <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="locationType"
+                    required
+                    defaultValue={initialData?.location}
+                    className="w-full px-4 py-2.5 bg-input border border-border-default rounded-xl focus:ring-2 transition-all text-text-primary outline-none uppercase"
+                    style={{ '--tw-ring-color': colors.primary[500] } as any}
+                    placeholder="e.g. Urban, Rural"
+                  />
+                </div>
               </div>
 
-              <div className="space-y-3">
-                {schedules.map((schedule, idx) => (
-                  <div
-                    key={idx}
-                    className="flex flex-col sm:flex-row gap-3 items-start sm:items-center animate-in fade-in slide-in-from-top-1 duration-200 bg-card p-3 rounded-xl border border-border-divider"
-                  >
-                    <div className="flex-1 w-full sm:w-auto">
-                      <label className="block text-[9px] uppercase font-black text-text-muted mb-1.5 tracking-widest">
-                        Day
-                      </label>
-                      {!authService.hasPermission("centers.schedule") ? (
+              <div>
+                <label className="block text-xs font-black text-text-muted uppercase tracking-widest mb-1.5">
+                  Address <span className="text-red-500">*</span>
+                </label>
+                <textarea
+                  name="address"
+                  required
+                  defaultValue={initialData?.address}
+                  rows={2}
+                  className="w-full px-4 py-2.5 bg-input border border-border-default rounded-xl focus:ring-2 transition-all text-text-primary outline-none resize-none uppercase"
+                  style={{ '--tw-ring-color': colors.primary[500] } as any}
+                  placeholder="Full address of the center"
+                />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {currentUserRole === "field_officer" ? (
+                  <div className="space-y-2">
+                    <label className="block text-xs font-black text-text-muted uppercase tracking-widest">
+                      Assigned Field Officer
+                    </label>
+                    <div className="px-4 py-2.5 bg-input border border-border-divider rounded-xl text-sm font-bold text-text-secondary flex items-center gap-2">
+                      <div className="w-2 h-2 rounded-full" style={{ backgroundColor: colors.primary[600] }} />
+                      {currentUser?.full_name ||
+                        currentUser?.name ||
+                        "Loading..."}
+                      <span className="text-[10px] text-text-muted font-mono bg-card px-1.5 py-0.5 rounded border border-border-divider">
+                        {currentUser?.user_name || "..."}
+                      </span>
+                    </div>
+                    <input
+                      type="hidden"
+                      name="contactPerson"
+                      value={currentUser?.user_name || ""}
+                    />
+                    <p className="text-[10px] italic" style={{ color: colors.primary[600] }}>
+                      Self-assigned as creating officer.
+                    </p>
+                  </div>
+                ) : (
+                  <div>
+                    <label className="block text-xs font-black text-text-muted uppercase tracking-widest mb-1.5">
+                      Field Officer <span className="text-red-500">*</span>
+                    </label>
+                    <select
+                      name="contactPerson"
+                      defaultValue={initialData?.staff_id || ""}
+                      onChange={handleStaffChange}
+                      className="w-full px-4 py-2.5 bg-input border border-border-default rounded-xl focus:ring-2 transition-all text-text-primary outline-none uppercase"
+                      style={{ '--tw-ring-color': colors.primary[500] } as any}
+                      required
+                    >
+                      <option value="">Select Officer</option>
+                      {staffList.map((staff) => (
+                        <option key={staff.staff_id} value={staff.staff_id}>
+                          {staff.full_name} ({staff.staff_id})
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                )}
+
+                {initialData && currentUserRole !== "field_officer" ? (
+                  <div className="p-3 bg-blue-50 border border-blue-100 rounded-lg flex flex-col justify-center">
+                    <div className="flex items-center gap-2 text-blue-700 font-bold text-xs uppercase tracking-tighter">
+                      <Info size={14} />
+                      Center Status
+                    </div>
+                    <p className="text-[10px] text-blue-600 mt-1">
+                      Status management is now handled via the action buttons in
+                      the center table.
+                    </p>
+                  </div>
+                ) : !initialData && currentUserRole === "field_officer" ? (
+                  <div className="p-3 bg-amber-50 border border-amber-100 rounded-lg flex flex-col justify-center">
+                    <div className="flex items-center gap-2 text-amber-700 font-bold text-xs uppercase tracking-tighter">
+                      <Info size={14} />
+                      Approval Required
+                    </div>
+                    <p className="text-[10px] text-amber-600 mt-1">
+                      This center will be saved as{" "}
+                      <span className="font-bold">Pending</span> and requires
+                      manager activation.
+                    </p>
+                  </div>
+                ) : null}
+              </div>
+
+              <div className="bg-table-header p-4 rounded-xl border border-border-divider">
+                <div className="flex items-center justify-between mb-3">
+                  <label className="block text-xs font-black text-text-muted uppercase tracking-widest">
+                    Meeting Schedules
+                  </label>
+                  {authService.hasPermission("centers.schedule") && (
+                    <button
+                      type="button"
+                      onClick={handleAddSchedule}
+                      className="text-xs font-black uppercase tracking-widest flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-primary-500/20 bg-primary-500/10 transition-all hover:bg-primary-500/20"
+                      style={{ color: colors.primary[600] }}
+                    >
+                      <Plus size={14} /> Add Schedule
+                    </button>
+                  )}
+                </div>
+
+                <div className="space-y-3">
+                  {schedules.map((schedule, idx) => (
+                    <div
+                      key={idx}
+                      className="flex flex-col sm:flex-row gap-3 items-start sm:items-center animate-in fade-in slide-in-from-top-1 duration-200 bg-card p-3 rounded-xl border border-border-divider"
+                    >
+                      <div className="flex-1 w-full sm:w-auto">
+                        <label className="block text-[9px] uppercase font-black text-text-muted mb-1.5 tracking-widest">
+                          Day
+                        </label>
+                        {!authService.hasPermission("centers.schedule") ? (
+                          <input
+                            type="text"
+                            value={schedule.day}
+                            readOnly
+                            className="w-full px-4 py-2 bg-input border border-border-divider rounded-lg text-text-muted outline-none font-bold cursor-default"
+                          />
+                        ) : (
+                          <select
+                            value={schedule.day}
+                            onChange={(e) =>
+                              handleScheduleChange(idx, "day", e.target.value)
+                            }
+                            className="w-full px-3 py-2 border border-border-input rounded-lg focus:ring-2 focus:ring-primary-500/20 outline-none bg-input text-text-primary uppercase"
+                            required
+                          >
+                            <option value="">Select Day</option>
+                            {[
+                              "Monday",
+                              "Tuesday",
+                              "Wednesday",
+                              "Thursday",
+                              "Friday",
+                              "Saturday",
+                              "Sunday",
+                            ].map((day) => (
+                              <option key={day} value={day}>
+                                {day}
+                              </option>
+                            ))}
+                          </select>
+                        )}
+                      </div>
+
+                      <div className="w-full sm:w-32">
+                        <label className="block text-[9px] uppercase font-black text-text-muted mb-1.5 tracking-widest">
+                          Time
+                        </label>
                         <input
-                          type="text"
-                          value={schedule.day}
-                          readOnly
-                          className="w-full px-4 py-2 bg-input border border-border-divider rounded-lg text-text-muted outline-none font-bold cursor-default"
-                        />
-                      ) : (
-                        <select
-                          value={schedule.day}
+                          type="time"
+                          value={schedule.time}
                           onChange={(e) =>
-                            handleScheduleChange(idx, "day", e.target.value)
+                            handleScheduleChange(idx, "time", e.target.value)
                           }
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white uppercase"
-                          required
-                        >
-                          <option value="">Select Day</option>
-                          {[
-                            "Monday",
-                            "Tuesday",
-                            "Wednesday",
-                            "Thursday",
-                            "Friday",
-                            "Saturday",
-                            "Sunday",
-                          ].map((day) => (
-                            <option key={day} value={day}>
-                              {day}
-                            </option>
-                          ))}
-                        </select>
+                          readOnly={!authService.hasPermission("centers.schedule")}
+                          className={`w-full px-4 py-2 bg-input border border-border-default rounded-lg focus:ring-2 transition-all text-text-primary outline-none ${!authService.hasPermission("centers.schedule")
+                            ? "opacity-50 cursor-default"
+                            : ""
+                            }`}
+                          style={{ '--tw-ring-color': colors.primary[500] } as any}
+                        />
+                      </div>
+
+                      {authService.hasPermission("centers.schedule") && (
+                        <div className="pt-5 sm:pt-0">
+                          <button
+                            type="button"
+                            onClick={() => handleRemoveSchedule(idx)}
+                            className="text-text-muted hover:text-red-500 p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/10 transition-colors"
+                            title="Remove schedule"
+                          >
+                            <Trash2 size={18} />
+                          </button>
+                        </div>
                       )}
                     </div>
-
-                    <div className="w-full sm:w-32">
-                      <label className="block text-[9px] uppercase font-black text-text-muted mb-1.5 tracking-widest">
-                        Time
-                      </label>
-                      <input
-                        type="time"
-                        value={schedule.time}
-                        onChange={(e) =>
-                          handleScheduleChange(idx, "time", e.target.value)
-                        }
-                        readOnly={!authService.hasPermission("centers.schedule")}
-                        className={`w-full px-4 py-2 bg-input border border-border-input rounded-lg focus:ring-2 transition-all text-text-primary outline-none ${!authService.hasPermission("centers.schedule")
-                          ? "opacity-50 cursor-default"
-                          : ""
-                          }`}
-                        style={{ '--tw-ring-color': colors.primary[500] } as any}
-                      />
-                    </div>
-
-                    {authService.hasPermission("centers.schedule") && (
-                      <div className="pt-5 sm:pt-0">
-                        <button
-                          type="button"
-                          onClick={() => handleRemoveSchedule(idx)}
-                          className="text-gray-400 hover:text-red-500 p-2 rounded-lg hover:bg-red-50 transition-colors"
-                          title="Remove schedule"
-                        >
-                          <Trash2 size={18} />
-                        </button>
+                  ))}
+                  {(schedules.length === 0 ||
+                    currentUserRole === "field_officer") && (
+                      <div className="text-center py-4 text-text-muted text-sm italic bg-input rounded border border-dashed border-border-divider">
+                        {currentUserRole === "field_officer"
+                          ? "Meeting schedules are managed exclusively by Managers."
+                          : "No meeting schedules configured"}
                       </div>
                     )}
-                  </div>
-                ))}
-                {(schedules.length === 0 ||
-                  currentUserRole === "field_officer") && (
-                    <div className="text-center py-4 text-gray-500 text-sm italic bg-white rounded border border-dashed border-gray-300">
-                      {currentUserRole === "field_officer"
-                        ? "Meeting schedules are managed exclusively by Managers."
-                        : "No meeting schedules configured"}
+                  {duplicateError && (
+                    <div className="text-red-500 text-xs font-semibold mt-2 flex items-center gap-1">
+                      <Info size={12} />
+                      {duplicateError}
                     </div>
                   )}
-                {duplicateError && (
-                  <div className="text-red-500 text-xs font-semibold mt-2 flex items-center gap-1">
-                    <Info size={12} />
-                    {duplicateError}
-                  </div>
-                )}
+                </div>
               </div>
+
             </div>
 
-            <div className="sticky bottom-0 bg-card pt-4 border-t border-border-divider flex gap-3 justify-end transition-colors pb-2">
+            {/* Footer */}
+            <div className="p-8 border-t border-border-divider flex gap-4 justify-end bg-muted-bg/30 backdrop-blur-3xl sticky bottom-0">
               <button
                 type="button"
                 onClick={onClose}
-                className="px-4 py-2 border border-border-input rounded-xl text-text-secondary font-bold hover:bg-hover text-sm transition-all"
+                className="px-8 py-3 bg-transparent border border-border-divider rounded-xl hover:bg-muted transition-all font-black text-[9px] uppercase tracking-[0.25em] text-text-secondary active:scale-95"
               >
                 Cancel
               </button>
               <button
                 type="submit"
                 disabled={!!centerNameDuplicateError || isCheckingDuplicate || (noBranchAssigned && !initialData) || isBranchInactive}
-                className={`px-6 py-2 rounded-xl font-black text-sm transition-all shadow-lg active:scale-95 flex items-center gap-2 ${centerNameDuplicateError || isCheckingDuplicate || (noBranchAssigned && !initialData) || isBranchInactive
-                  ? "bg-muted text-text-muted cursor-not-allowed grayscale"
-                  : "text-white hover:opacity-90"
+                className={`px-12 py-4 rounded-2xl transition-all font-black text-[10px] uppercase tracking-[0.3em] active:scale-95 shadow-2xl flex items-center gap-3 ${centerNameDuplicateError || isCheckingDuplicate || (noBranchAssigned && !initialData) || isBranchInactive
+                  ? "bg-gray-300 text-gray-500 cursor-not-allowed shadow-none"
+                  : "bg-primary-600 text-white shadow-primary-500/40 hover:bg-primary-500 hover:shadow-primary-500/60"
                   }`}
-                style={!(centerNameDuplicateError || isCheckingDuplicate || (noBranchAssigned && !initialData) || isBranchInactive) ? { backgroundColor: colors.primary[600] } : {}}
               >
                 {initialData
                   ? initialData.status === "rejected"

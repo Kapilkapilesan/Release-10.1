@@ -24,23 +24,23 @@ export default function BranchList({ branches, onBranchClick, searchQuery }: Bra
                 <div
                     key={branch.id}
                     onClick={() => onBranchClick(branch.id)}
-                    className="group relative bg-card rounded-[0.5rem] border border-border-default p-7 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden transform hover:-translate-y-1"
+                    className="group relative bg-card rounded-[0.5rem] border border-border-default p-4 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden transform hover:-translate-y-1"
                 >
                     {/* Background Visual Depth */}
                     <div className="absolute -right-10 -top-10 w-40 h-40 bg-primary-500/5 rounded-full blur-3xl group-hover:bg-primary-500/10 transition-colors duration-700" />
 
                     <div className="relative z-10">
                         {/* Card Header */}
-                        <div className="flex items-start justify-between mb-8">
-                            <div className="flex items-center gap-5">
+                        <div className="flex items-start justify-between mb-4">
+                            <div className="flex items-center gap-4">
                                 <div
-                                    className="w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 shadow-lg"
+                                    className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 shadow-lg"
                                     style={{
                                         background: `linear-gradient(135deg, ${colors.primary[500]}, ${colors.primary[700]})`,
                                         boxShadow: `0 8px 16px ${colors.primary[500]}25`
                                     }}
                                 >
-                                    <Building2 className="w-7 h-7 text-white" />
+                                    <Building2 className="w-6 h-6 text-white" />
                                 </div>
                                 <div>
                                     <div className="flex items-center gap-2 mb-1">
@@ -62,25 +62,25 @@ export default function BranchList({ branches, onBranchClick, searchQuery }: Bra
                             </div>
 
                             <div className="flex flex-col items-end gap-2">
-                                <div className="flex items-center gap-1.5 px-3 py-1 bg-emerald-50 dark:bg-emerald-500/10 rounded-full border border-emerald-100/50 dark:border-emerald-500/20">
-                                    <SignalHigh className="w-3 h-3 text-emerald-500 dark:text-emerald-400" />
-                                    <span className="text-[8px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">Active Status</span>
+                                <div className="flex items-center gap-1.5 px-3 py-1 bg-primary-50 dark:bg-primary-500/10 rounded-full border border-primary-100/50 dark:border-primary-500/20">
+                                    <SignalHigh className="w-3 h-3 text-primary-500 dark:text-primary-400" />
+                                    <span className="text-[8px] font-black text-primary-600 dark:text-primary-400 uppercase tracking-widest">Active Status</span>
                                 </div>
                                 <div className="w-1 h-3 rounded-full bg-border-divider group-hover:bg-primary-400 group-hover:h-8 transition-all duration-700" />
                             </div>
                         </div>
 
                         {/* Mid Section - Managerial Details */}
-                        <div className="grid grid-cols-2 gap-4 mb-8">
-                            <div className="bg-input p-4 rounded-2xl border border-border-default group-hover:bg-card transition-colors">
-                                <p className="text-[9px] font-black text-text-muted uppercase tracking-widest mb-2 flex items-center gap-2">
+                        <div className="grid grid-cols-2 gap-3 mb-4">
+                            <div className="bg-input p-3 rounded-xl border border-border-default group-hover:bg-card transition-colors">
+                                <p className="text-[9px] font-black text-text-muted uppercase tracking-widest mb-1 flex items-center gap-2">
                                     <Users className="w-3 h-3 text-primary-400" />
                                     Management Header
                                 </p>
                                 <p className="text-sm font-black text-text-primary tracking-tight">{branch.manager_name}</p>
                             </div>
-                            <div className="bg-input p-4 rounded-2xl border border-border-default group-hover:bg-card transition-colors">
-                                <p className="text-[9px] font-black text-text-muted uppercase tracking-widest mb-2 flex items-center gap-2">
+                            <div className="bg-input p-3 rounded-xl border border-border-default group-hover:bg-card transition-colors">
+                                <p className="text-[9px] font-black text-text-muted uppercase tracking-widest mb-1 flex items-center gap-2">
                                     <Phone className="w-3 h-3 text-primary-400" />
                                     Direct Registry
                                 </p>
@@ -89,8 +89,8 @@ export default function BranchList({ branches, onBranchClick, searchQuery }: Bra
                         </div>
 
                         {/* Metrics Section */}
-                        <div className="flex items-center justify-between pt-6 border-t border-border-divider">
-                            <div className="flex gap-8 items-center">
+                        <div className="flex items-center justify-between pt-4 border-t border-border-divider">
+                            <div className="flex gap-6 items-center">
                                 <div className="space-y-1">
                                     <p className="text-[8px] font-black text-text-muted uppercase tracking-widest">Entity Personnel</p>
                                     <div className="flex items-baseline gap-1.5">

@@ -145,7 +145,7 @@ export default function LoanActivationPage() {
                                             <button
                                                 onClick={() => setConfirmModal({ isOpen: true, loanId: loan.id })}
                                                 disabled={processingId === loan.id}
-                                                className="flex items-center gap-2 bg-emerald-600 text-white px-5 py-2.5 rounded-xl hover:bg-emerald-700 transition-all shadow-sm disabled:opacity-50 font-bold text-[10px] uppercase tracking-widest"
+                                                className="flex items-center gap-2 bg-primary-600 text-white px-5 py-2.5 rounded-xl hover:bg-primary-700 transition-all shadow-sm disabled:opacity-50 font-bold text-[10px] uppercase tracking-widest"
                                             >
                                                 {processingId === loan.id ? (
                                                     <span className="animate-spin w-4 h-4 border-2 border-white/20 border-t-white rounded-full" />
@@ -170,7 +170,7 @@ export default function LoanActivationPage() {
                 title="Confirm Activation"
                 message="Are you sure you want to activate this loan? This confirms that you have physically verified all required documents."
                 confirmLabel="Activate Loan"
-                variant="success"
+                variant="primary"
             />
         </div>
     );

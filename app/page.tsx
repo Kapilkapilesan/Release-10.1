@@ -172,7 +172,7 @@ export default function Dashboard() {
         {(isBranchRestricted || !selectedBranch) && (
           <div className="relative group perspective-1000">
             <div
-              className="relative overflow-hidden rounded-[2.5rem] p-10 text-white shadow-2xl transition-all duration-700 hover:shadow-primary-500/20"
+              className="relative overflow-hidden rounded-[2rem] p-6 text-white shadow-2xl transition-all duration-700 hover:shadow-primary-500/20"
               style={{
                 background: `linear-gradient(135deg, ${colors.primary[500]}, ${colors.primary[600]}, ${colors.primary[700]})`,
               }}
@@ -180,7 +180,7 @@ export default function Dashboard() {
               {/* Internal Reflective Shine */}
               <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-white/10 to-transparent opacity-50 pointer-events-none" />
               <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-white/5 rounded-full blur-3xl pointer-events-none" />
-              <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+              <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     {/* <div className="p-2 bg-white/10 rounded-xl backdrop-blur-md border border-white/20">
@@ -220,8 +220,8 @@ export default function Dashboard() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row items-center gap-6">
-                  <div className="bg-white/5 backdrop-blur-2xl rounded-[2rem] p-6 border border-white/10 shadow-xl group-hover:border-white/20 transition-all duration-500">
-                    <div className="flex flex-col items-center sm:items-end gap-5">
+                  <div className="bg-white/5 backdrop-blur-2xl rounded-2xl p-4 border border-white/10 shadow-xl group-hover:border-white/20 transition-all duration-500">
+                    <div className="flex flex-col items-center sm:items-end gap-3">
                       <div className="flex items-center gap-3">
                         {isRefreshing && (
                           <div className="flex items-center gap-2 text-[10px] font-black text-primary-300 uppercase tracking-widest animate-pulse mr-2">

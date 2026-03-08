@@ -82,7 +82,7 @@ export function CustomerInvestmentsTable({ records }: Props) {
 
     const getStatusStyle = (status: string) => {
         switch (status) {
-            case 'ACTIVE': return { bg: 'bg-emerald-500/10', text: 'text-emerald-500', border: 'border-emerald-500/20' };
+            case 'ACTIVE': return { bg: 'bg-primary-500/10', text: 'text-primary-500', border: 'border-primary-500/20' };
             case 'CLOSED': return { bg: 'bg-gray-500/10', text: 'text-gray-400', border: 'border-gray-500/20' };
             case 'MATURED': return { bg: 'bg-amber-500/10', text: 'text-amber-500', border: 'border-amber-500/20' };
             case 'RENEWED': return { bg: 'bg-primary-500/10', text: 'text-primary-500', border: 'border-primary-500/20' };
@@ -140,7 +140,7 @@ export function CustomerInvestmentsTable({ records }: Props) {
                                         <div className="space-y-2">
                                             <p className="text-[10px] font-black theme-text-primary uppercase tracking-widest group-hover:theme-text-primary-dark transition-colors">{record.snapshot_product_name}</p>
                                             <div className="flex items-center gap-2">
-                                                <div className="flex items-center gap-1.5 text-[10px] font-black text-emerald-500 bg-emerald-50 px-2 py-0.5 rounded-lg border border-emerald-100">
+                                                <div className="flex items-center gap-1.5 text-[10px] font-black text-primary-500 bg-primary-50 px-2 py-0.5 rounded-lg border border-primary-100">
                                                     <TrendingUp className="w-3.5 h-3.5" />
                                                     {record.snapshot_payout_type === 'MONTHLY' ? record.snapshot_interest_rate_monthly : record.snapshot_interest_rate_maturity}%
                                                 </div>

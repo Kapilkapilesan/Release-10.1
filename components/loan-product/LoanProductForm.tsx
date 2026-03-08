@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { X, Plus, Trash2 } from 'lucide-react';
 import { LoanProduct, LoanProductFormData } from '../../types/loan-product.types';
+import { colors } from '../../themes/colors';
 
 interface LoanProductFormProps {
     isOpen: boolean;
@@ -197,22 +198,29 @@ export function LoanProductForm({ isOpen, onClose, onSave, initialData }: LoanPr
 
     return (
         <div className="fixed inset-0 bg-background/80 backdrop-blur-md flex items-center justify-center z-50 p-4 animate-in fade-in duration-300">
-            <div className="bg-card rounded-[2.5rem] max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl border border-border-default flex flex-col transform scale-100 transition-all">
-                <div className="p-8 border-b border-border-divider sticky top-0 bg-card z-10">
-                    <div className="flex items-center justify-between">
-                        <h2 className="text-2xl font-black text-text-primary tracking-tight">
-                            {initialData ? 'Update Scheme' : 'Initialize Scheme'}
-                        </h2>
-                        <button
-                            onClick={onClose}
-                            className="p-2 hover:bg-rose-500/10 hover:text-rose-500 rounded-xl transition-all text-text-muted border border-border-divider"
-                        >
-                            <X className="w-5 h-5 text-text-muted hover:text-inherit" />
-                        </button>
+            <div className="bg-card rounded-[2.5rem] max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl border border-border-default flex flex-col transform scale-100 transition-all my-8">
+                {/* Header */}
+                <div
+                    className="p-6 border-b border-border-divider flex items-center justify-between rounded-t-[2.5rem]"
+                    style={{ backgroundImage: `linear-gradient(135deg, ${colors.primary[600]}, ${colors.primary[500]}, ${colors.indigo[600]})` }}
+                >
+                    <div className="flex items-center gap-4">
+                        <div className="p-2 bg-white/10 rounded-2xl backdrop-blur-xl border border-white/20 shadow-2xl">
+                            <Plus className="w-5 h-5 text-white" />
+                        </div>
+                        <div>
+                            <h2 className="text-lg font-black text-white tracking-tight uppercase leading-none">
+                                {initialData ? 'Update Scheme' : 'Initialize Scheme'}
+                            </h2>
+                            <p className="text-white/70 text-[8px] font-black uppercase tracking-[0.2em] mt-1 opacity-80">Credit Architecture & Governance</p>
+                        </div>
                     </div>
+                    <button onClick={onClose} className="p-2 bg-white/10 hover:bg-white/20 border border-white/10 rounded-xl transition-all group active:scale-90">
+                        <X className="w-4 h-4 text-white transition-all group-hover:rotate-90" />
+                    </button>
                 </div>
 
-                <div className="p-8 space-y-8 overflow-y-auto">
+                <div className="p-6 space-y-8 overflow-y-auto custom-scrollbar max-h-[75vh]">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {/* Product Code & Name */}
                         <div className="grid grid-cols-4 gap-4 md:col-span-2">
@@ -473,16 +481,16 @@ export function LoanProductForm({ isOpen, onClose, onSave, initialData }: LoanPr
                     </div>
                 </div>
 
-                <div className="p-8 border-t border-border-divider flex gap-4 justify-end bg-muted-bg/30 backdrop-blur-3xl sticky bottom-0">
+                <div className="p-6 border-t border-border-divider flex gap-4 justify-end bg-muted-bg/30 backdrop-blur-3xl sticky bottom-0">
                     <button
                         onClick={onClose}
-                        className="px-10 py-3.5 border border-border-divider rounded-2xl hover:bg-card transition-all font-black text-[10px] uppercase tracking-widest text-text-muted active:scale-95"
+                        className="px-8 py-3 bg-transparent border border-border-divider rounded-xl hover:bg-muted transition-all font-black text-[9px] uppercase tracking-[0.25em] text-text-secondary active:scale-95"
                     >
                         Cancel
                     </button>
                     <button
                         onClick={handleSubmit}
-                        className="px-12 py-3.5 bg-primary-600 text-white rounded-2xl transition-all font-black text-[10px] uppercase tracking-[0.3em] active:scale-95 shadow-2xl shadow-primary-500/40 hover:bg-primary-500 hover:shadow-primary-500/60"
+                        className="px-12 py-4 bg-primary-600 text-white rounded-2xl transition-all font-black text-[10px] uppercase tracking-[0.3em] active:scale-95 shadow-2xl shadow-primary-500/40 hover:bg-primary-500 hover:shadow-primary-500/60"
                     >
                         {initialData ? 'Update' : 'Create Product'}
                     </button>

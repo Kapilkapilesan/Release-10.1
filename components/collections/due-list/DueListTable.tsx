@@ -76,7 +76,7 @@ export function DueListTable({ payments, selectedDate, isLoading, onPaymentClick
     return (
         <div className="bg-card rounded-xl border border-border-default overflow-hidden shadow-sm">
             {/* Header */}
-            <div className="bg-gradient-to-r from-slate-800 to-slate-900 px-6 py-4">
+            <div className="bg-gradient-to-r from-primary-700 to-primary-900 px-6 py-4">
                 <h3 className="text-sm font-bold text-white uppercase tracking-wider">
                     Payments Due on {new Date(selectedDate).toLocaleDateString('en-US', {
                         weekday: 'long',
@@ -146,7 +146,7 @@ export function DueListTable({ payments, selectedDate, isLoading, onPaymentClick
 
                                 {/* Center */}
                                 <div className="col-span-6 md:col-span-2">
-                                    <span className="inline-flex items-center px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded text-xs font-medium">
+                                    <span className="inline-flex items-center px-2 py-0.5 bg-primary-500/10 text-primary-600 dark:text-primary-400 border border-primary-500/20 rounded text-xs font-medium">
                                         {payment.center}
                                     </span>
                                 </div>

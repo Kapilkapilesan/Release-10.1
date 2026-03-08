@@ -12,56 +12,54 @@ export function BranchStats({ stats }: BranchStatsProps) {
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
             {/* Total Branches */}
-            <div className="bg-card rounded-2xl border border-border-default/50 p-5 hover:shadow-2xl transition-all group relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary-500/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-primary-500/10 transition-colors" />
-                <div className="flex items-center justify-between mb-5">
-                    <div className="w-11 h-11 rounded-2xl flex items-center justify-center bg-primary-500/10 text-primary-500 border border-primary-500/20 shadow-xl group-hover:scale-110 transition-transform">
-                        <Building2 className="w-5 h-5" />
+            <div className="bg-card rounded-xl border border-border-default/50 p-3 hover:shadow-lg transition-all group relative overflow-hidden">
+                <div className="flex items-center gap-2 mb-1.5">
+                    <div className="w-7 h-7 rounded-lg flex items-center justify-center bg-primary-500/10 text-primary-500 border border-primary-500/20 group-hover:scale-110 transition-transform">
+                        <Building2 className="w-3.5 h-3.5" />
                     </div>
+                    <p className="text-[10px] font-black text-text-muted uppercase tracking-widest opacity-60 px-0.5">Total Branches</p>
                 </div>
-                <p className="text-[10px] font-black text-text-muted uppercase tracking-[0.2em] mb-2 opacity-60">Total Branches</p>
-                <p className="text-3xl font-black text-text-primary tracking-tight">{stats.totalBranches}</p>
+                <p className="text-xl font-black text-text-primary tracking-tight px-0.5">{stats.totalBranches}</p>
             </div>
 
             {/* Active Branches */}
-            <div className="bg-card rounded-2xl border border-border-default/50 p-5 hover:shadow-2xl transition-all group relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-emerald-500/10 transition-colors" />
-                <div className="flex items-center justify-between mb-5">
-                    <div className="w-11 h-11 rounded-2xl flex items-center justify-center bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 shadow-xl group-hover:scale-110 transition-transform">
-                        <TrendingUp className="w-5 h-5" />
+            <div className="bg-card rounded-xl border border-border-default/50 p-3 hover:shadow-lg transition-all group relative overflow-hidden">
+                <div className="flex items-center justify-between mb-1.5">
+                    <div className="flex items-center gap-2">
+                        <div className="w-7 h-7 rounded-lg flex items-center justify-center bg-primary-500/10 text-primary-500 border border-primary-500/20 group-hover:scale-110 transition-transform">
+                            <TrendingUp className="w-3.5 h-3.5" />
+                        </div>
+                        <p className="text-[10px] font-black text-text-muted uppercase tracking-widest opacity-60 px-0.5">Active Branches</p>
                     </div>
-                    <div className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
-                        <span className="text-[10px] font-black text-emerald-600 tracking-widest">
+                    <div className="px-1.5 py-0.5 bg-primary-500/10 border border-primary-500/20 rounded-lg">
+                        <span className="text-[9px] font-black text-primary-600 tracking-widest">
                             {stats.totalBranches > 0 ? ((stats.activeBranches / stats.totalBranches) * 100).toFixed(0) : 0}%
                         </span>
                     </div>
                 </div>
-                <p className="text-[10px] font-black text-text-muted uppercase tracking-[0.2em] mb-2 opacity-60">Active Branches</p>
-                <p className="text-3xl font-black text-text-primary tracking-tight">{stats.activeBranches}</p>
+                <p className="text-xl font-black text-text-primary tracking-tight px-0.5">{stats.activeBranches}</p>
             </div>
 
             {/* Total Customers */}
-            <div className="bg-card rounded-2xl border border-border-default/50 p-5 hover:shadow-2xl transition-all group relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-indigo-500/10 transition-colors" />
-                <div className="flex items-center justify-between mb-5">
-                    <div className="w-11 h-11 bg-indigo-500/10 border border-indigo-500/20 rounded-2xl flex items-center justify-center text-indigo-500 shadow-xl group-hover:scale-110 transition-transform">
-                        <Users className="w-5 h-5" />
+            <div className="bg-card rounded-xl border border-border-default/50 p-3 hover:shadow-lg transition-all group relative overflow-hidden">
+                <div className="flex items-center gap-2 mb-1.5">
+                    <div className="w-7 h-7 bg-indigo-500/10 border border-indigo-500/20 rounded-lg flex items-center justify-center text-indigo-500 group-hover:scale-110 transition-transform">
+                        <Users className="w-3.5 h-3.5" />
                     </div>
+                    <p className="text-[10px] font-black text-text-muted uppercase tracking-widest opacity-60 px-0.5">Total Customers</p>
                 </div>
-                <p className="text-[10px] font-black text-text-muted uppercase tracking-[0.2em] mb-2 opacity-60">Total Customers</p>
-                <p className="text-3xl font-black text-text-primary tracking-tight">{stats.totalCustomers}</p>
+                <p className="text-xl font-black text-text-primary tracking-tight px-0.5">{stats.totalCustomers}</p>
             </div>
 
             {/* Total Loans */}
-            <div className="bg-card rounded-2xl border border-border-default/50 p-5 hover:shadow-2xl transition-all group relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-amber-500/10 transition-colors" />
-                <div className="flex items-center justify-between mb-5">
-                    <div className="w-11 h-11 bg-amber-500/10 border border-amber-500/20 rounded-2xl flex items-center justify-center text-amber-500 shadow-xl group-hover:scale-110 transition-transform">
-                        <Building2 className="w-5 h-5" />
+            <div className="bg-card rounded-xl border border-border-default/50 p-3 hover:shadow-lg transition-all group relative overflow-hidden">
+                <div className="flex items-center gap-2 mb-1.5">
+                    <div className="w-7 h-7 bg-amber-500/10 border border-amber-500/20 rounded-lg flex items-center justify-center text-amber-500 group-hover:scale-110 transition-transform">
+                        <Building2 className="w-3.5 h-3.5" />
                     </div>
+                    <p className="text-[10px] font-black text-text-muted uppercase tracking-widest opacity-60 px-0.5">Total Loans</p>
                 </div>
-                <p className="text-[10px] font-black text-text-muted uppercase tracking-[0.2em] mb-2 opacity-60">Total Loans</p>
-                <p className="text-3xl font-black text-text-primary tracking-tight">{stats.totalLoans}</p>
+                <p className="text-xl font-black text-text-primary tracking-tight px-0.5">{stats.totalLoans}</p>
             </div>
         </div>
     );

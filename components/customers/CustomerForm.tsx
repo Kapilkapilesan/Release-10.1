@@ -37,9 +37,9 @@ interface CustomerFormProps {
 
 // 📌 Move internal components OUTSIDE to prevent remounting/focus issues
 const SectionHeader = ({ icon: Icon, title }: { icon: any; title: string }) => (
-    <div className="flex items-center gap-4 mb-8 pb-4 border-b border-border-divider/30">
-        <div className="p-3 bg-primary-500/10 rounded-2xl text-primary-500 shadow-lg shadow-primary-500/5">
-            <Icon size={20} />
+    <div className="flex items-center gap-4 mb-5 pb-2 border-b border-border-divider/30">
+        <div className="p-2.5 bg-primary-500/10 rounded-2xl text-primary-500 shadow-lg shadow-primary-500/5">
+            <Icon size={18} />
         </div>
         <h3 className="text-[11px] font-black text-text-muted uppercase tracking-[0.2em]">
             {title}
@@ -64,7 +64,7 @@ const FormInput = ({
     onPaste,
 }: any) => (
     <div
-        className={`space-y-2 ${colSpan === 2 ? "md:col-span-2" : colSpan === 3 ? "md:col-span-3" : ""
+        className={`space-y-1.5 ${colSpan === 2 ? "md:col-span-2" : colSpan === 3 ? "md:col-span-3" : ""
             }`}
     >
         <label className="text-[10px] font-black text-text-muted uppercase tracking-widest flex items-center gap-2 ml-1 opacity-60">
@@ -87,7 +87,7 @@ const FormInput = ({
                 max={max}
                 placeholder={placeholder}
                 className={`w-full ${Icon ? "pl-11" : "pl-5"
-                    } pr-5 py-3.5 bg-muted-bg/30 border-2 ${error
+                    } pr-5 py-2.5 bg-muted-bg/30 border-2 ${error
                         ? "border-rose-500/50 focus:border-rose-500 focus:ring-rose-500/10"
                         : "border-border-divider/30 focus:border-primary-500 focus:ring-primary-500/10"
                     } rounded-2xl focus:outline-none focus:ring-8 transition-all text-sm font-bold text-text-primary placeholder:text-text-muted/20 placeholder:font-black placeholder:uppercase placeholder:tracking-widest uppercase ${readOnly ? "cursor-not-allowed opacity-40 grayscale" : ""
@@ -115,7 +115,7 @@ const FormSelect = ({
     disabled,
 }: any) => (
     <div
-        className={`space-y-2 ${colSpan === 2 ? "md:col-span-2" : colSpan === 3 ? "md:col-span-3" : ""
+        className={`space-y-1.5 ${colSpan === 2 ? "md:col-span-2" : colSpan === 3 ? "md:col-span-3" : ""
             }`}
     >
         <label className="text-[10px] font-black text-text-muted uppercase tracking-widest flex items-center gap-2 ml-1 opacity-60">
@@ -133,7 +133,7 @@ const FormSelect = ({
                 onChange={onChange}
                 disabled={disabled}
                 className={`w-full ${Icon ? "pl-11" : "pl-5"
-                    } pr-12 py-3.5 bg-muted-bg/30 border-2 ${error
+                    } pr-12 py-2.5 bg-muted-bg/30 border-2 ${error
                         ? "border-rose-500/50 focus:border-rose-500 focus:ring-rose-500/10"
                         : "border-border-divider/30 focus:border-primary-500 focus:ring-primary-500/10"
                     } rounded-2xl focus:outline-none focus:ring-8 transition-all text-sm font-bold text-text-primary appearance-none uppercase ${disabled
@@ -797,7 +797,7 @@ export function CustomerForm({
         <div className="fixed inset-0 bg-background/80 backdrop-blur-xl flex items-center justify-center z-[100] p-4 animate-in fade-in duration-500">
             <div className="bg-card rounded-[3.5rem] max-w-5xl w-full shadow-2xl border border-border-default flex flex-col h-full max-h-[95vh] overflow-hidden transform transition-all">
                 {/* Header */}
-                <div className="p-10 border-b border-border-divider/30 flex items-center justify-between bg-card/80 backdrop-blur-3xl sticky top-0 z-20">
+                <div className="p-7 border-b border-border-divider/30 flex items-center justify-between bg-card/80 backdrop-blur-3xl sticky top-0 z-20">
                     <div className="space-y-2">
                         <h2 className="text-3xl font-black text-text-primary tracking-tighter flex items-center gap-4 uppercase">
                             {initialData ? "Edit Profile" : "New Customer"}
@@ -846,7 +846,7 @@ export function CustomerForm({
                 {/* Main Form Area */}
                 <form
                     onSubmit={handleSubmit}
-                    className="flex-1 overflow-y-auto p-12 lg:p-16 space-y-20 scroll-smooth custom-scrollbar bg-card"
+                    className="flex-1 overflow-y-auto p-8 lg:p-10 space-y-12 scroll-smooth custom-scrollbar bg-card"
                 >
                     {isBranchInactive && (
                         <div className="p-6 bg-amber-500/10 border-2 border-amber-500/20 rounded-[2rem] flex items-start gap-6 animate-in fade-in slide-in-from-top-4 duration-500">
@@ -863,14 +863,14 @@ export function CustomerForm({
                         </div>
                     )}
                     {/* Main Type & Location Section */}
-                    <div className="bg-primary-500/5 p-10 lg:p-14 rounded-[3rem] border border-primary-500/10 space-y-12 relative overflow-hidden">
+                    <div className="bg-primary-500/5 p-8 lg:p-10 rounded-3xl border border-primary-500/10 space-y-6 relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full -mr-32 -mt-32 blur-3xl" />
 
 
                         {!isEditMode && (
                             <div className="relative z-10">
-                                <label className="text-[10px] font-black text-primary-500 uppercase tracking-[0.4em] mb-8 block opacity-60">II. Location Assignment</label>
-                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                                <label className="text-[10px] font-black text-primary-500 uppercase tracking-[0.4em] mb-5 block opacity-60">II. Location Assignment</label>
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                                     <FormSelect
                                         label="Branch"
                                         name="branch_id"
@@ -908,7 +908,7 @@ export function CustomerForm({
                     {/* Personal Details */}
                     <div>
                         <SectionHeader icon={User} title="Personal Information" />
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4">
                             <FormSelect
                                 label="Title"
                                 name="title"
@@ -1070,9 +1070,9 @@ export function CustomerForm({
                     </div>
 
                     {/* Contact & Address */}
-                    <div className="bg-muted-bg/10 p-10 lg:p-14 rounded-[3rem] border border-border-divider/30">
+                    <div className="bg-muted-bg/10 p-8 lg:p-10 rounded-3xl border border-border-divider/30">
                         <SectionHeader icon={MessageSquare} title="Contact & Address" />
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             <FormInput
                                 label="Primary Mobile"
                                 name="mobile_no_1"
@@ -1176,9 +1176,9 @@ export function CustomerForm({
                     </div>
 
                     {/* Documentation & Profile */}
-                    <div className="bg-muted-bg/10 p-10 lg:p-14 rounded-[3rem] border border-border-divider/30">
+                    <div className="bg-muted-bg/10 p-8 lg:p-10 rounded-3xl border border-border-divider/30">
                         <SectionHeader icon={Camera} title="Documentation & Profile" />
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             {/* Profile Image Upload */}
                             <div className="space-y-6">
                                 <label className="text-[10px] font-black text-text-muted uppercase tracking-[0.2em] flex items-center gap-3 opacity-60">
@@ -1187,7 +1187,7 @@ export function CustomerForm({
                                 </label>
                                 <div className="flex items-center gap-8">
                                     <div className="relative group/photo">
-                                        <div className="w-32 h-32 rounded-[2.5rem] bg-muted-bg/30 border-2 border-dashed border-border-divider/50 overflow-hidden flex items-center justify-center transition-all group-hover/photo:border-primary-500/50 bg-card shadow-inner">
+                                        <div className="w-28 h-28 rounded-3xl bg-muted-bg/30 border-2 border-dashed border-border-divider/50 overflow-hidden flex items-center justify-center transition-all group-hover/photo:border-primary-500/50 bg-card shadow-inner">
                                             {formData.customer_profile_image || (isEditMode && (initialData as any)?.id) ? (
                                                 <SecureImage
                                                     src={formData.customer_profile_image?.startsWith('data:')
@@ -1249,7 +1249,7 @@ export function CustomerForm({
                                     NIC Front Copy <span className="text-rose-500 text-lg leading-none">*</span>
                                 </label>
                                 <div
-                                    className={`relative group h-32 rounded-[2.5rem] border-2 border-dashed ${fieldErrors.nic_copy_image ? 'border-rose-500/50 bg-rose-500/5' : 'border-border-divider/50 bg-muted-bg/20'} flex flex-col items-center justify-center transition-all hover:border-primary-500/50 cursor-pointer overflow-hidden bg-card shadow-inner`}
+                                    className={`relative group h-28 rounded-3xl border-2 border-dashed ${fieldErrors.nic_copy_image ? 'border-rose-500/50 bg-rose-500/5' : 'border-border-divider/50 bg-muted-bg/20'} flex flex-col items-center justify-center transition-all hover:border-primary-500/50 cursor-pointer overflow-hidden bg-card shadow-inner`}
                                     onClick={() => document.getElementById('nic-upload')?.click()}
                                 >
                                     {formData.nic_copy_image || formData.nic_image_url ? (
@@ -1333,7 +1333,7 @@ export function CustomerForm({
                 </form>
 
                 {/* Sticky Footer */}
-                <div className="p-10 border-t border-border-divider/30 flex items-center justify-end gap-6 bg-card/95 backdrop-blur-xl">
+                <div className="p-7 border-t border-border-divider/30 flex items-center justify-end gap-6 bg-card/95 backdrop-blur-xl">
                     <button
                         onClick={onClose}
                         disabled={loading}
@@ -1344,12 +1344,12 @@ export function CustomerForm({
                     <button
                         onClick={handleSubmit}
                         disabled={loading || isPendingApproval || isBranchInactive}
-                        className={`flex items-center gap-4 px-14 py-4.5 ${isPendingApproval || isBranchInactive
-                            ? "bg-muted-bg grayscale text-text-muted"
+                        className={`flex items-center gap-4 px-14 py-3.5 ${isPendingApproval || isBranchInactive
+                            ? "bg-muted-bg grayscale text-text-muted border-transparent"
                             : requiresApproval
-                                ? "bg-amber-600 hover:bg-amber-500"
-                                : "bg-primary-600 hover:bg-primary-500"
-                            } text-white rounded-[2rem] transition-all font-black text-[11px] uppercase tracking-[0.2em] shadow-2xl ${isPendingApproval || isBranchInactive ? '' : requiresApproval ? 'shadow-amber-500/30' : 'shadow-primary-500/40'} active:scale-95 disabled:opacity-20 disabled:pointer-events-none`}
+                                ? "bg-primary-500/10 backdrop-blur-xl border border-primary-500/20 text-primary-600 hover:bg-primary-600 hover:text-white"
+                                : "bg-primary-600 hover:bg-primary-500 text-white border-transparent"
+                            } rounded-[2rem] transition-all font-black text-[11px] uppercase tracking-[0.2em] shadow-2xl ${isPendingApproval || isBranchInactive ? '' : requiresApproval ? 'shadow-primary-500/10' : 'shadow-primary-500/40'} active:scale-95 disabled:opacity-20 disabled:pointer-events-none`}
                     >
                         {loading ? (
                             <>

@@ -83,7 +83,9 @@ export default function FundTransactionsPage() {
 
     const fetchShareholders = async () => {
         try {
-            const data = await shareholderService.getAll(selectedMonth, selectedYear);
+            const month = (period === 'day' || period === 'month') ? selectedMonth : undefined;
+            const year = (period !== 'all') ? selectedYear : undefined;
+            const data = await shareholderService.getAll(month, year);
             setShareholders(data.shareholders);
         } catch (error: any) {
             console.error('Failed to fetch shareholders', error);
@@ -93,7 +95,9 @@ export default function FundTransactionsPage() {
 
     const fetchInvestments = async () => {
         try {
-            const data = await investmentService.getInvestments(selectedMonth, selectedYear);
+            const month = (period === 'day' || period === 'month') ? selectedMonth : undefined;
+            const year = (period !== 'all') ? selectedYear : undefined;
+            const data = await investmentService.getInvestments(month, year);
             setCustomerInvestments(data);
         } catch (error) {
             console.error('Failed to fetch investments', error);
@@ -103,7 +107,11 @@ export default function FundTransactionsPage() {
     const fetchLoans = async () => {
         try {
             const dateStr = `${selectedYear}-${String(selectedMonth).padStart(2, '0')}-${String(selectedDay).padStart(2, '0')}`;
-            const data = await financeService.getApprovedLoans(undefined, dateStr, selectedMonth, selectedYear);
+            const month = (period === 'day' || period === 'month') ? selectedMonth : undefined;
+            const year = (period !== 'all') ? selectedYear : undefined;
+            const date = (period === 'day') ? dateStr : undefined;
+
+            const data = await financeService.getApprovedLoans(undefined, date, month, year);
             setLoans(data);
         } catch (error: any) {
             toast.error(error.message || 'Failed to fetch loans for disbursement');
@@ -113,7 +121,8 @@ export default function FundTransactionsPage() {
     const fetchStats = async () => {
         try {
             const dateStr = `${selectedYear}-${String(selectedMonth).padStart(2, '0')}-${String(selectedDay).padStart(2, '0')}`;
-            const data = await financeService.getFundTransactions(undefined, dateStr, period);
+            const date = (period !== 'all') ? dateStr : undefined;
+            const data = await financeService.getFundTransactions(undefined, date, period);
             setStats(data.stats);
         } catch (error) {
             console.error('Failed to fetch stats', error);
@@ -123,7 +132,11 @@ export default function FundTransactionsPage() {
     const fetchSalaries = async () => {
         try {
             const dateStr = `${selectedYear}-${String(selectedMonth).padStart(2, '0')}-${String(selectedDay).padStart(2, '0')}`;
-            const data = await financeService.getPendingSalaries(undefined, dateStr, selectedMonth, selectedYear);
+            const month = (period === 'day' || period === 'month') ? selectedMonth : undefined;
+            const year = (period !== 'all') ? selectedYear : undefined;
+            const date = (period === 'day') ? dateStr : undefined;
+
+            const data = await financeService.getPendingSalaries(undefined, date, month, year);
             setSalaries(data);
         } catch (error: any) {
             toast.error(error.message || 'Failed to fetch pending salaries');
@@ -132,10 +145,13 @@ export default function FundTransactionsPage() {
 
     const fetchStaffLoans = async () => {
         try {
+            const month = (period === 'day' || period === 'month') ? selectedMonth : undefined;
+            const year = (period !== 'all') ? selectedYear : undefined;
+
             const response = await staffLoanService.getAll({
                 status: 'approved,disbursed',
-                month: selectedMonth.toString(),
-                year: selectedYear.toString()
+                month: month?.toString(),
+                year: year?.toString()
             });
             if (response.status === 'success') {
                 const sorted = response.data.data.sort((a: any, b: any) => {
@@ -151,7 +167,9 @@ export default function FundTransactionsPage() {
 
     const fetchPayouts = async () => {
         try {
-            const data = await investmentService.getPayouts(selectedMonth, selectedYear);
+            const month = (period === 'day' || period === 'month') ? selectedMonth : undefined;
+            const year = (period !== 'all') ? selectedYear : undefined;
+            const data = await investmentService.getPayouts(month, year);
             setInvestmentPayouts(data);
         } catch (error) {
             console.error('Failed to fetch investment payouts', error);

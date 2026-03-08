@@ -126,7 +126,7 @@ export default function StaffLoanApprovalPage() {
         switch (status) {
             case 'approved':
                 return (
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-emerald-50 text-emerald-600 border border-emerald-100/50 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-primary-50 text-primary-600 border border-primary-100/50 dark:bg-primary-500/10 dark:text-primary-400 dark:border-primary-500/20">
                         <CheckCircle2 className="w-3.5 h-3.5" /> Approved
                     </span>
                 );
@@ -138,7 +138,7 @@ export default function StaffLoanApprovalPage() {
                 );
             case 'disbursed':
                 return (
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-indigo-50 text-indigo-600 border border-indigo-100/50 dark:bg-indigo-500/10 dark:text-indigo-400 dark:border-indigo-500/20">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-primary-50 text-primary-600 border border-primary-100/50 dark:bg-primary-500/10 dark:text-primary-400 dark:border-primary-500/20">
                         <ShieldCheck className="w-3.5 h-3.5" /> Disbursed
                     </span>
                 );
@@ -173,11 +173,11 @@ export default function StaffLoanApprovalPage() {
             <div className="relative z-10 p-6 max-w-[1500px] mx-auto space-y-6 animate-in fade-in duration-500">
                 {/* Institutional Header */}
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-card/90 backdrop-blur-xl p-6 rounded-3xl shadow-lg border border-border-default relative overflow-hidden">
-                    <div className="absolute top-0 left-0 w-1.5 h-full" style={{ background: `linear-gradient(to bottom, ${colors.primary[600]}, ${colors.indigo[900]})` }} />
+                    <div className="absolute top-0 left-0 w-1.5 h-full" style={{ background: `linear-gradient(to bottom, ${colors.primary[600]}, ${colors.primary[900]})` }} />
 
                     <div className="flex items-center gap-5 relative z-10">
                         <div className="w-12 h-12 rounded-2xl flex items-center justify-center text-white shadow-xl shrink-0"
-                            style={{ background: `linear-gradient(135deg, ${colors.primary[600]}, ${colors.indigo[900]})` }}>
+                            style={{ background: `linear-gradient(135deg, ${colors.primary[600]}, ${colors.primary[900]})` }}>
                             <ShieldCheck className="w-6 h-6" />
                         </div>
                         <div>
@@ -288,7 +288,7 @@ export default function StaffLoanApprovalPage() {
                                                     <div className="flex justify-end gap-2">
                                                         <button
                                                             onClick={() => handleAction(loan, 'approve')}
-                                                            className="flex items-center gap-2 px-4 py-2 bg-emerald-50 text-emerald-600 rounded-lg text-[9px] font-black uppercase hover:bg-emerald-100 transition-all active:scale-95 border border-emerald-100/50"
+                                                            className="flex items-center gap-2 px-4 py-2 bg-primary-50 text-primary-600 rounded-lg text-[9px] font-black uppercase hover:bg-primary-100 transition-all active:scale-95 border border-primary-100/50"
                                                         >
                                                             <Check size={12} strokeWidth={3} /> Verify
                                                         </button>
@@ -322,9 +322,9 @@ export default function StaffLoanApprovalPage() {
             {selectedLoan && actionType && (
                 <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/40 backdrop-blur-md animate-in fade-in duration-300">
                     <div className="bg-card rounded-[2rem] shadow-2xl w-full max-w-md overflow-hidden flex flex-col border border-border-default animate-in zoom-in-95 duration-200">
-                        <div className={`p-8 ${actionType === 'approve' ? 'bg-emerald-50/50' : 'bg-rose-50/50'}`}>
+                        <div className={`p-8 ${actionType === 'approve' ? 'bg-primary-50/50' : 'bg-rose-50/50'}`}>
                             <div className="flex items-center gap-4 mb-6">
-                                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-xl ${actionType === 'approve' ? 'bg-emerald-600' : 'bg-rose-600'
+                                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-xl ${actionType === 'approve' ? 'bg-primary-600' : 'bg-rose-600'
                                     }`}>
                                     {actionType === 'approve' ? <ShieldCheck size={28} /> : <AlertCircle size={28} />}
                                 </div>
@@ -365,8 +365,8 @@ export default function StaffLoanApprovalPage() {
                             )}
 
                             {actionType === 'approve' && (
-                                <div className="bg-emerald-50/50 p-4 rounded-xl border border-emerald-100/50 flex items-start gap-4">
-                                    <Zap className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
+                                <div className="bg-primary-50/50 p-4 rounded-xl border border-primary-100/50 flex items-start gap-4">
+                                    <Zap className="w-5 h-5 text-primary-500 shrink-0 mt-0.5" />
                                     <p className="text-[10px] font-bold text-text-secondary leading-relaxed uppercase">
                                         AUTHORIZING THIS REQUEST WILL COMMIT THE CAPITAL PORTFOLIO FOR SETTLEMENT.
                                     </p>
@@ -383,7 +383,7 @@ export default function StaffLoanApprovalPage() {
                                 <button
                                     onClick={confirmAction}
                                     disabled={processing}
-                                    className={`flex-[1.5] px-8 py-4 text-white rounded-2xl text-[11px] font-black uppercase tracking-widest shadow-xl transition-all active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-2 ${actionType === 'approve' ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-rose-600 hover:bg-rose-700'
+                                    className={`flex-[1.5] px-8 py-4 text-white rounded-2xl text-[11px] font-black uppercase tracking-widest shadow-xl transition-all active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-2 ${actionType === 'approve' ? 'bg-primary-600 hover:bg-primary-700' : 'bg-rose-600 hover:bg-rose-700'
                                         }`}
                                 >
                                     {processing ? (
@@ -405,7 +405,7 @@ export default function StaffLoanApprovalPage() {
             {viewStaff && (
                 <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/40 backdrop-blur-md animate-in fade-in duration-300">
                     <div className="bg-card rounded-[2rem] shadow-2xl w-full max-w-md overflow-hidden flex flex-col border border-border-default animate-in zoom-in-95 duration-200">
-                        <div className="relative bg-gradient-to-br from-primary-600 to-indigo-900 p-8 pt-12 pb-10 text-center text-white">
+                        <div className="relative bg-gradient-to-br from-primary-600 to-primary-900 p-8 pt-12 pb-10 text-center text-white">
                             <button
                                 onClick={() => setViewStaff(null)}
                                 className="absolute top-6 right-6 p-2 bg-white/10 hover:bg-white/20 rounded-xl text-white transition-all transform hover:rotate-90 active:scale-90"
@@ -442,8 +442,8 @@ export default function StaffLoanApprovalPage() {
                             <div className="space-y-3">
                                 {[
                                     { icon: CreditCard, label: 'NIC Identifier', value: viewStaff.nic, color: 'primary' },
-                                    { icon: Phone, label: 'Comms Link', value: viewStaff.contact_no, color: 'emerald' },
-                                    { icon: MapPin, label: 'Tactical Location', value: viewStaff.address, color: 'indigo' }
+                                    { icon: Phone, label: 'Comms Link', value: viewStaff.contact_no, color: 'primary' },
+                                    { icon: MapPin, label: 'Tactical Location', value: viewStaff.address, color: 'primary' }
                                 ].map((item, i) => (
                                     <div key={i} className="flex items-center gap-4 p-4 hover:bg-hover rounded-2xl transition-all border border-transparent hover:border-border-default group">
                                         <div className={`w-10 h-10 rounded-xl bg-input flex items-center justify-center text-text-muted group-hover:bg-card group-hover:shadow-md transition-all`}>

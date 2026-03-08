@@ -36,7 +36,7 @@ export function StaffLoanDisbursementTable({ records, onDisburse }: StaffLoanDis
             <div className="bg-card rounded-2xl overflow-hidden shadow-[0_10px_30px_-10px_rgba(0,0,0,0.04)] border border-border-default/50">
                 <div className="p-5 border-b border-border-default/80 flex flex-wrap gap-4 items-center justify-between bg-muted-bg/20">
                     <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-xl bg-violet-600 flex items-center justify-center shadow-lg shadow-violet-600/20">
+                        <div className="w-10 h-10 rounded-xl bg-primary-600 flex items-center justify-center shadow-lg shadow-primary-600/20">
                             <Landmark className="w-5 h-5 text-white" />
                         </div>
                         <div>
@@ -91,8 +91,8 @@ export function StaffLoanDisbursementTable({ records, onDisburse }: StaffLoanDis
                                         <td className="px-6 py-4">
                                             <div className="flex flex-col gap-1.5">
                                                 <p className="text-[10px] font-black text-text-secondary uppercase tracking-tight leading-none group-hover:text-primary-600 transition-colors">{record.purpose}</p>
-                                                <div className="flex items-center gap-1.5 px-2 py-0.5 bg-violet-50 dark:bg-violet-900/20 rounded-md border border-violet-100/30 dark:border-violet-900/30 w-fit">
-                                                    <span className="text-[8px] font-black text-violet-600 dark:text-violet-400 uppercase tracking-widest">TERM: {record.loan_duration} MONTHS</span>
+                                                <div className="flex items-center gap-1.5 px-2 py-0.5 bg-primary-50 dark:bg-primary-900/20 rounded-md border border-primary-100/30 dark:border-primary-900/30 w-fit">
+                                                    <span className="text-[8px] font-black text-primary-600 dark:text-primary-400 uppercase tracking-widest">TERM: {record.loan_duration} MONTHS</span>
                                                 </div>
                                             </div>
                                         </td>
@@ -107,7 +107,7 @@ export function StaffLoanDisbursementTable({ records, onDisburse }: StaffLoanDis
                                         <td className="px-6 py-4 text-center">
                                             <div className="flex flex-col items-center">
                                                 <span className={`px-3 py-1.5 rounded-xl text-[9px] font-black border uppercase tracking-[0.1em] transition-all duration-300 shadow-sm min-w-[100px] ${record.status === 'disbursed'
-                                                    ? 'bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 border-emerald-100 dark:border-emerald-900/30'
+                                                    ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 border-primary-100 dark:border-primary-900/30'
                                                     : 'bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400 border-amber-100 dark:border-amber-900/30 animate-pulse'
                                                     }`}>
                                                     {record.status}
@@ -116,7 +116,7 @@ export function StaffLoanDisbursementTable({ records, onDisburse }: StaffLoanDis
                                         </td>
                                         <td className="px-6 py-4 text-right">
                                             {record.status === 'disbursed' ? (
-                                                <div className="inline-flex items-center gap-2 px-6 py-2 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 rounded-xl text-[9px] font-black uppercase tracking-[0.15em] border border-emerald-100/50 dark:border-emerald-900/30 shadow-inner ml-auto">
+                                                <div className="inline-flex items-center gap-2 px-6 py-2 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 rounded-xl text-[9px] font-black uppercase tracking-[0.15em] border border-primary-100/50 dark:border-primary-900/30 shadow-inner ml-auto">
                                                     <CheckCircle2 className="w-3.5 h-3.5" />
                                                     Authorized
                                                 </div>

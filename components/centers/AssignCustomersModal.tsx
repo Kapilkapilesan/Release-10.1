@@ -163,7 +163,7 @@ export function AssignCustomersModal({ isOpen, onClose, center, onAssignSuccess 
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 placeholder="Search by name or customer code..."
-                                className="w-full pl-12 pr-4 py-3 bg-input border border-border-input rounded-xl focus:ring-2 transition-all text-sm text-text-primary outline-none"
+                                className="w-full pl-12 pr-4 py-3 bg-input border border-border-default rounded-xl focus:ring-2 transition-all text-sm text-text-primary outline-none"
                                 style={{ '--tw-ring-color': `${colors.primary[500]}20` } as any}
                             />
                         </div>

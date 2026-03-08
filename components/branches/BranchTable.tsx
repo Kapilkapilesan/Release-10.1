@@ -115,7 +115,7 @@ export function BranchTable({
                                     <span className={`inline-flex items-center px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-widest border 
                                         ${(branch.status || 'active').toLowerCase() === 'inactive'
                                             ? 'bg-rose-500/10 text-rose-500 border-rose-500/20'
-                                            : 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20'}`}>
+                                            : 'bg-primary-500/10 text-primary-500 border-primary-500/20'}`}>
                                         {branch.status || 'active'}
                                     </span>
                                 </div>
@@ -125,7 +125,7 @@ export function BranchTable({
                                         <button
                                             onClick={() => onToggleStatus(branch)}
                                             className={`p-1.5 rounded-lg transition-all active:scale-95 ${branch.status === 'inactive'
-                                                ? 'hover:bg-emerald-500/10 text-emerald-500'
+                                                ? 'hover:bg-primary-500/10 text-primary-500'
                                                 : 'hover:bg-amber-500/10 text-amber-500'
                                                 }`}
                                             title={branch.status === 'inactive' ? 'Enable Branch' : 'Disable Branch'}

@@ -24,7 +24,7 @@ export function FundTruncationStats({ stats }: Props) {
             icon: Users,
             iconClass: 'text-primary-600 dark:text-primary-400',
             bgClass: 'bg-primary-50 dark:bg-primary-900/20',
-            gradient: 'from-violet-500/5 to-transparent'
+            gradient: 'from-primary-500/5 to-transparent'
         },
         {
             label: 'Investment Total',
@@ -40,9 +40,9 @@ export function FundTruncationStats({ stats }: Props) {
             value: stats.total_income,
             subLabel: 'Monthly Cycle',
             icon: TrendingUp,
-            iconClass: 'text-emerald-600 dark:text-emerald-400',
-            bgClass: 'bg-emerald-50 dark:bg-emerald-900/20',
-            gradient: 'from-emerald-500/5 to-transparent'
+            iconClass: 'text-primary-600 dark:text-primary-400',
+            bgClass: 'bg-primary-50 dark:bg-primary-900/20',
+            gradient: 'from-primary-500/5 to-transparent'
         },
         {
             label: 'Total Outflow',
@@ -80,7 +80,7 @@ export function FundTruncationStats({ stats }: Props) {
                 return (
                     <div
                         key={index}
-                        className="group relative bg-card h-full min-h-[140px] p-5 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-border-default overflow-hidden"
+                        className="group relative bg-card h-full min-h-[100px] p-4 rounded-xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-border-default overflow-hidden"
                     >
                         {/* Top Row: Label and Indicator */}
                         <div className="flex justify-between items-start z-10 relative">
@@ -91,8 +91,8 @@ export function FundTruncationStats({ stats }: Props) {
                         </div>
 
                         {/* Middle: Value */}
-                        <div className="mt-4 z-10 relative">
-                            <h3 className="text-3xl font-black text-text-primary tracking-tighter tabular-nums leading-none">
+                        <div className="mt-2 z-10 relative">
+                            <h3 className="text-2xl font-black text-text-primary tracking-tighter tabular-nums leading-none">
                                 {Number(card.value).toLocaleString()}
                             </h3>
                             <p className="mt-1 text-[8px] font-bold text-text-muted/60 uppercase tracking-widest flex items-center gap-1">
@@ -102,8 +102,8 @@ export function FundTruncationStats({ stats }: Props) {
                         </div>
 
                         {/* Background Icon (Faint) */}
-                        <div className="absolute -bottom-4 -right-4 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-500 rotate-[-15deg] z-0">
-                            <Icon size={100} className="text-text-primary" strokeWidth={1.5} />
+                        <div className="absolute -bottom-2 -right-2 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-500 rotate-[-15deg] z-0">
+                            <Icon size={70} className="text-text-primary" strokeWidth={1.5} />
                         </div>
 
                         {/* Hover Gradient Overlay */}

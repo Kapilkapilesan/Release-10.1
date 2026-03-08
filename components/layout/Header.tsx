@@ -395,9 +395,9 @@ export function Header({ user, onLogout, onToggleSidebar, onProfileSettings }: H
                 <div className="flex items-center gap-3">
                     {/* Today's Worked Time - Only for staff (not admin) */}
                     {!isAdminOrSuperAdmin && (
-                        <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 bg-green-50 dark:bg-green-900/30 rounded-xl">
-                            <Clock className="w-4 h-4 text-green-600 dark:text-green-400" />
-                            <span className="text-sm text-green-700 dark:text-green-300 font-medium">{todayWorkedTime}</span>
+                        <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 bg-primary-500 dark:bg-primary-600 rounded-xl shadow-lg shadow-primary-500/30 ring-1 ring-white/10">
+                            <Clock className="w-4 h-4 text-white" />
+                            <span className="text-sm text-white font-bold">{todayWorkedTime}</span>
                         </div>
                     )}
 

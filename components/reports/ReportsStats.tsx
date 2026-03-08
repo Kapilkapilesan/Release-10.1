@@ -24,17 +24,17 @@ export function ReportsStats({ stats, isLoading }: ReportsStatsProps) {
             label: 'Downloads Month',
             value: stats?.downloads_this_month ?? 0,
             icon: Download,
-            color: colors.success[600],
-            bgColor: colors.success[50],
-            shadow: colors.success[600]
+            color: colors.primary[600],
+            bgColor: colors.primary[50],
+            shadow: colors.primary[600]
         },
         {
             label: 'Scheduled Tasks',
             value: stats?.scheduled_reports ?? 0,
             icon: BarChart3,
-            color: colors.indigo[600],
-            bgColor: colors.indigo[50],
-            shadow: colors.indigo[600]
+            color: colors.primary[500],
+            bgColor: colors.primary[50],
+            shadow: colors.primary[500]
         },
         {
             label: 'Last Generated',

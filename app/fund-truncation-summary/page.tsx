@@ -172,8 +172,8 @@ export default function FundTruncationSummaryPage() {
                             onClick={handleExport}
                             className="flex items-center gap-2 px-6 py-3 hover:opacity-90 text-white rounded-[1.2rem] font-black text-[10px] uppercase tracking-widest shadow-lg transition-all active:scale-95"
                             style={{
-                                background: `linear-gradient(135deg, ${colors.emerald[500]}, ${colors.emerald[600]})`,
-                                boxShadow: `0 10px 20px ${colors.emerald[600]}30`
+                                background: `linear-gradient(135deg, ${colors.primary[500]}, ${colors.primary[600]})`,
+                                boxShadow: `0 10px 20px ${colors.primary[600]}30`
                             }}
                         >
                             <Download className="w-4 h-4" />
@@ -186,9 +186,9 @@ export default function FundTruncationSummaryPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     {[
                         { label: 'Loans Disbursed', value: data.loans.length, icon: DollarSign, color: colors.primary[600] },
-                        { label: 'Payouts Completed', value: data.investments.length, icon: TrendingUp, color: colors.indigo[600] },
+                        { label: 'Payouts Completed', value: data.investments.length, icon: TrendingUp, color: colors.primary[500] },
                         { label: 'Salaries Paid', value: data.salaries.length, icon: Users, color: colors.warning[600] },
-                        { label: 'Staff Loans', value: data.staff_loans.length, icon: FileText, color: colors.emerald[600] },
+                        { label: 'Staff Loans', value: data.staff_loans.length, icon: FileText, color: colors.primary[400] },
                     ].map((stat, i) => (
                         <div key={i} className="bg-card p-6 rounded-[2rem] border border-border-default shadow-sm relative overflow-hidden group hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
                             <div className="relative z-10 flex flex-col gap-2">
@@ -299,9 +299,9 @@ export default function FundTruncationSummaryPage() {
                                                     <span className="text-lg font-black text-text-primary tabular-nums tracking-tighter">
                                                         {Number(activeTab === 'loans' ? rec.approved_amount : activeTab === 'investments' ? rec.total_payout : rec.net_payable || rec.amount).toLocaleString(undefined, { minimumFractionDigits: 2 })}
                                                     </span>
-                                                    <div className="flex items-center justify-end gap-1.5 px-2 py-0.5 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg w-fit ml-auto border border-emerald-100/50 dark:border-emerald-900/30">
-                                                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                                                        <span className="text-[9px] text-emerald-600 dark:text-emerald-400 font-black uppercase tracking-widest">Finalized</span>
+                                                    <div className="flex items-center justify-end gap-1.5 px-2 py-0.5 bg-primary-50 dark:bg-primary-900/10 rounded-lg w-fit ml-auto border border-primary-100/50 dark:border-primary-500/10">
+                                                        <div className="w-1.5 h-1.5 rounded-full bg-primary-500 animate-pulse" />
+                                                        <span className="text-[9px] text-primary-600 dark:text-primary-400 font-black uppercase tracking-widest">Finalized</span>
                                                     </div>
                                                 </div>
                                             </td>
@@ -339,8 +339,8 @@ export default function FundTruncationSummaryPage() {
                             <div className="flex items-center gap-2 px-3 py-1.5 bg-card rounded-xl shadow-sm border border-border-default">
                                 <div className="flex -space-x-1">
                                     <div className="w-1.5 h-1.5 rounded-full bg-primary-500" />
-                                    <div className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
-                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                                    <div className="w-1.5 h-1.5 rounded-full bg-primary-400" />
+                                    <div className="w-1.5 h-1.5 rounded-full bg-primary-300" />
                                 </div>
                                 <span className="text-[9px] text-text-muted font-black uppercase tracking-widest">Audit Protocols Active</span>
                             </div>

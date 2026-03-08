@@ -222,7 +222,7 @@ export function StaffTable({
         switch (session.attendance_status) {
             case 'APPROVED':
                 return (
-                    <span className="inline-flex items-center gap-1 px-2 py-1 bg-success-500/10 text-success-600 dark:text-success-400 rounded text-xs border border-success-500/20">
+                    <span className="inline-flex items-center gap-1 px-2 py-1 bg-primary-500/10 text-primary-600 dark:text-primary-400 rounded text-xs border border-primary-500/20">
                         <CheckCircle className="w-3 h-3" /> Approved
                     </span>
                 );
@@ -378,7 +378,7 @@ export function StaffTable({
                                 <div className="col-span-1">
                                     <span
                                         className={`inline-flex items-center px-2 py-1 rounded text-xs font-medium ${user.status === 'Active'
-                                            ? 'bg-success-500/10 text-success-600 dark:text-success-400'
+                                            ? 'bg-primary-500/10 text-primary-600 dark:text-primary-400'
                                             : 'bg-muted-bg text-text-muted'
                                             }`}
                                     >
@@ -447,7 +447,7 @@ export function StaffTable({
                                             <button
                                                 onClick={() => handleApproveAttendance(user)}
                                                 disabled={loadingAction === `approve-${user.id}`}
-                                                className="inline-flex items-center gap-1 px-2 py-1 rounded text-xs font-medium transition-colors disabled:opacity-50 bg-success-500/10 text-success-600 dark:text-success-400 hover:bg-success-500/20 border border-success-500/20"
+                                                className="inline-flex items-center gap-1 px-2 py-1 rounded text-xs font-medium transition-colors disabled:opacity-50 bg-primary-500/10 text-primary-600 dark:text-primary-400 hover:bg-primary-500/20 border border-primary-500/20"
                                                 title="Approve Attendance"
                                             >
                                                 <CheckCircle className="w-3 h-3" />

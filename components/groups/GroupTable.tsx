@@ -57,7 +57,7 @@ export function GroupTable({
                     <div key={group.id}
                         className="group relative bg-card rounded-[2rem] border border-border-default/60 p-2 hover:border-primary-500/40 hover:shadow-2xl hover:shadow-primary-500/5 hover:-translate-y-1 transition-all duration-500">
                         {/* Status Indicator Bar */}
-                        <div className={`absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-12 rounded-r-full transition-all duration-500 ${group.status === 'active' ? 'bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.5)]' : 'bg-text-muted/20'}`} />
+                        <div className={`absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-12 rounded-r-full transition-all duration-500 ${group.status === 'active' ? 'bg-primary-500 shadow-[0_0_15px_rgba(0,132,209,0.5)]' : 'bg-text-muted/20'}`} />
 
                         <div className="grid grid-cols-12 gap-4 items-center px-5 py-3">
                             {/* 1. Group Identity */}
@@ -66,7 +66,7 @@ export function GroupTable({
                                     <div className={`w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500/15 to-primary-500/5 flex items-center justify-center transition-transform duration-500 group-hover:scale-105 shadow-sm`}>
                                         <UsersRound className="w-6 h-6 text-primary-500" />
                                     </div>
-                                    <div className={`absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full border-2 border-card flex items-center justify-center ${group.status === 'active' ? 'bg-emerald-500' : 'bg-gray-400'}`}>
+                                    <div className={`absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full border-2 border-card flex items-center justify-center ${group.status === 'active' ? 'bg-primary-500' : 'bg-gray-400'}`}>
                                         <div className="w-1 h-1 rounded-full bg-white transition-all group-hover:animate-pulse" />
                                     </div>
                                 </div>
@@ -118,9 +118,9 @@ export function GroupTable({
                                             )}
                                         </div>
                                         <div className="flex items-center gap-2">
-                                            <div className="flex items-center gap-1 bg-emerald-500/10 px-1.5 py-0.5 rounded-md">
-                                                <TrendingUp className="w-2.5 h-2.5 text-emerald-500" />
-                                                <span className={`text-[10px] text-emerald-500 font-black`}>
+                                            <div className="flex items-center gap-1 bg-primary-500/10 px-1.5 py-0.5 rounded-md">
+                                                <TrendingUp className="w-2.5 h-2.5 text-primary-500" />
+                                                <span className={`text-[10px] text-primary-500 font-black`}>
                                                     {group.loans_count || 0} Loans
                                                 </span>
                                             </div>
@@ -136,7 +136,7 @@ export function GroupTable({
                             <div className="col-span-2 flex items-center justify-end gap-2">
                                 {canStatus && (
                                     <button onClick={() => onToggleStatus?.(group)}
-                                        className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-300 ${group.status === 'inactive' ? 'bg-emerald-500/10 text-emerald-500 hover:bg-emerald-500' : 'bg-amber-500/10 text-amber-500 hover:bg-amber-500'} hover:text-white hover:shadow-md active:scale-95`}>
+                                        className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-300 ${group.status === 'inactive' ? 'bg-primary-500/10 text-primary-500 hover:bg-primary-500' : 'bg-amber-500/10 text-amber-500 hover:bg-amber-500'} hover:text-white hover:shadow-md active:scale-95`}>
                                         <Power className="w-4 h-4" />
                                     </button>
                                 )}

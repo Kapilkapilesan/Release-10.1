@@ -1,8 +1,9 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
-import { Search, Plus, UsersRound, Users, TrendingUp, UserPlus } from 'lucide-react';
+import { Search, Plus, UsersRound, Users, TrendingUp, UserPlus, Filter } from 'lucide-react';
 import { Group, GroupFormData } from '../../types/group.types';
+import { Center } from '../../types/center.types';
 import BMSLoader from '@/components/common/BMSLoader';
 import { GroupForm } from './GroupForm';
 import { GroupTable } from './GroupTable';
@@ -10,6 +11,7 @@ import { GroupMemberModal } from './GroupMemberModal';
 import { BulkGroupModal } from './BulkGroupModal';
 import { ConfirmDialog } from '../common/ConfirmDialog';
 import { groupService } from '../../services/group.service';
+import { centerService } from '../../services/center.service';
 import { toast } from 'react-toastify';
 import { authService } from '../../services/auth.service';
 import { typography } from '../../themes/typography';
@@ -24,6 +26,8 @@ export function ViewGroups() {
     const [isMemberModalOpen, setIsMemberModalOpen] = useState(false);
     const [selectedGroup, setSelectedGroup] = useState<Group | null>(null);
     const [searchTerm, setSearchTerm] = useState('');
+    const [centers, setCenters] = useState<Center[]>([]);
+    const [selectedCenterId, setSelectedCenterId] = useState<string>('all');
 
     // Confirmation States
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
@@ -75,6 +79,17 @@ export function ViewGroups() {
     }, [groups.length]); // Re-create when groups length changes to keep catch logic fresh
 
     useEffect(() => {
+        // Fetch centers for filter
+        const loadCenters = async () => {
+            try {
+                const data = await centerService.getCentersList();
+                setCenters(data);
+            } catch (err) {
+                console.error('Failed to load centers:', err);
+            }
+        };
+        loadCenters();
+
         // Pause polling if ANY modal is open to prevent blinking/UI interference
         const isAnyModalOpen = isCreateModalOpen || isBulkModalOpen || isMemberModalOpen || showDeleteConfirm || showStatusConfirm;
 
@@ -185,9 +200,13 @@ export function ViewGroups() {
 
     const filteredGroups = groups.filter(group => {
         const searchLower = searchTerm.trim().toLowerCase();
-        return group.group_name.toLowerCase().includes(searchLower) ||
+        const matchesSearch = group.group_name.toLowerCase().includes(searchLower) ||
             (group.group_code && group.group_code.toLowerCase().includes(searchLower)) ||
             (group.center?.center_name && group.center.center_name.toLowerCase().includes(searchLower));
+
+        const matchesCenter = selectedCenterId === 'all' || group.center_id.toString() === selectedCenterId;
+
+        return matchesSearch && matchesCenter;
     });
 
     // Calculate statistics
@@ -256,17 +275,17 @@ export function ViewGroups() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {[
                     { label: 'Total Groups', value: totalGroups, icon: UsersRound, color: 'primary', trend: null },
-                    { label: 'Active Groups', value: activeGroups, icon: TrendingUp, color: 'emerald', trend: totalGroups > 0 ? `${((activeGroups / totalGroups) * 100).toFixed(0)}%` : null },
+                    { label: 'Active Groups', value: activeGroups, icon: TrendingUp, color: 'primary', trend: totalGroups > 0 ? `${((activeGroups / totalGroups) * 100).toFixed(0)}%` : null },
                     { label: 'Total Members', value: totalMembers, icon: Users, color: 'indigo', trend: null },
                     { label: 'Avg Members', value: avgMembersPerGroup, icon: UserPlus, color: 'amber', trend: null }
                 ].map((stat, i) => (
-                    <div key={i} className="group relative bg-card/60 backdrop-blur-sm rounded-2xl border border-border-default/50 p-4 shadow-sm hover:shadow-xl hover:shadow-primary-500/5 hover:border-primary-500/30 transition-all duration-500 overflow-hidden">
+                    <div key={i} className="group relative bg-card/60 backdrop-blur-sm rounded-2xl border border-border-default/50 p-3 shadow-sm hover:shadow-xl hover:shadow-primary-500/5 hover:border-primary-500/30 transition-all duration-500 overflow-hidden">
                         <div className="absolute top-0 right-0 -mr-3 -mt-3 w-20 h-20 bg-current opacity-[0.02] rounded-full group-hover:scale-150 transition-transform duration-700" style={{ color: `var(--${stat.color}-500)` }} />
 
-                        <div className="relative flex items-center gap-4">
-                            <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-500 group-hover:scale-105 shadow-md shadow-${stat.color}-500/5`}
+                        <div className="relative flex items-center gap-3">
+                            <div className={`w-8 h-8 rounded-xl flex items-center justify-center transition-all duration-500 group-hover:scale-105 shadow-md shadow-${stat.color}-500/5`}
                                 style={{ backgroundColor: `rgba(var(--color-${stat.color}-500-rgb), 0.1)`, color: `var(--${stat.color}-500)` }}>
-                                <stat.icon className="w-6 h-6" />
+                                <stat.icon className="w-4 h-4" />
                             </div>
                             <div className="min-w-0 flex-1">
                                 <p className={`${typography.size.xs} uppercase tracking-wider font-bold text-text-muted/60 mb-0.5`}>
@@ -277,7 +296,7 @@ export function ViewGroups() {
                                         {stat.value}
                                     </span>
                                     {stat.trend && (
-                                        <span className="px-1.5 py-0.5 bg-emerald-500/10 text-emerald-500 rounded-md text-[10px] font-black ring-1 ring-emerald-500/10">
+                                        <span className="px-1.5 py-0.5 bg-primary-500/10 text-primary-500 rounded-md text-[10px] font-black ring-1 ring-primary-500/10">
                                             {stat.trend}
                                         </span>
                                     )}
@@ -288,18 +307,41 @@ export function ViewGroups() {
                 ))}
             </div>
 
-            {/* Search Bar - More Compact */}
-            <div className="relative group/search">
-                <div className="relative bg-card rounded-xl border border-border-default p-1.5 shadow-sm flex items-center">
-                    <div className="flex-1 relative">
-                        <Search className="w-4 h-4 text-primary-500 absolute left-3 top-1/2 -translate-y-1/2" />
-                        <input
-                            type="text"
-                            placeholder="Search by group name, code or center..."
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                            className={`w-full pl-10 pr-4 py-2 bg-transparent text-text-primary rounded-lg focus:outline-none placeholder:text-text-muted/50 ${typography.size.sm} ${typography.weight.medium}`}
-                        />
+            {/* Search & Filter Bar - More Compact */}
+            <div className="flex flex-col md:flex-row gap-4">
+                <div className="flex-1 relative group/search">
+                    <div className="relative bg-card rounded-xl border border-border-default p-1.5 shadow-sm flex items-center">
+                        <div className="flex-1 relative">
+                            <Search className="w-4 h-4 text-primary-500 absolute left-3 top-1/2 -translate-y-1/2" />
+                            <input
+                                type="text"
+                                placeholder="Search by group name, code or center..."
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                                className={`w-full pl-10 pr-4 py-2 bg-transparent text-text-primary rounded-lg focus:outline-none placeholder:text-text-muted/50 ${typography.size.sm} ${typography.weight.medium}`}
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div className="md:w-64 relative group/filter">
+                    <div className="relative bg-card rounded-xl border border-border-default p-1.5 shadow-sm flex items-center">
+                        <Filter className="w-4 h-4 text-primary-500 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+                        <select
+                            value={selectedCenterId}
+                            onChange={(e) => setSelectedCenterId(e.target.value)}
+                            className={`w-full pl-10 pr-4 py-2 bg-transparent text-text-primary rounded-lg focus:outline-none appearance-none cursor-pointer ${typography.size.sm} ${typography.weight.medium}`}
+                        >
+                            <option value="all" className="bg-card">All Centers</option>
+                            {centers.map(center => (
+                                <option key={center.id} value={center.id.toString()} className="bg-card">
+                                    {center.center_name}
+                                </option>
+                            ))}
+                        </select>
+                        <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                            <Plus className="w-3 h-3 text-text-muted rotate-45" />
+                        </div>
                     </div>
                 </div>
             </div>

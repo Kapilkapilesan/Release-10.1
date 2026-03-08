@@ -143,7 +143,7 @@ export function CenterTable({
                                                             </div>
                                                         ))}
                                                         {(!center.open_days || center.open_days.length === 0) && (
-                                                            <span className="text-[11px] text-gray-400 italic">No schedule set</span>
+                                                            <span className="text-[11px] text-text-muted italic opacity-60">No schedule set</span>
                                                         )}
                                                         {(center.open_days?.length || 0) > 2 && (
                                                             <button
@@ -161,11 +161,11 @@ export function CenterTable({
                                             {/* Assigned User */}
                                             <div className="lg:col-span-2">
                                                 <div className="flex flex-col items-center lg:justify-center gap-1">
-                                                    <div className="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center border-2 border-white dark:border-gray-800 shadow-sm ring-1 ring-gray-200 dark:ring-gray-600 overflow-hidden">
+                                                    <div className="w-8 h-8 rounded-full bg-muted-bg flex items-center justify-center border-2 border-card shadow-sm ring-1 ring-border-default overflow-hidden">
                                                         {center.staff?.profile_image_url ? (
                                                             <img src={center.staff.profile_image_url} alt="User" className="w-full h-full object-cover" />
                                                         ) : (
-                                                            <User className="w-4 h-4 text-gray-500" />
+                                                            <User className="w-4 h-4 text-text-muted" />
                                                         )}
                                                     </div>
                                                     <div className="min-w-0 w-full text-center">
@@ -184,12 +184,12 @@ export function CenterTable({
                                             {/* Status Badge */}
                                             <div className="lg:col-span-1 flex justify-center">
                                                 <span className={`px-2.5 py-1 text-[10px] font-black uppercase tracking-wider rounded-lg border shadow-sm ${center.status === 'active'
-                                                    ? 'bg-green-50 text-green-700 border-green-200 dark:bg-green-900/20 dark:text-green-400 dark:border-green-800'
+                                                    ? 'bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-900/20 dark:text-blue-400 dark:border-blue-800'
                                                     : center.status === 'rejected'
                                                         ? 'bg-red-50 text-red-700 border-red-200 dark:bg-red-900/20 dark:text-red-400 dark:border-red-800'
                                                         : center.status === 'disabled'
-                                                            ? 'bg-gray-50 text-gray-600 border-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700'
-                                                            : 'bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-900/20 dark:text-amber-400 dark:border-amber-800'
+                                                            ? 'bg-muted-bg text-text-muted border-border-divider'
+                                                            : 'bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-900/20 dark:text-blue-400 dark:border-blue-800'
                                                     }`}>
                                                     {center.status === 'inactive' ? 'Pending' : center.status}
                                                 </span>
@@ -221,7 +221,7 @@ export function CenterTable({
                                                 {center.status === 'inactive' && onApprove && (
                                                     <button
                                                         onClick={() => onApprove(center.id)}
-                                                        className="flex items-center gap-1.5 px-3 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition-all font-bold text-xs hover:scale-105"
+                                                        className="flex items-center gap-1.5 px-3 py-2 bg-primary-600 text-white rounded-lg shadow-md hover:bg-primary-700 transition-all font-bold text-xs hover:scale-105"
                                                     >
                                                         <CheckCircle size={14} />
                                                         Approve
@@ -244,7 +244,7 @@ export function CenterTable({
                                                         onClick={() => onToggleStatus(center)}
                                                         className={`p-2 rounded-lg border shadow-sm transition-all hover:scale-105 ${center.status === 'active'
                                                             ? 'text-red-500 bg-red-50 border-red-100 hover:bg-red-100'
-                                                            : 'text-green-500 bg-green-50 border-green-100 hover:bg-green-100'
+                                                            : 'text-blue-500 bg-blue-50 border-blue-100 hover:bg-blue-100'
                                                             }`}
                                                         title={center.status === 'active' ? "Disable Center" : "Enable Center"}
                                                     >

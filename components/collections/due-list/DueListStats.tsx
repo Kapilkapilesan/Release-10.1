@@ -65,13 +65,13 @@ export function DueListStats({ summary, isLoading }: DueListStatsProps) {
         return (
             <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
                 {[1, 2, 3, 4].map((i) => (
-                    <div key={i} className="bg-card rounded-2xl border border-border-default p-4 animate-pulse">
-                        <div className="flex items-center justify-between mb-4">
-                            <div className="w-12 h-12 bg-muted-bg rounded-lg" />
+                    <div key={i} className="bg-card rounded-2xl border border-border-default p-3 animate-pulse">
+                        <div className="flex items-center justify-between mb-2">
+                            <div className="w-8 h-8 bg-muted-bg rounded-lg" />
                         </div>
-                        <div className="h-4 bg-muted-bg rounded w-24 mb-2" />
-                        <div className="h-8 bg-muted-bg rounded w-32 mb-1" />
-                        <div className="h-3 bg-muted-bg rounded w-20" />
+                        <div className="h-3 bg-muted-bg rounded w-24 mb-1" />
+                        <div className="h-6 bg-muted-bg rounded w-32 mb-1" />
+                        <div className="h-2 bg-muted-bg rounded w-20" />
                     </div>
                 ))}
             </div>
@@ -83,33 +83,36 @@ export function DueListStats({ summary, isLoading }: DueListStatsProps) {
             {statCards.map((card, index) => (
                 <div
                     key={index}
-                    className="bg-card rounded-2xl border border-border-default p-4 transition-all duration-300 group overflow-hidden relative"
+                    className="bg-card rounded-xl border border-border-default p-3 transition-all duration-300 group overflow-hidden relative hover:shadow-sm"
                 >
                     {/* Background decoration */}
                     <div
-                        className={`absolute top-0 right-0 w-32 h-32 rounded-full -mr-16 -mt-16 opacity-50 transition-transform group-hover:scale-110 ${card.bgColor}`}
+                        className={`absolute top-0 right-0 w-16 h-16 rounded-full -mr-8 -mt-8 opacity-50 transition-transform group-hover:scale-110 ${card.bgColor}`}
                         style={(card as any).isPrimary ? { backgroundColor: colors.primary[100] } : {}}
                     />
 
-                    <div className="relative">
-                        <div className="flex items-center justify-between mb-2">
-                            <div
-                                className={`w-10 h-10 rounded-xl flex items-center justify-center ${card.gradientBg}`}
-                                style={(card as any).isPrimary ? { background: `linear-gradient(to bottom right, ${colors.primary[500]}, ${colors.primary[600]})` } : {}}
-                            >
-                                <card.icon className="w-5 h-5 text-white" />
-                            </div>
+                    <div className="relative z-10 flex flex-col gap-1">
+                        <div
+                            className={`w-6 h-6 rounded-md flex items-center justify-center shadow-sm ${card.gradientBg}`}
+                            style={(card as any).isPrimary ? { background: `linear-gradient(to bottom right, ${colors.primary[500]}, ${colors.primary[600]})` } : {}}
+                        >
+                            <card.icon className="w-3 h-3 text-white" />
                         </div>
 
-                        <p className="text-xs font-bold text-text-muted uppercase tracking-wider mb-1">
-                            {card.label}
-                        </p>
-                        <p className="text-2xl font-black text-text-primary">
-                            LKR {card.amount.toLocaleString()}
-                        </p>
-                        <p className="text-xs text-text-muted mt-1">
-                            {card.count} payment{card.count !== 1 ? 's' : ''}
-                        </p>
+                        <div>
+                            <p className="text-[9px] font-bold text-text-muted uppercase tracking-wider mb-0.5">
+                                {card.label}
+                            </p>
+                            <div className="flex items-baseline gap-1">
+                                <span className="text-[9px] font-black text-text-primary">LKR</span>
+                                <span className="text-base font-black text-text-primary leading-none">
+                                    {card.amount.toLocaleString()}
+                                </span>
+                            </div>
+                            <p className="text-[8px] text-text-secondary mt-0.5 font-medium">
+                                {card.count} total payment{card.count !== 1 ? 's' : ''}
+                            </p>
+                        </div>
                     </div>
                 </div>
             ))}

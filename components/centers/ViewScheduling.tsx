@@ -414,8 +414,8 @@ export function ViewScheduling() {
                 placeholder="Search centers by name, number, or branch..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 rounded-xl outline-none focus:ring-2 transition-all"
-                style={{ '--tw-ring-color': `${colors.primary[500]}30`, borderColor: colors.primary[300] } as any}
+                className="w-full pl-10 pr-4 py-2.5 bg-input border border-border-default rounded-xl outline-none focus:ring-2 transition-all text-text-primary"
+                style={{ '--tw-ring-color': `${colors.primary[500]}30` } as any}
               />
             </div>
           </div>
@@ -424,8 +424,8 @@ export function ViewScheduling() {
             <select
               value={selectedDay}
               onChange={(e) => setSelectedDay(e.target.value)}
-              className="w-full px-4 py-2.5 bg-input border border-border-input rounded-xl outline-none focus:ring-2 transition-all font-bold text-sm text-text-secondary appearance-none cursor-pointer"
-              style={{ '--tw-ring-color': `${colors.primary[500]}30`, borderColor: colors.primary[300] } as any}
+              className="w-full px-4 py-2.5 bg-input border border-border-default rounded-xl outline-none focus:ring-2 transition-all font-bold text-sm text-text-secondary appearance-none cursor-pointer"
+              style={{ '--tw-ring-color': `${colors.primary[500]}30` } as any}
             >
               <option value="">All Days</option>
               {daysOfWeek.map((day) => (

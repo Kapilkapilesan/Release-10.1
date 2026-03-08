@@ -63,7 +63,7 @@ export function RejectionModal({ isOpen, onClose, onConfirm, centerName }: Rejec
                                 value={reason}
                                 onChange={(e) => setReason(e.target.value)}
                                 placeholder="Explain why this center is being rejected..."
-                                className="w-full min-h-[120px] p-4 bg-input border border-border-input rounded-xl text-sm text-text-secondary focus:ring-2 focus:ring-red-500/20 focus:border-red-500/50 transition-all outline-none resize-none font-bold italic"
+                                className="w-full min-h-[120px] p-4 bg-input border border-border-default rounded-xl text-sm text-text-secondary focus:ring-2 focus:ring-red-500/20 focus:border-red-500/50 transition-all outline-none resize-none font-bold italic"
                                 required
                                 autoFocus
                             />

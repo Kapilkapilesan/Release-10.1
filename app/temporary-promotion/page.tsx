@@ -279,8 +279,8 @@ export default function TemporaryPromotionPage() {
         switch (status) {
             case 'Active':
                 return (
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-600 border border-emerald-100/50 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary-50 text-primary-600 border border-primary-100/50 dark:bg-primary-500/10 dark:text-primary-400 dark:border-primary-500/20">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary-500 animate-pulse"></span>
                         Active
                     </span>
                 );
@@ -372,7 +372,7 @@ export default function TemporaryPromotionPage() {
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
                     {[
                         { label: 'Currently Active', value: stats.currently_active, icon: Clock, color: colors.primary[500] },
-                        { label: 'Completed Log', value: stats.completed, icon: CheckCircle2, color: colors.emerald[500] },
+                        { label: 'Completed Log', value: stats.completed, icon: CheckCircle2, color: colors.primary[500] },
                         { label: 'Cancelled Log', value: stats.cancelled, icon: XCircle, color: colors.danger[500] },
                         { label: 'Registry History', value: stats.total, icon: Award, color: colors.indigo[500] }
                     ].map((stat, i) => (
@@ -531,7 +531,7 @@ export default function TemporaryPromotionPage() {
                                                             <button
                                                                 onClick={() => handleComplete(promotion)}
                                                                 disabled={completing === promotion.id}
-                                                                className="px-4 py-2 bg-emerald-600 text-white text-[9px] font-black uppercase tracking-widest rounded-lg shadow-md hover:bg-emerald-700 transition-all active:scale-95 flex items-center gap-2"
+                                                                className="px-4 py-2 bg-primary-600 text-white text-[9px] font-black uppercase tracking-widest rounded-lg shadow-md hover:bg-primary-700 transition-all active:scale-95 flex items-center gap-2"
                                                             >
                                                                 {completing === promotion.id ? (
                                                                     <div className="w-3 h-3 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -642,9 +642,9 @@ export default function TemporaryPromotionPage() {
             {(cancelModal.open || completeModal.open) && (
                 <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/40 backdrop-blur-md animate-in fade-in duration-300">
                     <div className="bg-card rounded-[1.5rem] shadow-2xl w-full max-w-sm overflow-hidden flex flex-col border border-border-default animate-in zoom-in-95 duration-200">
-                        <div className={`p-8 ${cancelModal.open ? 'bg-rose-500/10' : 'bg-emerald-500/10'}`}>
+                        <div className={`p-8 ${cancelModal.open ? 'bg-rose-500/10' : 'bg-primary-500/10'}`}>
                             <div className="flex items-center gap-4 mb-6">
-                                <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-white shadow-lg ${cancelModal.open ? 'bg-rose-600' : 'bg-emerald-600'}`}>
+                                <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-white shadow-lg ${cancelModal.open ? 'bg-rose-600' : 'bg-primary-600'}`}>
                                     {cancelModal.open ? <AlertTriangle size={24} /> : <CheckCircle2 size={24} />}
                                 </div>
                                 <h3 className="text-xl font-black text-text-primary tracking-tight uppercase leading-none">
@@ -658,7 +658,7 @@ export default function TemporaryPromotionPage() {
                         </div>
                         <div className="p-8 flex gap-3">
                             <button onClick={() => { setCancelModal({ open: false, promotion: null }); setCompleteModal({ open: false, promotion: null }); }} className="flex-1 px-6 py-4 bg-input text-text-muted rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-hover hover:text-text-primary transition-colors">Back</button>
-                            <button onClick={cancelModal.open ? handleCancel : confirmComplete} className={`flex-1 px-6 py-4 rounded-xl text-[10px] font-black uppercase tracking-widest text-white shadow-lg ${cancelModal.open ? 'bg-rose-600' : 'bg-emerald-600'}`}>CONFIRM</button>
+                            <button onClick={cancelModal.open ? handleCancel : confirmComplete} className={`flex-1 px-6 py-4 rounded-xl text-[10px] font-black uppercase tracking-widest text-white shadow-lg ${cancelModal.open ? 'bg-rose-600' : 'bg-primary-600'}`}>CONFIRM</button>
                         </div>
                     </div>
                 </div>

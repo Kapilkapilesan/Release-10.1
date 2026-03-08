@@ -41,8 +41,8 @@ export const SalaryReviewModal: React.FC<SalaryReviewModalProps> = ({ isOpen, on
             <div className="bg-card w-full max-w-lg max-h-[95vh] rounded-[2.5rem] shadow-2xl border border-border-default/50 overflow-hidden animate-in zoom-in-95 slide-in-from-bottom-8 duration-500 flex flex-col">
                 {/* Status Header */}
                 <div className="bg-muted-bg/50 p-6 text-center relative border-b border-border-default/50 shrink-0">
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-success-500/10 border-4 border-card shadow-xl mb-4">
-                        <CheckCircle2 className="w-8 h-8 text-success-500" />
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-500/10 border-4 border-card shadow-xl mb-4">
+                        <CheckCircle2 className="w-8 h-8 text-primary-500" />
                     </div>
                     <h2 className="text-2xl font-[900] text-text-primary tracking-tight leading-none mb-1">Review Payment</h2>
                     <p className="text-[11px] font-medium text-text-muted">Salary has been recorded and is awaiting disbursement.</p>
@@ -97,7 +97,7 @@ export const SalaryReviewModal: React.FC<SalaryReviewModalProps> = ({ isOpen, on
                                     {data.allowances_detail.map((allowance, idx) => (
                                         <div key={idx} className="flex justify-between text-xs font-medium text-text-muted">
                                             <span>{allowance.label || 'Other Allowance'}</span>
-                                            <span className="text-success-500 font-mono font-bold">+ {allowance.amount.toLocaleString()}</span>
+                                            <span className="text-primary-500 font-mono font-bold">+ {allowance.amount.toLocaleString()}</span>
                                         </div>
                                     ))}
                                 </div>

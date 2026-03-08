@@ -53,7 +53,7 @@ export function ReportsFilters({
         <div className="space-y-4">
             <div className="flex flex-col xl:flex-row xl:items-center gap-4">
                 <div className="flex items-center gap-2 min-w-fit">
-                    <Filter className="w-4 h-4 text-indigo-500" />
+                    <Filter className="w-4 h-4 text-primary-500" />
                     <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Filters:</span>
                 </div>
 
@@ -130,7 +130,7 @@ export function ReportsFilters({
                             key={index}
                             className="flex items-center gap-2 px-3 py-1.5 bg-white border border-gray-100 rounded-lg shadow-sm animate-in zoom-in-95 duration-200"
                         >
-                            <span className="text-[9px] font-black text-indigo-400 uppercase tracking-widest leading-none shrink-0">{getColumnLabel(filter.column)}:</span>
+                            <span className="text-[9px] font-black text-primary-400 uppercase tracking-widest leading-none shrink-0">{getColumnLabel(filter.column)}:</span>
                             <span className="text-[11px] font-black text-gray-800">"{filter.value}"</span>
                             <button
                                 onClick={() => onRemoveFilter(index)}

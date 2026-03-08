@@ -51,7 +51,7 @@ export default function DisbursementQueuePage() {
             toast.success('Payout requested successfully');
             fetchLoans();
         } catch (error: any) {
-            toast.error(error.message || 'Failed to request payout');
+            toast.error(error.message || 'Failed to request dispayment');
         } finally {
             setProcessingId(null);
             setConfirmModal({ isOpen: false, loanId: null });
@@ -137,7 +137,7 @@ export default function DisbursementQueuePage() {
                                                 ) : (
                                                     <Send className="w-4 h-4" />
                                                 )}
-                                                <span>Request Payout</span>
+                                                <span>Request Dispayment</span>
                                             </button>
                                         </div>
                                     </td>
@@ -151,10 +151,10 @@ export default function DisbursementQueuePage() {
                 isOpen={confirmModal.isOpen}
                 onClose={() => setConfirmModal({ isOpen: false, loanId: null })}
                 onConfirm={handleRequestTransfer}
-                title="Request Payout"
+                title="Request dispayment"
                 message="Are you sure you want to request fund transfer for this loan? This will send it to the final payout queue."
-                confirmLabel="Request Payout"
-                variant="success"
+                confirmLabel="Request dispayment"
+                variant="primary"
             />
         </div>
     );
