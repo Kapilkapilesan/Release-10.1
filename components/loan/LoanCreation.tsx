@@ -442,7 +442,7 @@ export function LoanCreation() {
 
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-4">
             <DraftModal
                 isOpen={isDraftModalOpen}
                 drafts={drafts}
@@ -511,7 +511,7 @@ export function LoanCreation() {
 
             <ProgressSteps steps={steps} currentStep={currentStep} onStepClick={handleStepClick} />
 
-            <div className="bg-card rounded-[2rem] p-8 border border-border-default shadow-xl transition-colors min-h-[500px]">
+            <div className="bg-card rounded-[2rem] p-6 border border-border-default shadow-xl transition-colors min-h-[500px]">
                 {currentStep === 1 && (
                     <CustomerSelection
                         formData={formData}

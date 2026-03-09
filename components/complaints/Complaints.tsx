@@ -161,47 +161,47 @@ export default function Complaints({ readOnly = false }: ComplaintsProps) {
             </div>
 
             {/* Status Summary Cards */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                <div className="bg-card rounded-xl p-6 shadow-sm border border-border-default hover:border-red-500/30 transition-all duration-300">
-                    <div className="flex items-center gap-3 mb-3">
-                        <div className="w-10 h-10 bg-red-500/10 rounded-xl flex items-center justify-center border border-red-500/20">
-                            <AlertCircle className="w-5 h-5 text-red-500" />
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
+                <div className="bg-card rounded-xl p-3 shadow-sm border border-border-default hover:border-red-500/30 transition-all duration-300">
+                    <div className="flex items-center gap-2 mb-1.5">
+                        <div className="w-7 h-7 bg-red-500/10 rounded-lg flex items-center justify-center border border-red-500/20">
+                            <AlertCircle className="w-3.5 h-3.5 text-red-500" />
                         </div>
-                        <p className="text-xs font-black uppercase tracking-widest text-text-muted">Open</p>
+                        <p className="text-[10px] font-black uppercase tracking-widest text-text-muted px-0.5">Open</p>
                     </div>
-                    <p className="text-3xl font-black text-text-primary">{statusCounts.open}</p>
+                    <p className="text-xl font-black text-text-primary px-0.5">{statusCounts.open}</p>
                 </div>
-                <div className="bg-card rounded-xl p-6 shadow-sm border border-border-default hover:border-primary-500/30 transition-all duration-300">
-                    <div className="flex items-center gap-3 mb-3">
+                <div className="bg-card rounded-xl p-3 shadow-sm border border-border-default hover:border-primary-500/30 transition-all duration-300">
+                    <div className="flex items-center gap-2 mb-1.5">
                         <div
-                            className="w-10 h-10 rounded-xl flex items-center justify-center border border-primary-500/20"
+                            className="w-7 h-7 rounded-lg flex items-center justify-center border border-primary-500/20"
                             style={{ backgroundColor: `${colors.primary[600]}15` }}
                         >
-                            <Clock className="w-5 h-5" style={{ color: colors.primary[600] }} />
+                            <Clock className="w-3.5 h-3.5" style={{ color: colors.primary[600] }} />
                         </div>
-                        <p className="text-xs font-black uppercase tracking-widest text-text-muted">In Progress</p>
+                        <p className="text-[10px] font-black uppercase tracking-widest text-text-muted px-0.5">In Progress</p>
                     </div>
-                    <p className="text-3xl font-black text-text-primary">{statusCounts.inProgress}</p>
+                    <p className="text-xl font-black text-text-primary px-0.5">{statusCounts.inProgress}</p>
                 </div>
 
-                <div className="bg-card rounded-xl p-6 shadow-sm border border-border-default hover:border-emerald-500/30 transition-all duration-300">
-                    <div className="flex items-center gap-3 mb-3">
-                        <div className="w-10 h-10 bg-emerald-500/10 rounded-xl flex items-center justify-center border border-emerald-500/20">
-                            <CheckCircle className="w-5 h-5 text-emerald-500" />
+                <div className="bg-card rounded-xl p-3 shadow-sm border border-border-default hover:border-primary-500/30 transition-all duration-300">
+                    <div className="flex items-center gap-2 mb-1.5">
+                        <div className="w-7 h-7 bg-primary-500/10 rounded-lg flex items-center justify-center border border-primary-500/20">
+                            <CheckCircle className="w-3.5 h-3.5 text-primary-500" />
                         </div>
-                        <p className="text-xs font-black uppercase tracking-widest text-text-muted">Resolved</p>
+                        <p className="text-[10px] font-black uppercase tracking-widest text-text-muted px-0.5">Resolved</p>
                     </div>
-                    <p className="text-3xl font-black text-text-primary">{statusCounts.resolved}</p>
+                    <p className="text-xl font-black text-text-primary px-0.5">{statusCounts.resolved}</p>
                 </div>
 
-                <div className="bg-card rounded-xl p-6 shadow-sm border border-border-default hover:border-bg-muted/30 transition-all duration-300">
-                    <div className="flex items-center gap-3 mb-3">
-                        <div className="w-10 h-10 bg-muted-bg/10 rounded-xl flex items-center justify-center border border-border-divider">
-                            <CheckCircle className="w-5 h-5 text-text-muted" />
+                <div className="bg-card rounded-xl p-3 shadow-sm border border-border-default hover:border-bg-muted/30 transition-all duration-300">
+                    <div className="flex items-center gap-2 mb-1.5">
+                        <div className="w-7 h-7 bg-muted-bg/10 rounded-lg flex items-center justify-center border border-border-divider">
+                            <CheckCircle className="w-3.5 h-3.5 text-text-muted" />
                         </div>
-                        <p className="text-xs font-black uppercase tracking-widest text-text-muted">Closed</p>
+                        <p className="text-[10px] font-black uppercase tracking-widest text-text-muted px-0.5">Closed</p>
                     </div>
-                    <p className="text-3xl font-black text-text-primary">{statusCounts.closed}</p>
+                    <p className="text-xl font-black text-text-primary px-0.5">{statusCounts.closed}</p>
                 </div>
             </div>
 

@@ -207,7 +207,7 @@ export function GroupForm({ isOpen, onClose, onSubmit, initialData }: GroupFormP
                             <label className="block text-sm font-semibold text-text-secondary">
                                 Select Customers (1 - 3 members)
                             </label>
-                            <span className={`text-xs font-bold py-1 px-2 rounded-lg ${selectedCustomers.length >= 1 && selectedCustomers.length <= 3 ? 'bg-emerald-500/10 text-emerald-500' : 'bg-blue-500/10 text-blue-500'}`}>
+                            <span className={`text-xs font-bold py-1 px-2 rounded-lg ${selectedCustomers.length >= 1 && selectedCustomers.length <= 3 ? 'bg-primary-500/10 text-primary-500' : 'bg-blue-500/10 text-blue-500'}`}>
                                 {selectedCustomers.length} selected
                             </span>
                         </div>

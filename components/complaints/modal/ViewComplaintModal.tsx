@@ -58,7 +58,7 @@ export const ViewComplaintModal: React.FC<ViewComplaintModalProps> = ({ complain
                 </div>
 
                 {/* Body Content */}
-                <div className="p-6 space-y-8 overflow-y-auto">
+                <div className="p-6 space-y-8 overflow-y-auto custom-scrollbar">
 
                     {/* Info Grid */}
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
@@ -71,7 +71,7 @@ export const ViewComplaintModal: React.FC<ViewComplaintModalProps> = ({ complain
                                         onChange={e => onStatusChange(complaint.id, e.target.value as Complaint['status'])}
                                         className={`block w-full pl-3 pr-8 py-2 text-xs font-black rounded-xl border-0 ring-1 ring-inset focus:ring-2 appearance-none cursor-pointer transition-all ${complaint.status === 'Open' ? 'bg-rose-500/10 text-rose-600 ring-rose-500/20' :
                                             complaint.status === 'In Progress' ? 'bg-amber-500/10 text-amber-600 ring-amber-500/20' :
-                                                complaint.status === 'Resolved' ? 'bg-emerald-500/10 text-emerald-600 ring-emerald-500/20' :
+                                                complaint.status === 'Resolved' ? 'bg-primary-500/10 text-primary-600 ring-primary-500/20' :
                                                     complaint.status === 'Rejected' ? 'bg-orange-500/10 text-orange-600 ring-orange-500/20' :
                                                         'bg-input text-text-primary ring-border-default'
                                             }`}
@@ -87,7 +87,7 @@ export const ViewComplaintModal: React.FC<ViewComplaintModalProps> = ({ complain
                                         <div className="flex flex-col gap-2 w-full mt-1">
                                             <button
                                                 onClick={() => onStatusChange(complaint.id, 'Resolved')}
-                                                className="w-full py-2 bg-emerald-600 text-white text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-emerald-700 transition-all flex items-center justify-center gap-1.5 shadow-md active:scale-95"
+                                                className="w-full py-2 bg-primary-600 text-white text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-primary-700 transition-all flex items-center justify-center gap-1.5 shadow-md active:scale-95"
                                             >
                                                 <CheckCircle className="w-3.5 h-3.5" />
                                                 Quick Resolve
@@ -166,17 +166,17 @@ export const ViewComplaintModal: React.FC<ViewComplaintModalProps> = ({ complain
 
                         {/* Feedback Section */}
                         <div className="relative group pt-4 border-t border-border-divider">
-                            <p className="text-[10px] font-black text-primary-600 dark:text-primary-400 uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
-                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" /></svg>
+                            <p className="text-[10px] font-black text-primary-600 dark:text-primary-400 uppercase tracking-[0.2em] mb-2.5 flex items-center gap-2">
+                                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" /></svg>
                                 Administrative Feedback
                             </p>
                             {canManage ? (
-                                <div className="space-y-4">
+                                <div className="space-y-3">
                                     <textarea
                                         value={feedback}
                                         onChange={(e) => setFeedback(e.target.value)}
                                         placeholder="Add administrative feedback or notes..."
-                                        className="w-full px-5 py-4 bg-input border border-border-input rounded-2xl focus:ring-2 transition-all outline-none text-sm text-text-primary min-h-[120px] resize-none font-medium italic"
+                                        className="w-full px-4 py-2.5 bg-input border border-border-input rounded-xl focus:ring-2 transition-all outline-none text-sm text-text-primary min-h-[60px] resize-none font-medium italic"
                                     />
                                     <div className="flex justify-end">
                                         <button

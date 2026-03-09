@@ -203,7 +203,7 @@ export default function InvestmentProductManagementPage() {
                                                 <td className="px-6 py-6 text-center">
                                                     <div className="inline-flex flex-col items-center">
                                                         <div className="flex items-center gap-1">
-                                                            <span className="text-xl font-black text-emerald-500">
+                                                            <span className="text-xl font-black text-primary-500">
                                                                 {minInt === maxInt ? `${minInt}%` : `${minInt}% - ${maxInt}%`}
                                                             </span>
                                                         </div>
@@ -224,7 +224,7 @@ export default function InvestmentProductManagementPage() {
                                                 <td className="px-6 py-6 text-left">
                                                     <div className="space-y-1.5">
                                                         <div className="flex items-center gap-2">
-                                                            <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
+                                                            <div className="w-1.5 h-1.5 bg-primary-500 rounded-full" />
                                                             <span className="text-[11px] text-text-muted font-bold uppercase tracking-tighter">Min:</span>
                                                             <span className="text-xs font-black text-text-primary tracking-tight">LKR {Number(p.min_amount).toLocaleString()}</span>
                                                         </div>

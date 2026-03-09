@@ -99,15 +99,15 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
     const selectedCenter = centers.find(c => String(c.id) === String(formData.center));
     const selectedGroup = groups.find(g => String(g.id) === String(formData.group));
     return (
-        <div className="space-y-8">
+        <div className="space-y-4">
             <div className="flex items-center gap-3 mb-2">
                 <div className="w-1.5 h-6 bg-primary-500 rounded-full" />
                 <h2 className="text-xl font-black text-text-primary uppercase tracking-tight">Select Customer</h2>
             </div>
 
             {/* Product Selection Section */}
-            <div className="bg-muted-bg/30 dark:bg-muted-bg/10 rounded-[2rem] border border-border-default p-8 space-y-6 transition-colors">
-                <div className="space-y-3">
+            <div className="bg-muted-bg/30 dark:bg-muted-bg/10 rounded-[2rem] border border-border-default p-4 space-y-3 transition-colors">
+                <div className="space-y-2">
                     <label className="flex items-center gap-2.5 text-[11px] font-black text-text-muted uppercase tracking-[0.2em] px-1">
                         <Building2 className="w-4 h-4 text-primary-500" />
                         Select Loan Product *
@@ -116,7 +116,7 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
                         <select
                             value={formData.loanProduct}
                             onChange={(e) => onFieldChange('loanProduct', e.target.value)}
-                            className={`w-full pl-6 pr-12 py-4 bg-input border-2 rounded-2xl focus:outline-none focus:ring-4 transition-all text-sm font-black tracking-tight appearance-none cursor-pointer uppercase ${formData.loanProduct ? 'border-primary-500/30 text-text-primary' : 'border-border-divider text-text-muted'}`}
+                            className={`w-full pl-6 pr-12 py-2.5 bg-input border-2 rounded-2xl focus:outline-none focus:ring-4 transition-all text-sm font-black tracking-tight appearance-none cursor-pointer uppercase text-text-primary ${formData.loanProduct ? 'border-primary-500/30' : 'border-border-divider'}`}
                             style={{
                                 '--tw-ring-color': `${colors.primary[500]}1A`
                             } as any}
@@ -171,20 +171,20 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
             </div>
 
             {/* Search and Core Filters Section */}
-            <div className="bg-card rounded-[2rem] border border-border-default shadow-sm p-8 space-y-10 transition-colors">
+            <div className="bg-card rounded-[2rem] border border-border-default shadow-sm p-4 space-y-4 transition-colors">
                 {/* NIC Search - Main Action */}
                 <div className="max-w-2xl mx-auto">
-                    <label className="block text-[11px] font-black text-text-muted uppercase tracking-[0.3em] mb-4 text-center opacity-60">
+                    <label className="block text-[11px] font-black text-text-muted uppercase tracking-[0.3em] mb-2 text-center opacity-60">
                         Quick Auto-Fill by NIC
                     </label>
-                    <div className="relative group">
+                    <div className="relative group/search">
                         <Search className={`w-5 h-5 transition-colors ${isAutoFilling ? 'text-primary-500' : 'text-text-muted'}`} />
                         <input
                             type="text"
                             value={formData.nic}
                             onChange={(e) => onNicChange(e.target.value)}
                             placeholder="Type NIC here (e.g. 199XXXXX or 9XXXXXXX)"
-                            className={`w-full pl-16 pr-12 py-5 bg-input border-2 rounded-2xl focus:outline-none focus:ring-8 transition-all text-base font-black tracking-tight placeholder:text-text-muted/30 ${nicError ? 'border-rose-500/50 bg-rose-500/5 text-rose-500 focus:ring-rose-500/10' : 'border-border-divider focus:border-primary-500/50 focus:ring-primary-500/5 focus:bg-card'}`}
+                            className={`w-full pl-16 pr-12 py-3 bg-input border-2 rounded-2xl focus:outline-none focus:ring-8 transition-all text-base font-black tracking-tight placeholder:text-text-primary/50 text-text-primary ${nicError ? 'border-rose-500/50 bg-rose-500/5 text-rose-500 focus:ring-rose-500/10' : 'border-border-divider focus:border-primary-500/50 focus:ring-primary-500/5 focus:bg-card'}`}
                             style={{
                             } as any}
                         />
@@ -206,14 +206,14 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
                         )}
                     </div>
                     {nicError ? (
-                        <div className="mt-4 p-3 bg-rose-500/5 border border-rose-500/20 rounded-xl flex items-center gap-3 justify-center animate-shake">
+                        <div className="mt-2 p-3 bg-rose-500/5 border border-rose-500/20 rounded-xl flex items-center gap-3 justify-center animate-shake">
                             <div className="w-2 h-2 bg-rose-500 rounded-full animate-pulse" />
                             <p className="text-[10px] text-rose-500 font-black uppercase tracking-widest leading-none">
                                 {nicError}
                             </p>
                         </div>
                     ) : (
-                        <p className="text-[10px] mt-4 text-text-muted text-center font-black uppercase tracking-[0.2em] opacity-40 animate-pulse">
+                        <p className="text-[10px] mt-2 text-text-muted text-center font-black uppercase tracking-[0.2em] opacity-40 animate-pulse">
                             System will automatically detect Center, Group, and Customer data
                         </p>
                     )}
@@ -222,9 +222,9 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
                 <div className="h-px bg-gradient-to-r from-transparent via-border-divider to-transparent opacity-20" />
 
                 {/* Manual Selection Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {/* Center Code Search */}
-                    <div className="space-y-3">
+                    <div className="space-y-1.5">
                         <label className="flex items-center gap-2.5 text-[11px] font-black text-text-muted uppercase tracking-widest px-1">
                             <Search className="w-3.5 h-3.5 text-primary-500" />
                             Center No
@@ -241,13 +241,13 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
                                     }
                                 }
                             }}
-                            className="w-full px-5 py-4 bg-muted-bg/20 border-2 border-border-divider/50 rounded-2xl focus:outline-none focus:ring-4 focus:ring-primary-500/5 transition-all text-sm font-black tracking-tight text-text-primary"
+                            className="w-full px-5 py-2.5 bg-muted-bg/20 border-2 border-border-divider/50 rounded-2xl focus:outline-none focus:ring-4 focus:ring-primary-500/5 transition-all text-sm font-black tracking-tight text-text-primary placeholder:text-text-primary/50"
                             style={{ '--tw-ring-color': `${colors.primary[500]}1A` } as any}
                         />
                     </div>
 
                     {/* Center Selection - Searchable Dropdown */}
-                    <div className="space-y-3">
+                    <div className="space-y-1.5">
                         <label className="flex items-center gap-2.5 text-[11px] font-black text-text-muted uppercase tracking-widest px-1">
                             <Building2 className="w-3.5 h-3.5 text-primary-500" />
                             Select Center *
@@ -255,7 +255,7 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
                         <div className="relative" ref={centerDropdownRef}>
                             <div
                                 onClick={() => setIsCenterDropdownOpen(!isCenterDropdownOpen)}
-                                className={`w-full pl-5 pr-12 py-4 bg-input border-2 rounded-2xl focus-within:ring-4 transition-all text-sm font-black tracking-tight cursor-pointer flex items-center justify-between uppercase ${formData.center ? 'border-primary-500/30 text-text-primary' : 'border-border-divider text-text-muted'}`}
+                                className={`w-full pl-5 pr-12 py-2.5 bg-input border-2 rounded-2xl focus-within:ring-4 transition-all text-sm font-black tracking-tight cursor-pointer flex items-center justify-between uppercase text-text-primary ${formData.center ? 'border-primary-500/30' : 'border-border-divider'}`}
                                 style={{
                                     '--tw-ring-color': `${colors.primary[500]}1A`
                                 } as any}
@@ -326,7 +326,7 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
                     </div>
 
                     {/* Group Selection - Searchable Dropdown */}
-                    <div className="space-y-3">
+                    <div className="space-y-1.5">
                         <label className="flex items-center gap-2.5 text-[11px] font-black text-text-muted uppercase tracking-widest px-1">
                             <Users2 className="w-3.5 h-3.5 text-primary-500" />
                             Select Group *
@@ -334,7 +334,7 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
                         <div className="relative" ref={groupDropdownRef}>
                             <div
                                 onClick={() => !(!formData.center) && setIsGroupDropdownOpen(!isGroupDropdownOpen)}
-                                className={`w-full pl-5 pr-12 py-4 bg-input border-2 rounded-2xl focus-within:ring-4 transition-all text-sm font-black tracking-tight flex items-center justify-between uppercase ${!formData.center ? 'bg-muted/50 cursor-not-allowed border-border-divider/30 opacity-40' : 'cursor-pointer'} ${formData.group ? 'border-primary-500/30 text-text-primary' : 'border-border-divider text-text-muted'}`}
+                                className={`w-full pl-5 pr-12 py-2.5 bg-input border-2 rounded-2xl focus-within:ring-4 transition-all text-sm font-black tracking-tight flex items-center justify-between uppercase text-text-primary ${!formData.center ? 'bg-muted/50 cursor-not-allowed border-border-divider/30 opacity-40' : 'cursor-pointer'} ${formData.group ? 'border-primary-500/30' : 'border-border-divider'}`}
                                 style={{
                                     '--tw-ring-color': `${colors.primary[500]}1A`
                                 } as any}
@@ -405,7 +405,7 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
                     </div>
 
                     {/* Customer Selection */}
-                    <div className="space-y-3">
+                    <div className="space-y-1.5">
                         <label className="flex items-center gap-2.5 text-[11px] font-black text-text-muted uppercase tracking-widest px-1">
                             <User className="w-3.5 h-3.5 text-primary-500" />
                             Select Customer *
@@ -414,7 +414,7 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
                             <select
                                 value={formData.customer}
                                 onChange={(e) => onCustomerChange(e.target.value)}
-                                className={`w-full pl-6 pr-12 py-4 bg-input border-2 rounded-2xl focus:outline-none focus:ring-4 transition-all text-sm font-black tracking-tight appearance-none cursor-pointer disabled:bg-muted-bg/50 disabled:cursor-not-allowed disabled:opacity-40 uppercase ${formData.customer ? 'border-primary-500/30 text-text-primary' : 'border-border-divider text-text-muted'}`}
+                                className={`w-full pl-6 pr-12 py-2.5 bg-input border-2 rounded-2xl focus:outline-none focus:ring-4 transition-all text-sm font-black tracking-tight appearance-none cursor-pointer disabled:bg-muted-bg/50 disabled:cursor-not-allowed disabled:opacity-40 uppercase text-text-primary ${formData.customer ? 'border-primary-500/30' : 'border-border-divider'}`}
                                 style={{
                                     '--tw-ring-color': `${colors.primary[500]}1A`
                                 } as any}
@@ -436,14 +436,14 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
             </div>
 
             {selectedCustomerRecord && !isReloanBlocked && (
-                <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 space-y-8">
+                <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 space-y-6">
                     <div
-                        className="p-8 border-2 rounded-[2rem] shadow-2xl relative overflow-hidden group/preview transition-all hover:shadow-primary-500/10"
+                        className="p-4 border-2 rounded-[2rem] shadow-2xl relative overflow-hidden group/preview transition-all hover:shadow-primary-500/10"
                         style={{ background: `linear-gradient(135deg, ${colors.primary[500]}10, ${colors.indigo[500]}10)`, borderColor: `${colors.primary[500]}20` } as any}
                     >
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full blur-[100px] -mr-32 -mt-32 transition-transform duration-1000 group-hover/preview:scale-150" />
 
-                        <div className="relative z-10 flex items-center justify-between border-b pb-6 mb-8 border-border-divider/30">
+                        <div className="relative z-10 flex items-center justify-between border-b pb-3 mb-4 border-border-divider/30">
                             <div>
                                 <h3 className="text-lg font-black uppercase tracking-tight text-text-primary">Customer Profile Intelligence</h3>
                                 <p className="text-[10px] font-black uppercase tracking-[0.2em] text-primary-500 opacity-80">REAL-TIME DATA FROM SYSTEM</p>
@@ -453,7 +453,7 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
                             </span>
                         </div>
 
-                        <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-12">
+                        <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-y-4 gap-x-10">
                             <div className="space-y-1.5">
                                 <p className="text-[10px] font-black uppercase tracking-widest text-text-muted opacity-50">Customer Name</p>
                                 <p className="text-base font-black tracking-tight text-text-primary">{selectedCustomerRecord.name}</p>
@@ -471,8 +471,8 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
                                 <p className="text-base font-black tracking-tight text-text-primary">{selectedCustomerRecord.phone || 'N/A'}</p>
                             </div>
 
-                            <div className="md:col-span-2 p-6 bg-card dark:bg-muted-bg/10 rounded-2xl border border-border-divider/50 shadow-inner group/fin transition-transform hover:-translate-y-1">
-                                <p className="text-[10px] font-black uppercase tracking-widest mb-4 text-text-primary opacity-60">Financial Review</p>
+                            <div className="md:col-span-2 p-4 bg-card dark:bg-muted-bg/10 rounded-2xl border border-border-divider/50 shadow-inner group/fin transition-transform hover:-translate-y-1">
+                                <p className="text-[10px] font-black uppercase tracking-widest mb-3 text-text-primary opacity-60">Financial Review</p>
                                 <div className="grid grid-cols-2 gap-8">
                                     <div className="space-y-1">
                                         <p className="text-[9px] font-black uppercase tracking-widest text-text-muted opacity-40 italic">Monthly Income</p>
@@ -488,12 +488,12 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
                     </div>
 
 
-                    <div className="pt-10 border-t border-border-divider/30">
-                        <div className="flex items-center gap-3 mb-8">
+                    <div className="pt-6 border-t border-border-divider/30">
+                        <div className="flex items-center gap-3 mb-6">
                             <div className="w-1.5 h-6 bg-primary-500 rounded-full" />
                             <h3 className="text-lg font-black text-text-primary uppercase tracking-tight">Financial Assessment</h3>
                         </div>
-                        <div className="grid md:grid-cols-2 gap-8 bg-muted-bg/20 dark:bg-muted-bg/5 p-8 rounded-[2rem] border border-border-divider/50 shadow-inner">
+                        <div className="grid md:grid-cols-2 gap-4 bg-muted-bg/20 dark:bg-muted-bg/5 p-4 rounded-[2rem] border border-border-divider/50 shadow-inner">
                             <div className="space-y-3">
                                 <label className="flex items-center gap-2 text-[11px] font-black text-text-muted uppercase tracking-[0.2em] px-1 italic opacity-60">Monthly Income (LKR) *</label>
                                 <div className="relative group">
@@ -504,7 +504,7 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
                                         onChange={(e) => onFieldChange('monthly_income', e.target.value)}
                                         disabled={isAlreadyTaken && !selectedCustomerRecord.reloan_eligibility?.isEligible && !isEditMode}
                                         placeholder="0.00"
-                                        className="w-full pl-14 pr-6 py-4 bg-input border-2 border-border-divider/50 rounded-2xl focus:outline-none focus:ring-4 transition-all text-base font-black tracking-tight text-text-primary placeholder:text-text-muted/20 disabled:opacity-40"
+                                        className="w-full pl-14 pr-6 py-2.5 bg-input border-2 border-border-divider/50 rounded-2xl focus:outline-none focus:ring-4 transition-all text-base font-black tracking-tight text-text-primary placeholder:text-text-muted/20 disabled:opacity-40"
                                         style={{ '--tw-ring-color': `${colors.primary[500]}1A` } as any}
                                         required
                                     />
@@ -520,7 +520,7 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
                                         onChange={(e) => onFieldChange('monthly_expenses', e.target.value)}
                                         disabled={isAlreadyTaken && !selectedCustomerRecord.reloan_eligibility?.isEligible && !isEditMode}
                                         placeholder="0.00"
-                                        className="w-full pl-14 pr-6 py-4 bg-input border-2 border-border-divider/50 rounded-2xl focus:outline-none focus:ring-4 transition-all text-base font-black tracking-tight text-text-primary placeholder:text-text-muted/20 disabled:opacity-40"
+                                        className="w-full pl-14 pr-6 py-2.5 bg-input border-2 border-border-divider/50 rounded-2xl focus:outline-none focus:ring-4 transition-all text-base font-black tracking-tight text-text-primary placeholder:text-text-muted/20 disabled:opacity-40"
                                         style={{ '--tw-ring-color': `${colors.rose[500]}1A` } as any}
                                         required
                                     />
@@ -531,12 +531,12 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
 
                     {/* Joint Borrower Section - Hidden for Advance Loans */}
                     {selectedProduct?.product_type !== 'advance_loan' && (
-                        <div className="pt-10 border-t border-border-divider/30">
-                            <div className="flex items-center gap-3 mb-8">
+                        <div className="pt-6 border-t border-border-divider/30">
+                            <div className="flex items-center gap-3 mb-6">
                                 <div className="w-1.5 h-6 bg-primary-500 rounded-full" />
                                 <h3 className="text-lg font-black text-text-primary uppercase tracking-tight">Joint Borrower Information</h3>
                             </div>
-                            <div className="grid md:grid-cols-2 gap-x-8 gap-y-10 bg-muted-bg/20 dark:bg-muted-bg/5 p-8 rounded-[2rem] border border-border-divider/50">
+                            <div className="grid md:grid-cols-2 gap-x-8 gap-y-8 bg-muted-bg/20 dark:bg-muted-bg/5 p-6 rounded-[2rem] border border-border-divider/50">
                                 <div className="space-y-3">
                                     <label className="text-[11px] font-black text-text-muted uppercase tracking-[0.2em] px-1 opacity-60">Joint Borrower NIC *</label>
                                     <div className="relative group">
@@ -548,7 +548,7 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
                                             onCopy={(e) => e.preventDefault()}
                                             disabled={isAlreadyTaken && !selectedCustomerRecord.reloan_eligibility?.isEligible && !isEditMode}
                                             placeholder="Execute registry lookup..."
-                                            className={`w-full px-6 py-4 border-2 rounded-2xl focus:outline-none focus:ring-4 transition-all text-sm font-black tracking-tight placeholder:text-text-muted/20 disabled:opacity-40 uppercase ${formData.guardian_nic && !isValidNIC(formData.guardian_nic) ? 'border-rose-500/50 bg-rose-500/5 text-rose-500 focus:ring-rose-500/10' :
+                                            className={`w-full px-6 py-3 border-2 rounded-2xl focus:outline-none focus:ring-4 transition-all text-sm font-black tracking-tight placeholder:text-text-muted/20 disabled:opacity-40 uppercase ${formData.guardian_nic && !isValidNIC(formData.guardian_nic) ? 'border-rose-500/50 bg-rose-500/5 text-rose-500 focus:ring-rose-500/10' :
                                                 formData.guardian_nic && extractGenderFromNIC(formData.guardian_nic) !== 'Male' ? 'border-orange-500/50 bg-orange-500/5 text-orange-500' :
                                                     'bg-input border-border-divider/50 focus:border-primary-500/30'
                                                 }`}
@@ -587,7 +587,7 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
                                             value={formData.guardian_relationship || ''}
                                             onChange={(e) => onFieldChange('guardian_relationship', e.target.value)}
                                             disabled={isAlreadyTaken && !selectedCustomerRecord.reloan_eligibility?.isEligible && !isEditMode}
-                                            className="w-full pl-6 pr-12 py-4 bg-input border-2 border-border-divider/50 rounded-2xl focus:outline-none focus:ring-4 transition-all text-sm font-black tracking-tight appearance-none cursor-pointer disabled:opacity-40 text-text-primary uppercase"
+                                            className="w-full pl-6 pr-12 py-3 bg-input border-2 border-border-divider/50 rounded-2xl focus:outline-none focus:ring-4 transition-all text-sm font-black tracking-tight appearance-none cursor-pointer disabled:opacity-40 text-text-primary uppercase"
                                             style={{ '--tw-ring-color': `${colors.primary[500]}1A` } as any}
                                             required
                                         >
@@ -611,7 +611,7 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
                                         onChange={(e) => onFieldChange('guardian_name', e.target.value)}
                                         disabled={isAlreadyTaken && !selectedCustomerRecord.reloan_eligibility?.isEligible}
                                         placeholder="Enter Joint Borrower Full Name"
-                                        className="w-full px-6 py-4 bg-input border-2 border-border-divider/50 rounded-2xl focus:outline-none focus:ring-4 transition-all text-sm font-black tracking-tight text-text-primary placeholder:text-text-muted/20 disabled:opacity-40 uppercase"
+                                        className="w-full px-6 py-3 bg-input border-2 border-border-divider/50 rounded-2xl focus:outline-none focus:ring-4 transition-all text-sm font-black tracking-tight text-text-primary placeholder:text-text-muted/20 disabled:opacity-40 uppercase"
                                         style={{ '--tw-ring-color': `${colors.primary[500]}1A` } as any}
                                         required
                                     />
@@ -623,7 +623,7 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
                                         value={formData.guardian_dob || (formData.guardian_nic ? 'Derived from NIC' : '')}
                                         placeholder="YYYY-MM-DD"
                                         onChange={(e) => onFieldChange('guardian_dob', e.target.value)}
-                                        className="w-full px-6 py-4 bg-muted-bg/30 border-2 border-border-divider/50 rounded-2xl focus:outline-none focus:ring-4 transition-all text-sm font-black tracking-tight text-text-primary placeholder:text-text-muted/20"
+                                        className="w-full px-6 py-3 bg-muted-bg/30 border-2 border-border-divider/50 rounded-2xl focus:outline-none focus:ring-4 transition-all text-sm font-black tracking-tight text-text-primary placeholder:text-text-muted/20"
                                         style={{ '--tw-ring-color': `${colors.primary[500]}1A` } as any}
                                     />
                                 </div>
@@ -635,7 +635,7 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
                                         onChange={(e) => onFieldChange('guardian_phone', e.target.value)}
                                         disabled={isAlreadyTaken && !selectedCustomerRecord.reloan_eligibility?.isEligible}
                                         placeholder="Primary Phone (07XXXXXXXX)"
-                                        className={`w-full px-6 py-4 border-2 rounded-2xl focus:outline-none focus:ring-4 transition-all text-sm font-black tracking-tight text-text-primary placeholder:text-text-muted/20 disabled:opacity-40 ${formData.guardian_phone && !/^\d{10}$/.test(formData.guardian_phone) ? 'border-rose-500/50 bg-rose-500/5' : 'bg-input border-border-divider/50'}`}
+                                        className={`w-full px-6 py-3 border-2 rounded-2xl focus:outline-none focus:ring-4 transition-all text-sm font-black tracking-tight text-text-primary placeholder:text-text-muted/20 disabled:opacity-40 ${formData.guardian_phone && !/^\d{10}$/.test(formData.guardian_phone) ? 'border-rose-500/50 bg-rose-500/5' : 'bg-input border-border-divider/50'}`}
                                         style={{ '--tw-ring-color': `${colors.primary[500]}1A` } as any}
                                         required
                                     />
@@ -648,7 +648,7 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
                                         onChange={(e) => onFieldChange('guardian_secondary_phone', e.target.value)}
                                         disabled={isAlreadyTaken && !selectedCustomerRecord.reloan_eligibility?.isEligible}
                                         placeholder="Alternative Number"
-                                        className="w-full px-6 py-4 bg-input border-2 border-border-divider/50 rounded-2xl focus:outline-none focus:ring-4 transition-all text-sm font-black tracking-tight text-text-primary placeholder:text-text-muted/20 disabled:opacity-40"
+                                        className="w-full px-6 py-3 bg-input border-2 border-border-divider/50 rounded-2xl focus:outline-none focus:ring-4 transition-all text-sm font-black tracking-tight text-text-primary placeholder:text-text-muted/20 disabled:opacity-40"
                                         style={{ '--tw-ring-color': `${colors.primary[500]}1A` } as any}
                                     />
                                 </div>
@@ -660,7 +660,7 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
                                         disabled={isAlreadyTaken && !selectedCustomerRecord.reloan_eligibility?.isEligible}
                                         placeholder="Enter Permanent Address"
                                         rows={2}
-                                        className="w-full px-6 py-4 bg-input border-2 border-border-divider/50 rounded-2xl focus:outline-none focus:ring-4 transition-all text-sm font-black tracking-tight text-text-primary placeholder:text-text-muted/20 disabled:opacity-40 uppercase"
+                                        className="w-full px-6 py-3 bg-input border-2 border-border-divider/50 rounded-2xl focus:outline-none focus:ring-4 transition-all text-sm font-black tracking-tight text-text-primary placeholder:text-text-muted/20 disabled:opacity-40 uppercase"
                                         style={{ '--tw-ring-color': `${colors.primary[500]}1A` } as any}
                                         required
                                     />
@@ -671,8 +671,8 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
 
                     {/* Guarantor Section - Hidden for Advance Loans */}
                     {selectedProduct?.product_type !== 'advance_loan' && (
-                        <div className="pt-10 border-t border-border-divider/30">
-                            <div className="flex items-center justify-between mb-8">
+                        <div className="pt-6 border-t border-border-divider/30">
+                            <div className="flex items-center justify-between mb-6">
                                 <div className="flex items-center gap-3">
                                     <div className="w-1.5 h-6 bg-primary-500 rounded-full" />
                                     <h3 className="text-lg font-black text-text-primary uppercase tracking-tight">Guarantor Information</h3>
@@ -693,12 +693,12 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
                                     </p>
                                 </div>
                             )}
-                            <div className="grid md:grid-cols-2 gap-8">
+                            <div className="grid md:grid-cols-2 gap-6">
                                 {[
                                     { label: 'Primary Guarantor (L1)', name: formData.guarantor1_name, nic: formData.guarantor1_nic, address: formData.guarantor1_address },
                                     { label: 'Secondary Guarantor (L2)', name: formData.guarantor2_name, nic: formData.guarantor2_nic, address: formData.guarantor2_address }
                                 ].map((g, idx) => (
-                                    <div key={idx} className="p-8 bg-muted-bg/20 dark:bg-muted-bg/5 border-2 border-border-divider/50 rounded-[2rem] space-y-6 shadow-inner relative overflow-hidden group/guarantor">
+                                    <div key={idx} className="p-6 bg-muted-bg/20 dark:bg-muted-bg/5 border-2 border-border-divider/50 rounded-[2rem] space-y-4 shadow-inner relative overflow-hidden group/guarantor">
                                         <div className="absolute top-0 right-0 w-32 h-32 bg-primary-500/5 rounded-full -mr-16 -mt-16 blur-3xl transition-transform group-hover/guarantor:scale-150" />
                                         <p className="text-[11px] font-black text-text-muted uppercase tracking-[0.2em] opacity-60 italic">{g.label}</p>
                                         <div className="space-y-5 relative z-10">
@@ -727,12 +727,12 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
                         </div>
                     )}
 
-                    <div className="pt-10 border-t border-border-divider/30">
-                        <div className="flex items-center gap-3 mb-8">
+                    <div className="pt-6 border-t border-border-divider/30">
+                        <div className="flex items-center gap-3 mb-6">
                             <div className="w-1.5 h-6 bg-primary-500 rounded-full" />
                             <h3 className="text-lg font-black text-text-primary uppercase tracking-tight">Institutional Witnesses</h3>
                         </div>
-                        <div className="grid md:grid-cols-2 gap-8 bg-muted-bg/20 dark:bg-muted-bg/5 p-8 rounded-[2rem] border border-border-divider/50">
+                        <div className="grid md:grid-cols-2 gap-6 bg-muted-bg/20 dark:bg-muted-bg/5 p-6 rounded-[2rem] border border-border-divider/50">
                             <div className="space-y-3">
                                 <label className="flex items-center gap-2.5 text-[11px] font-black text-text-muted uppercase tracking-[0.2em] px-1 opacity-60">
                                     Witness 01 (Creator) *
@@ -741,7 +741,7 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
                                     <select
                                         value={formData.witness1_id}
                                         disabled
-                                        className="w-full pl-6 pr-12 py-4 bg-muted-bg/40 border-2 border-border-divider/50 rounded-2xl text-sm font-black text-primary-500 appearance-none cursor-not-allowed opacity-80 shadow-inner uppercase"
+                                        className="w-full pl-6 pr-12 py-3 bg-muted-bg/40 border-2 border-border-divider/50 rounded-2xl text-sm font-black text-primary-500 appearance-none cursor-not-allowed opacity-80 shadow-inner uppercase"
                                     >
                                         <option value="">{formData.witness1_id || 'System Synchronizing...'}</option>
                                         {staffs.map((staff) => (
@@ -767,7 +767,7 @@ export const CustomerSelection: React.FC<CustomerSelectionProps> = ({
                                         value={formData.witness2_id}
                                         onChange={(e) => onFieldChange('witness2_id', e.target.value)}
                                         disabled={isAlreadyTaken && !selectedCustomerRecord.reloan_eligibility?.isEligible && !isEditMode}
-                                        className={`w-full pl-6 pr-12 py-4 bg-input border-2 rounded-2xl focus:outline-none focus:ring-4 transition-all text-sm font-black tracking-tight appearance-none cursor-pointer disabled:opacity-40 uppercase ${formData.witness2_id ? 'border-primary-500/30 text-text-primary' : 'border-border-divider text-text-muted'}`}
+                                        className={`w-full pl-6 pr-12 py-3 bg-input border-2 rounded-2xl focus:outline-none focus:ring-4 transition-all text-sm font-black tracking-tight appearance-none cursor-pointer disabled:opacity-40 uppercase ${formData.witness2_id ? 'border-primary-500/30 text-text-primary' : 'border-border-divider text-text-muted'}`}
                                         style={{
                                             '--tw-ring-color': `${colors.primary[500]}1A`
                                         } as any}

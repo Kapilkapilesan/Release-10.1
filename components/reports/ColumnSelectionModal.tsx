@@ -70,7 +70,7 @@ export function ColumnSelectionModal({
                         <div className="flex items-center gap-2">
                             <button
                                 onClick={onSelectAll}
-                                className="px-4 py-1.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 rounded-lg text-[9px] font-black uppercase tracking-widest transition-all"
+                                className="px-4 py-1.5 bg-primary-50 hover:bg-primary-100 text-primary-600 rounded-lg text-[9px] font-black uppercase tracking-widest transition-all"
                             >
                                 Select All
                             </button>
@@ -82,7 +82,7 @@ export function ColumnSelectionModal({
                             </button>
                         </div>
                         <div className="flex items-center gap-2">
-                            <span className="text-[9px] font-black text-emerald-600 bg-emerald-50 px-3 py-1.5 rounded-lg border border-emerald-100">
+                            <span className="text-[9px] font-black text-primary-600 bg-primary-50 px-3 py-1.5 rounded-lg border border-primary-100">
                                 {selectedColumns.size} Points Selected
                             </span>
                         </div>
@@ -133,8 +133,8 @@ export function ColumnSelectionModal({
                         disabled={selectedColumns.size === 0 || isExporting}
                         className="group relative flex items-center gap-2 px-8 py-3.5 rounded-xl transition-all duration-300 active:scale-95 overflow-hidden shadow-xl disabled:opacity-30 disabled:cursor-not-allowed"
                         style={{
-                            background: `linear-gradient(135deg, ${colors.success[600]}, ${colors.success[700]})`,
-                            boxShadow: `0 10px 20px -5px ${colors.success[600]}40`
+                            background: `linear-gradient(135deg, ${colors.primary[600]}, ${colors.primary[700]})`,
+                            boxShadow: `0 10px 20px -5px ${colors.primary[600]}40`
                         }}
                     >
                         <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300" />

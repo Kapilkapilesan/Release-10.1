@@ -83,7 +83,7 @@ export const DocumentUpload: React.FC<DocumentUploadProps> = ({ formData, onDocu
                     return (
                         <div
                             key={type}
-                            className={`group relative border-2 border-dashed rounded-[2rem] p-8 text-center transition-all cursor-pointer overflow-hidden ${hasDocument
+                            className={`group relative border-2 border-dashed rounded-2xl p-4 text-center transition-all cursor-pointer overflow-hidden h-36 flex flex-col items-center justify-center ${hasDocument
                                 ? 'border-emerald-500/50 bg-emerald-500/5'
                                 : (isRequired && showErrors)
                                     ? 'border-rose-500 bg-rose-500/10 ring-4 ring-rose-500/10 scale-[1.02]'
@@ -105,71 +105,58 @@ export const DocumentUpload: React.FC<DocumentUploadProps> = ({ formData, onDocu
                             />
 
                             {selectedFile ? (
-                                <div className="space-y-4 relative z-10 animate-in zoom-in duration-300">
-                                    <div className="w-14 h-14 bg-emerald-500/20 rounded-2xl flex items-center justify-center mx-auto border border-emerald-500/30">
-                                        <CheckCircle className="w-8 h-8 text-emerald-500" />
+                                <div className="flex flex-col items-center gap-2 relative z-10 animate-in zoom-in duration-300 w-full">
+                                    <div className="w-10 h-10 bg-emerald-500/20 rounded-xl flex items-center justify-center mx-auto border border-emerald-500/30">
+                                        <CheckCircle className="w-5 h-5 text-emerald-500" />
                                     </div>
-                                    <div>
-                                        <p className="text-xs font-black text-text-primary uppercase tracking-widest mb-1.5">
-                                            {type} {isRequired && <span className="text-rose-500 font-bold">*</span>}
-                                        </p>
-                                        <p className="text-[10px] text-emerald-500 font-black uppercase tracking-tighter opacity-70">Status: Selected</p>
-                                    </div>
-                                    <div className="flex items-center justify-center gap-2">
+                                    <p className="text-[10px] font-black text-text-primary uppercase tracking-widest">
+                                        {type} {isRequired && <span className="text-rose-500">*</span>}
+                                    </p>
+                                    <div className="flex items-center justify-center gap-1.5">
                                         <button
                                             type="button"
                                             onClick={(e) => openPreview(type, selectedFile, null, e)}
-                                            className="text-[10px] text-text-primary font-black uppercase tracking-widest bg-emerald-500/10 border border-emerald-500/20 px-4 py-2 rounded-xl hover:bg-emerald-500/20 transition-all flex items-center gap-2 shadow-sm"
+                                            className="text-[9px] text-text-primary font-black uppercase tracking-widest bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-lg hover:bg-emerald-500/20 transition-all flex items-center gap-1"
                                         >
-                                            <Eye className="w-3.5 h-3.5" />
-                                            <span className="max-w-[80px] truncate">{selectedFile.name}</span>
+                                            <Eye className="w-3 h-3" />
+                                            <span className="max-w-[70px] truncate">{selectedFile.name}</span>
                                         </button>
                                         <button
                                             onClick={removeFile.bind(null, type)}
-                                            className="p-2 hover:bg-rose-500/20 rounded-xl text-rose-500 transition-all bg-rose-500/10 border border-rose-500/20"
+                                            className="p-1 hover:bg-rose-500/20 rounded-lg text-rose-500 transition-all bg-rose-500/10 border border-rose-500/20"
                                         >
-                                            <X className="w-4 h-4" />
+                                            <X className="w-3 h-3" />
                                         </button>
                                     </div>
                                 </div>
                             ) : existingDoc ? (
-                                <div className="space-y-4 relative z-10">
-                                    <div className="w-14 h-14 bg-primary-500/20 rounded-2xl flex items-center justify-center mx-auto border border-primary-500/30">
-                                        <CheckCircle className="w-8 h-8 text-primary-500" />
+                                <div className="flex flex-col items-center gap-2 relative z-10 w-full">
+                                    <div className="w-10 h-10 bg-primary-500/20 rounded-xl flex items-center justify-center mx-auto border border-primary-500/30">
+                                        <CheckCircle className="w-5 h-5 text-primary-500" />
                                     </div>
-                                    <div>
-                                        <p className="text-xs font-black text-text-primary uppercase tracking-widest mb-1.5">
-                                            {type} {isRequired && <span className="text-rose-500 font-bold">*</span>}
-                                        </p>
-                                        <p className="text-[10px] text-primary-500 font-black uppercase tracking-tighter opacity-70">Status: Attached</p>
-                                    </div>
-                                    <div className="flex flex-col items-center gap-3">
-                                        <button
-                                            type="button"
-                                            onClick={(e) => openPreview(type, null, existingDoc, e)}
-                                            className={`text-[10px] font-black uppercase tracking-widest px-5 py-2.5 rounded-xl transition-all flex items-center gap-2 shadow-sm ${(existingDoc as any).is_from_profile ? 'bg-amber-500 text-white shadow-amber-500/20 hover:opacity-90' : 'bg-primary-500 text-white shadow-primary-500/20 hover:opacity-90'}`}
-                                        >
-                                            <Eye className="w-4 h-4" />
-                                            {(existingDoc as any).is_from_profile ? 'From Profile' : 'View Document'}
-                                        </button>
-                                        <span className="text-[9px] text-text-muted/60 font-black uppercase tracking-[0.2em] italic">
-                                            {(existingDoc as any).is_from_profile ? 'Document is from customer profile' : 'Click to replace document'}
-                                        </span>
-                                    </div>
+                                    <p className="text-[10px] font-black text-text-primary uppercase tracking-widest">
+                                        {type} {isRequired && <span className="text-rose-500">*</span>}
+                                    </p>
+                                    <button
+                                        type="button"
+                                        onClick={(e) => openPreview(type, null, existingDoc, e)}
+                                        className={`text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-lg transition-all flex items-center gap-1.5 shadow-sm ${(existingDoc as any).is_from_profile ? 'bg-amber-500 text-white hover:opacity-90' : 'bg-primary-500 text-white hover:opacity-90'}`}
+                                    >
+                                        <Eye className="w-3 h-3" />
+                                        {(existingDoc as any).is_from_profile ? 'From Profile' : 'View Doc'}
+                                    </button>
                                 </div>
                             ) : (
-                                <div className="space-y-4 relative z-10 transition-transform group-hover:scale-105 duration-300">
-                                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mx-auto border transition-colors ${isRequired ? 'bg-amber-500/20 border-amber-500/30 text-amber-500' : 'bg-muted-bg/40 border-border-divider/50 text-text-muted/40'}`}>
-                                        <Upload className={`w-8 h-8 ${(isRequired && showErrors) ? 'animate-bounce text-rose-500' : ''}`} />
+                                <div className="flex flex-col items-center gap-2 relative z-10 transition-transform group-hover:scale-105 duration-300">
+                                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center mx-auto border transition-colors ${isRequired ? 'bg-amber-500/20 border-amber-500/30 text-amber-500' : 'bg-muted-bg/40 border-border-divider/50 text-text-muted/40'}`}>
+                                        <Upload className={`w-5 h-5 ${(isRequired && showErrors) ? 'animate-bounce text-rose-500' : ''}`} />
                                     </div>
-                                    <div>
-                                        <p className={`text-xs font-black uppercase tracking-widest mb-1.5 ${(isRequired && showErrors) ? 'text-rose-500' : 'text-text-primary'}`}>
-                                            {type} {isRequired && <span className="text-rose-500 font-bold">*</span>}
-                                        </p>
-                                        <p className={`text-[10px] font-black uppercase tracking-[0.15em] opacity-40 italic ${isRequired ? (showErrors ? 'text-rose-500 opacity-100' : 'text-amber-500/80') : 'text-text-muted'}`}>
-                                            {isRequired ? (showErrors ? 'MISSING REQUIRED DOCUMENT' : 'Required') : 'Click to upload'}
-                                        </p>
-                                    </div>
+                                    <p className={`text-[10px] font-black uppercase tracking-widest ${(isRequired && showErrors) ? 'text-rose-500' : 'text-text-primary'}`}>
+                                        {type} {isRequired && <span className="text-rose-500">*</span>}
+                                    </p>
+                                    <p className={`text-[9px] font-black uppercase tracking-widest italic ${isRequired ? (showErrors ? 'text-rose-500' : 'text-amber-500/70') : 'text-text-muted/40'}`}>
+                                        {isRequired ? (showErrors ? 'Missing!' : 'Required') : 'Click to upload'}
+                                    </p>
                                 </div>
                             )}
                         </div>

@@ -94,7 +94,7 @@ export default function SalaryIncrementApprovalPage() {
                 );
             case 'Approved':
                 return (
-                    <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] ${typography.weight.bold} uppercase tracking-wider bg-success-50 text-success-600 border border-success-100 dark:bg-success-500/10 dark:text-success-400 dark:border-success-500/20 ${typography.fontFamily}`}>
+                    <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] ${typography.weight.bold} uppercase tracking-wider bg-primary-50 text-primary-600 border border-primary-100 dark:bg-primary-500/10 dark:text-primary-400 dark:border-primary-500/20 ${typography.fontFamily}`}>
                         <CheckCircle2 className="w-3 h-3" /> Approved
                     </span>
                 );
@@ -210,11 +210,11 @@ export default function SalaryIncrementApprovalPage() {
 
                     <div className="bg-card/95 backdrop-blur-xl rounded-2xl border border-border-default shadow-lg p-6 relative overflow-hidden hover:shadow-xl transition-shadow">
                         <div className="absolute top-0 right-0 p-4 opacity-10">
-                            <CheckCircle2 size={40} className="text-success-500" />
+                            <CheckCircle2 size={40} className="text-primary-500" />
                         </div>
                         <div className="flex items-center gap-4">
-                            <div className="w-12 h-12 rounded-xl bg-success-50 flex items-center justify-center border border-success-100">
-                                <CheckCircle2 className="w-6 h-6 text-success-600" />
+                            <div className="w-12 h-12 rounded-xl bg-primary-50 flex items-center justify-center border border-primary-100">
+                                <CheckCircle2 className="w-6 h-6 text-primary-600" />
                             </div>
                             <div>
                                 <p className={`${typography.size['2xl']} ${typography.weight.bold} text-text-primary ${typography.fontFamily}`}>

@@ -142,7 +142,7 @@ export function InvestmentPayoutsTable({ records, onDisburse, onSettle }: Props)
                                                     <span className="text-[8px] font-black uppercase tracking-[0.15em] opacity-40">Principal</span>
                                                     <span className="text-[10px] font-black tabular-nums tracking-tighter">{Number(record.principal_amount).toLocaleString()}</span>
                                                 </div>
-                                                <div className="flex items-center justify-end gap-1.5 text-emerald-600 dark:text-emerald-400 py-0.5 px-1.5 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg w-fit ml-auto border border-emerald-100/30 dark:border-emerald-900/30">
+                                                <div className="flex items-center justify-end gap-1.5 text-primary-600 dark:text-primary-400 py-0.5 px-1.5 bg-primary-50 dark:bg-primary-900/20 rounded-lg w-fit ml-auto border border-primary-100/30 dark:border-primary-900/30">
                                                     <TrendingUp className="w-2.5 h-2.5" />
                                                     <span className="text-[8px] font-black uppercase tracking-[0.15em]">Return</span>
                                                     <span className="text-[10px] font-black tabular-nums tracking-tighter">+ {Number(record.interest_amount).toLocaleString()}</span>
@@ -170,7 +170,7 @@ export function InvestmentPayoutsTable({ records, onDisburse, onSettle }: Props)
                                         <td className="px-4 py-4 text-center">
                                             <div className="flex flex-col items-center gap-1.5">
                                                 <span className={`px-3 py-1 rounded-lg text-[8px] font-black border uppercase tracking-[0.15em] transition-all duration-300 shadow-sm min-w-[80px] ${record.status === 'PAID'
-                                                    ? 'bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 border-emerald-100 dark:border-emerald-900/30 shadow-emerald-100/20 dark:shadow-emerald-900/20'
+                                                    ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 border-primary-100 dark:border-primary-900/30 shadow-primary-100/20 dark:shadow-primary-900/20'
                                                     : record.status === 'PENDING'
                                                         ? 'bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400 border-amber-100 dark:border-amber-900/30 shadow-amber-100/20 dark:shadow-amber-900/20 animate-pulse'
                                                         : 'bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 border-indigo-100 dark:border-indigo-900/30 shadow-indigo-100/20 dark:shadow-indigo-900/20'
@@ -197,8 +197,8 @@ export function InvestmentPayoutsTable({ records, onDisburse, onSettle }: Props)
                                                         <span className="relative z-10">Pay Return</span>
                                                     </button>
                                                 ) : (
-                                                    <div className="flex items-center gap-2 px-4 py-2 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 rounded-lg text-[8px] font-black uppercase tracking-[0.15em] border border-emerald-100/50 dark:border-emerald-900/30 shadow-inner group-hover:bg-emerald-50 dark:group-hover:bg-emerald-900/20 transition-colors">
-                                                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                                                    <div className="flex items-center gap-2 px-4 py-2 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 rounded-lg text-[8px] font-black uppercase tracking-[0.15em] border border-primary-100/50 dark:border-primary-900/30 shadow-inner group-hover:bg-primary-50 dark:group-hover:bg-primary-900/20 transition-colors">
+                                                        <div className="w-1.5 h-1.5 rounded-full bg-primary-500 animate-pulse" />
                                                         Finalized
                                                     </div>
                                                 )}
@@ -220,7 +220,7 @@ export function InvestmentPayoutsTable({ records, onDisburse, onSettle }: Props)
                     <div className="flex gap-1.5">
                         <div className="w-1 h-1 rounded-full bg-primary-400/30" />
                         <div className="w-1 h-1 rounded-full bg-indigo-400/30" />
-                        <div className="w-1 h-1 rounded-full bg-emerald-400/30" />
+                        <div className="w-1 h-1 rounded-full bg-primary-400/30" />
                     </div>
                 </div>
             </div>

@@ -21,7 +21,7 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({ status }) => {
         switch (status) {
             case 'Open': return 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20';
             case 'In Progress': return 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20';
-            case 'Resolved': return 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20';
+            case 'Resolved': return 'bg-primary-500/10 text-primary-600 dark:text-primary-400 border border-primary-500/20';
             case 'Closed': return 'bg-slate-500/10 text-slate-600 dark:text-slate-400 border border-slate-500/20';
             case 'Rejected': return 'bg-orange-500/10 text-orange-600 dark:text-orange-400 border border-orange-500/20';
             default: return 'bg-slate-500/10 text-slate-600 dark:text-slate-400 border border-slate-500/20';
@@ -41,7 +41,7 @@ export const PriorityBadge: React.FC<{ priority: string }> = ({ priority }) => {
         switch (priority) {
             case 'High': return 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20';
             case 'Medium': return 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20';
-            case 'Low': return 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20';
+            case 'Low': return 'bg-primary-500/10 text-primary-600 dark:text-primary-400 border border-primary-500/20';
             default: return 'bg-slate-500/10 text-slate-600 dark:text-slate-400 border border-slate-500/20';
         }
     };

@@ -84,13 +84,13 @@ export const ReviewSubmit: React.FC<ReviewSubmitProps> = ({ formData, selectedCu
                 <h2 className="text-xl font-black text-text-primary uppercase tracking-tight">Review & Submit</h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="bg-muted-bg/20 dark:bg-muted-bg/5 border border-border-divider/50 rounded-[2rem] p-8 shadow-inner transition-colors">
-                    <h3 className="text-[11px] font-black text-text-muted uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-muted-bg/20 dark:bg-muted-bg/5 border border-border-divider/50 rounded-2xl p-4 shadow-inner transition-colors">
+                    <h3 className="text-[11px] font-black text-text-muted uppercase tracking-[0.2em] mb-3 flex items-center gap-2">
                         <span className="w-1.5 h-1.5 bg-primary-500 rounded-full" />
                         Customer Information
                     </h3>
-                    <div className="space-y-4 text-sm font-black tracking-tight">
+                    <div className="space-y-2 text-sm font-black tracking-tight">
                         <div className="flex justify-between items-center group/item">
                             <span className="text-[11px] text-text-muted/60 uppercase tracking-widest">Center</span>
                             <span className="text-text-primary">{getCenterName(formData.center)}</span>
@@ -109,7 +109,7 @@ export const ReviewSubmit: React.FC<ReviewSubmitProps> = ({ formData, selectedCu
                                 {selectedCustomerRecord?.name || 'Not selected'}
                             </span>
                         </div>
-                        <div className="flex justify-between items-center border-t border-border-divider/30 pt-4 mt-4">
+                        <div className="flex justify-between items-center border-t border-border-divider/30 pt-2 mt-2">
                             <span className="text-[11px] text-primary-500/80 uppercase tracking-widest">Monthly Income</span>
                             <span className="text-primary-500 font-black">LKR {Number(formData.monthly_income || 0).toLocaleString()}</span>
                         </div>
@@ -120,12 +120,12 @@ export const ReviewSubmit: React.FC<ReviewSubmitProps> = ({ formData, selectedCu
                     </div>
                 </div>
 
-                <div className="bg-muted-bg/20 dark:bg-muted-bg/5 border border-border-divider/50 rounded-[2rem] p-8 shadow-inner transition-colors">
-                    <h3 className="text-[11px] font-black text-text-muted uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+                <div className="bg-muted-bg/20 dark:bg-muted-bg/5 border border-border-divider/50 rounded-2xl p-4 shadow-inner transition-colors">
+                    <h3 className="text-[11px] font-black text-text-muted uppercase tracking-[0.2em] mb-3 flex items-center gap-2">
                         <span className="w-1.5 h-1.5 bg-primary-500 rounded-full" />
                         Loan Details
                     </h3>
-                    <div className="space-y-4 text-sm font-black tracking-tight">
+                    <div className="space-y-2 text-sm font-black tracking-tight">
                         <div className="flex justify-between items-center group/item">
                             <span className="text-[11px] text-text-muted/60 uppercase tracking-widest">Requested Amount</span>
                             <span className="text-text-primary">
@@ -149,7 +149,7 @@ export const ReviewSubmit: React.FC<ReviewSubmitProps> = ({ formData, selectedCu
                             </span>
                         </div>
                         {formData.calculated_rental && (
-                            <div className="flex justify-between items-center pt-4 border-t border-border-divider/30 mt-4 relative group/rental overflow-hidden rounded-2xl p-4 bg-primary-500/5">
+                            <div className="flex justify-between items-center pt-2 border-t border-border-divider/30 mt-2 relative group/rental overflow-hidden rounded-xl p-2 bg-primary-500/5">
                                 <span className="text-[11px] font-black text-primary-500 uppercase tracking-widest">
                                     {formData.rentalType} Rental
                                 </span>
@@ -161,12 +161,12 @@ export const ReviewSubmit: React.FC<ReviewSubmitProps> = ({ formData, selectedCu
                     </div>
                 </div>
 
-                <div className="bg-muted-bg/20 dark:bg-muted-bg/5 border border-border-divider/50 rounded-[2rem] p-8 shadow-inner transition-colors">
-                    <h3 className="text-[11px] font-black text-text-muted uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+                <div className="bg-muted-bg/20 dark:bg-muted-bg/5 border border-border-divider/50 rounded-2xl p-4 shadow-inner transition-colors">
+                    <h3 className="text-[11px] font-black text-text-muted uppercase tracking-[0.2em] mb-3 flex items-center gap-2">
                         <span className="w-1.5 h-1.5 bg-primary-500 rounded-full" />
                         Fees & Charges
                     </h3>
-                    <div className="space-y-4 text-sm font-black tracking-tight">
+                    <div className="space-y-2 text-sm font-black tracking-tight">
                         <div className="flex justify-between items-center group/item">
                             <span className="text-[11px] text-text-muted/60 uppercase tracking-widest">Processing Fee</span>
                             <span className="text-text-primary">
@@ -182,14 +182,14 @@ export const ReviewSubmit: React.FC<ReviewSubmitProps> = ({ formData, selectedCu
                     </div>
                 </div>
 
-                <div className="rounded-[2.5rem] p-10 relative overflow-hidden group/summary shadow-2xl transition-all hover:shadow-primary-500/10"
+                <div className="rounded-2xl p-5 relative overflow-hidden group/summary shadow-2xl transition-all hover:shadow-primary-500/10"
                     style={{ backgroundImage: `linear-gradient(135deg, ${colors.primary[600]}, ${colors.primary[800]})` }}>
                     <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-3xl transition-transform duration-1000 group-hover/summary:scale-150" />
-                    <h3 className="text-[11px] font-black text-white/60 uppercase tracking-[0.3em] mb-8 flex items-center gap-3">
+                    <h3 className="text-[11px] font-black text-white/60 uppercase tracking-[0.3em] mb-4 flex items-center gap-3">
                         <div className="w-2 h-2 bg-primary-400 rounded-full animate-pulse" />
                         Total Summary
                     </h3>
-                    <div className="space-y-5 text-sm font-black text-white/90">
+                    <div className="space-y-2 text-sm font-black text-white/90">
                         <div className="flex justify-between items-center opacity-70">
                             <span className="text-[10px] uppercase tracking-widest">Loan Amount</span>
                             <span className="tabular-nums">{formatCurrency(Number(formData.loanAmount || 0))}</span>
@@ -204,29 +204,33 @@ export const ReviewSubmit: React.FC<ReviewSubmitProps> = ({ formData, selectedCu
                                 <span className="tabular-nums text-amber-300">({formatCurrency(Number(formData.reloan_deduction_amount))})</span>
                             </div>
                         )}
-                        <div className="pt-6 border-t border-white/20 mt-6 flex flex-col gap-2">
+                        <div className="pt-3 border-t border-white/20 mt-3 flex flex-col gap-1">
                             <div className="flex justify-between items-end">
                                 <span className="text-[11px] uppercase tracking-[0.2em] mb-1">Net Disbursable Cash</span>
-                                <span className="text-4xl font-black tabular-nums tracking-tighter text-white drop-shadow-md">
+                                <span className="text-2xl font-black tabular-nums tracking-tighter text-white drop-shadow-md">
                                     {formatCurrency(Number(formData.loanAmount) - totalFees - Number(formData.reloan_deduction_amount || 0))}
                                 </span>
                             </div>
-                            <div className="h-1 bg-white/10 rounded-full overflow-hidden mt-4">
+                            <div className="h-1 bg-white/10 rounded-full overflow-hidden mt-2">
                                 <div className="h-full bg-primary-400 w-full animate-progress-dna shadow-[0_0_10px_rgba(0,132,209,0.5)]" />
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div className="bg-muted-bg/20 dark:bg-muted-bg/5 border border-border-divider/50 rounded-[2rem] p-8 shadow-inner transition-colors col-span-2">
-                    <h3 className="text-[11px] font-black text-text-muted uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+                <div className="bg-muted-bg/20 dark:bg-muted-bg/5 border border-border-divider/50 rounded-2xl p-4 shadow-inner transition-colors col-span-2">
+                    <h3 className="text-[11px] font-black text-text-muted uppercase tracking-[0.2em] mb-3 flex items-center gap-2">
                         <span className="w-1.5 h-1.5 bg-primary-500 rounded-full" />
                         Bank Details
                     </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm font-black tracking-tight">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm font-black tracking-tight">
                         <div className="flex justify-between items-center group/item hover:bg-muted-bg/10 p-2 rounded-xl transition-colors">
                             <span className="text-[11px] text-text-muted/60 uppercase tracking-widest">Bank Name</span>
                             <span className="text-text-primary px-3 py-1 bg-card rounded-lg border border-border-divider/30">{formData.bankName || 'Not selected'}</span>
+                        </div>
+                        <div className="flex justify-between items-center group/item hover:bg-muted-bg/10 p-2 rounded-xl transition-colors">
+                            <span className="text-[11px] text-text-muted/60 uppercase tracking-widest">Branch</span>
+                            <span className="text-text-primary px-3 py-1 bg-card rounded-lg border border-border-divider/30">{formData.bankBranch || 'Not selected'}</span>
                         </div>
                         <div className="flex justify-between items-center group/item hover:bg-muted-bg/10 p-2 rounded-xl transition-colors">
                             <span className="text-[11px] text-text-muted/60 uppercase tracking-widest">Account Number</span>
@@ -235,8 +239,8 @@ export const ReviewSubmit: React.FC<ReviewSubmitProps> = ({ formData, selectedCu
                     </div>
                 </div>
 
-                <div className="bg-muted-bg/20 dark:bg-muted-bg/5 border border-border-divider/50 rounded-[2rem] p-8 shadow-inner transition-colors col-span-2">
-                    <h3 className="text-[11px] font-black text-text-muted uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+                <div className="bg-muted-bg/20 dark:bg-muted-bg/5 border border-border-divider/50 rounded-2xl p-4 shadow-inner transition-colors col-span-2">
+                    <h3 className="text-[11px] font-black text-text-muted uppercase tracking-[0.2em] mb-3 flex items-center gap-2">
                         <span className="w-1.5 h-1.5 bg-primary-500 rounded-full" />
                         Guarantors & Witnesses
                     </h3>
@@ -291,41 +295,41 @@ export const ReviewSubmit: React.FC<ReviewSubmitProps> = ({ formData, selectedCu
                     </div>
                 </div>
 
-                <div className="bg-muted-bg/20 dark:bg-muted-bg/5 border border-border-divider/50 rounded-[2rem] p-8 shadow-inner transition-colors col-span-2">
-                    <h3 className="text-[11px] font-black text-text-muted uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+                <div className="bg-muted-bg/20 dark:bg-muted-bg/5 border border-border-divider/50 rounded-2xl p-4 shadow-inner transition-colors col-span-2">
+                    <h3 className="text-[11px] font-black text-text-muted uppercase tracking-[0.2em] mb-3 flex items-center gap-2">
                         <span className="w-1.5 h-1.5 bg-primary-500 rounded-full" />
                         Joint Borrower Information
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-sm font-black tracking-tight">
-                        <div className="p-5 bg-card rounded-2xl border border-border-divider/30 flex flex-col gap-1.5">
+                        <div className="p-2.5 bg-card rounded-xl border border-border-divider/30 flex flex-col gap-1">
                             <span className="text-[9px] text-text-muted/60 uppercase tracking-widest font-black">Name</span>
                             <span className="text-text-primary text-sm uppercase">{formData.guardian_name || 'N/A'}</span>
                         </div>
-                        <div className="p-5 bg-card rounded-2xl border border-border-divider/30 flex flex-col gap-1.5">
+                        <div className="p-2.5 bg-card rounded-xl border border-border-divider/30 flex flex-col gap-1">
                             <span className="text-[9px] text-text-muted/60 uppercase tracking-widest font-black">Relationship</span>
                             <span className="text-text-primary text-sm">{formData.guardian_relationship || 'N/A'}</span>
                         </div>
-                        <div className="p-5 bg-card rounded-2xl border border-border-divider/30 flex flex-col gap-1.5">
+                        <div className="p-2.5 bg-card rounded-xl border border-border-divider/30 flex flex-col gap-1">
                             <span className="text-[9px] text-text-muted/60 uppercase tracking-widest font-black">NIC</span>
                             <span className="text-text-primary text-sm font-mono">{formData.guardian_nic || 'N/A'}</span>
                         </div>
-                        <div className="p-5 bg-card rounded-2xl border border-border-divider/30 flex flex-col gap-1.5">
+                        <div className="p-2.5 bg-card rounded-xl border border-border-divider/30 flex flex-col gap-1">
                             <span className="text-[9px] text-text-muted/60 uppercase tracking-widest font-black">Primary Phone</span>
                             <span className="text-text-primary text-sm font-mono">{formData.guardian_phone || 'N/A'}</span>
                         </div>
-                        <div className="p-5 bg-card rounded-2xl border border-border-divider/30 flex flex-col gap-1.5">
+                        <div className="p-2.5 bg-card rounded-xl border border-border-divider/30 flex flex-col gap-1">
                             <span className="text-[9px] text-text-muted/60 uppercase tracking-widest font-black">Secondary Phone</span>
                             <span className="text-text-primary text-sm font-mono">{formData.guardian_secondary_phone || 'N/A'}</span>
                         </div>
-                        <div className="p-5 bg-card rounded-2xl border border-border-divider/30 flex flex-col gap-1.5 lg:col-span-1">
+                        <div className="p-2.5 bg-card rounded-xl border border-border-divider/30 flex flex-col gap-1 lg:col-span-1">
                             <span className="text-[9px] text-text-muted/60 uppercase tracking-widest font-black">Address</span>
                             <span className="text-text-primary text-xs uppercase leading-relaxed">{formData.guardian_address || 'N/A'}</span>
                         </div>
                     </div>
                 </div>
 
-                <div className="bg-muted-bg/20 dark:bg-muted-bg/5 border border-border-divider/50 rounded-[2rem] p-8 shadow-inner transition-colors col-span-2">
-                    <h3 className="text-[11px] font-black text-text-muted uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+                <div className="bg-muted-bg/20 dark:bg-muted-bg/5 border border-border-divider/50 rounded-2xl p-4 shadow-inner transition-colors col-span-2">
+                    <h3 className="text-[11px] font-black text-text-muted uppercase tracking-[0.2em] mb-3 flex items-center gap-2">
                         <span className="w-1.5 h-1.5 bg-primary-500 rounded-full" />
                         Uploaded Documents
                     </h3>

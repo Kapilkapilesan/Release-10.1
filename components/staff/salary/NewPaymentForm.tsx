@@ -565,17 +565,17 @@ export const NewPaymentForm: React.FC<NewPaymentFormProps> = ({ onBack, onSubmit
                                                     <div>
                                                         <div className="flex items-center gap-2">
                                                             <p className="text-sm font-bold text-gray-900 dark:text-gray-100">{emp.name}</p>
-                                                            {isPaid && <span className="text-[9px] font-black bg-green-100 dark:bg-green-900/50 text-green-600 dark:text-green-400 px-2 py-0.5 rounded uppercase tracking-tighter">Already Paid</span>}
+                                                            {isPaid && <span className="text-[9px] font-black bg-primary-100 dark:bg-primary-900/50 text-primary-600 dark:text-primary-400 px-2 py-0.5 rounded uppercase tracking-tighter">Already Paid</span>}
                                                         </div>
                                                         <p className="text-[10px] text-gray-500">{emp.staffId || 'No ID'} • {emp.role}</p>
                                                     </div>
                                                 </div>
                                                 <div
-                                                    className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${isPaid ? 'bg-green-100 border-green-200 shadow-inner' : ''}`}
+                                                    className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${isPaid ? 'bg-primary-100 border-primary-200 shadow-inner' : ''}`}
                                                     style={isSelected && !isPaid ? { backgroundColor: colors.primary[600], borderColor: colors.primary[600] } : {}}
                                                 >
                                                     {isSelected && !isPaid && <Check className="w-3 h-3 text-white" />}
-                                                    {isPaid && <Check className="w-3 h-3 text-green-600" />}
+                                                    {isPaid && <Check className="w-3 h-3 text-primary-600" />}
                                                 </div>
                                             </button>
                                         );
@@ -700,7 +700,7 @@ export const NewPaymentForm: React.FC<NewPaymentFormProps> = ({ onBack, onSubmit
                                         <div className="md:col-span-3 space-y-2">
                                             <label className="text-[11px] font-bold text-gray-500 uppercase tracking-wider px-1">Account Status</label>
                                             <div className="relative group/status">
-                                                <div className={`absolute left-4 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full ${statusFilter === 'Active' ? 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]' : (statusFilter === 'Inactive' ? 'bg-gray-400' : 'bg-blue-500')}`}></div>
+                                                <div className={`absolute left-4 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full ${statusFilter === 'Active' ? 'bg-primary-500 shadow-[0_0_8px_rgba(59,130,246,0.5)]' : (statusFilter === 'Inactive' ? 'bg-gray-400' : 'bg-primary-500')}`}></div>
                                                 <select
                                                     value={statusFilter}
                                                     onChange={e => setStatusFilter(e.target.value)}

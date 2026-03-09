@@ -32,7 +32,7 @@ interface ConfirmModalProps {
     message: string;
     icon: React.ReactNode;
     confirmLabel: string;
-    confirmColor: 'emerald' | 'rose';
+    confirmColor: 'primary' | 'rose';
     onConfirm: () => void;
     onCancel: () => void;
     loading?: boolean;
@@ -44,11 +44,11 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
     if (!isOpen) return null;
 
     const colorMap = {
-        emerald: {
-            bg: 'bg-emerald-500',
-            hover: 'hover:bg-emerald-600',
-            iconBg: 'bg-emerald-500/10',
-            shadow: 'shadow-emerald-500/20',
+        primary: {
+            bg: 'bg-primary-600',
+            hover: 'hover:bg-primary-700',
+            iconBg: 'bg-primary-500/10',
+            shadow: 'shadow-primary-600/20',
         },
         rose: {
             bg: 'bg-rose-500',
@@ -319,8 +319,8 @@ const BranchActivityRequestPage: React.FC = () => {
                             </div>
                             <div className="bg-card rounded-2xl border border-border-default p-5 shadow-sm">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
-                                        <CheckCircle size={20} className="text-emerald-500" />
+                                    <div className="w-10 h-10 rounded-xl bg-primary-500/10 flex items-center justify-center">
+                                        <CheckCircle size={20} className="text-primary-500" />
                                     </div>
                                     <div>
                                         <p className="text-xs text-text-muted font-bold uppercase tracking-wider">Approved Today</p>
@@ -419,7 +419,7 @@ const BranchActivityRequestPage: React.FC = () => {
                                                         <button
                                                             onClick={() => setApproveModal({ isOpen: true, id: request.id })}
                                                             disabled={processingId === request.id}
-                                                            className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-500 hover:bg-emerald-500 hover:text-white transition-all"
+                                                            className="p-1.5 rounded-lg bg-primary-500/10 text-primary-500 hover:bg-primary-500 hover:text-white transition-all"
                                                             title="Approve"
                                                         >
                                                             <Check size={14} />
@@ -487,7 +487,7 @@ const BranchActivityRequestPage: React.FC = () => {
                                                         <span className="text-[10px] text-text-muted">{r.customer?.nic}</span>
                                                     </div>
                                                 </td>
-                                                <td className="px-6 py-4 text-xs font-black text-emerald-600">
+                                                <td className="px-6 py-4 text-xs font-black text-primary-600">
                                                     LKR {Number(r.current_due_amount || 0).toLocaleString(undefined, { minimumFractionDigits: 2 })}
                                                 </td>
                                                 <td className="px-6 py-4 text-xs text-text-muted italic max-w-[250px] truncate">
@@ -503,7 +503,7 @@ const BranchActivityRequestPage: React.FC = () => {
                                                         </button>
                                                         <button
                                                             onClick={() => setApproveModal({ isOpen: true, id: r.id })}
-                                                            className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-500 hover:bg-emerald-500 hover:text-white transition-all"
+                                                            className="p-1.5 rounded-lg bg-primary-500/10 text-primary-500 hover:bg-primary-500 hover:text-white transition-all"
                                                         >
                                                             <Check size={14} />
                                                         </button>
@@ -553,8 +553,8 @@ const BranchActivityRequestPage: React.FC = () => {
                             </div>
                             <div className="bg-card rounded-2xl border border-border-default p-5 shadow-sm">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
-                                        <CheckCircle size={20} className="text-emerald-500" />
+                                    <div className="w-10 h-10 rounded-xl bg-primary-500/10 flex items-center justify-center">
+                                        <CheckCircle size={20} className="text-primary-500" />
                                     </div>
                                     <div>
                                         <p className="text-xs text-text-muted font-bold uppercase tracking-wider">Approved/Disbursed</p>
@@ -629,7 +629,7 @@ const BranchActivityRequestPage: React.FC = () => {
                                                         </button>
                                                         <button
                                                             onClick={() => setApproveModal({ isOpen: true, id: req.id })}
-                                                            className="px-4 py-1.5 rounded-lg bg-emerald-500 text-white text-[10px] font-bold uppercase hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-500/20"
+                                                            className="px-4 py-1.5 rounded-lg bg-primary-600 text-white text-[10px] font-bold uppercase hover:bg-primary-700 transition-all shadow-lg shadow-primary-900/20"
                                                         >
                                                             Approve
                                                         </button>
@@ -681,9 +681,9 @@ const BranchActivityRequestPage: React.FC = () => {
                 isOpen={approveModal.isOpen}
                 title="Approve Request"
                 message="Are you sure you want to approve this branch activity request? This action cannot be undone."
-                icon={<ShieldCheck size={28} className="text-emerald-500" />}
+                icon={<ShieldCheck size={28} className="text-primary-500" />}
                 confirmLabel="Approve Request"
-                confirmColor="emerald"
+                confirmColor="primary"
                 onConfirm={handleApprove}
                 onCancel={() => setApproveModal({ isOpen: false, id: null })}
                 loading={processingId !== null}

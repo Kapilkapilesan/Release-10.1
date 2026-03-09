@@ -23,7 +23,7 @@ export const AttendanceCard: React.FC<AttendanceCardProps> = ({ record, onChange
     };
 
     const statusConfig: Record<string, any> = {
-        'Present': { color: 'text-emerald-600 dark:text-emerald-400', bg: 'bg-emerald-500/10', border: 'border-emerald-500/20' },
+        'Present': { color: 'text-primary-600 dark:text-primary-400', bg: 'bg-primary-500/10', border: 'border-primary-500/20' },
         'Absent': { color: 'text-rose-600 dark:text-rose-400', bg: 'bg-rose-500/10', border: 'border-rose-500/20' },
         'Half Day': { color: 'text-amber-600 dark:text-amber-400', bg: 'bg-amber-500/10', border: 'border-amber-500/20' },
         'Leave': {
@@ -58,7 +58,7 @@ export const AttendanceCard: React.FC<AttendanceCardProps> = ({ record, onChange
                                 <span className="text-primary-500 opacity-50">{record.name.substring(0, 1).toUpperCase()}</span>
                             )}
                         </div>
-                        {record.isOnline && <span className="absolute -bottom-1 -right-1 w-5 h-5 bg-emerald-500 border-4 border-card rounded-full animate-pulse shadow-lg" />}
+                        {record.isOnline && <span className="absolute -bottom-1 -right-1 w-5 h-5 bg-primary-500 border-4 border-card rounded-full animate-pulse shadow-lg" />}
                     </div>
                     <div>
                         <h3 className="font-black text-text-primary text-lg tracking-tight uppercase">{record.name}</h3>

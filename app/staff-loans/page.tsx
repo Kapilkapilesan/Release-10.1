@@ -133,7 +133,7 @@ export default function StaffLoanListPage() {
         switch (status) {
             case 'approved':
                 return (
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-emerald-50 text-emerald-600 border border-emerald-100/50 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-primary-50 text-primary-600 border border-primary-100/50 dark:bg-primary-500/10 dark:text-primary-400 dark:border-primary-500/20">
                         <CheckCircle2 className="w-3.5 h-3.5" /> Approved
                     </span>
                 );
@@ -145,7 +145,7 @@ export default function StaffLoanListPage() {
                 );
             case 'disbursed':
                 return (
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-indigo-50 text-indigo-600 border border-indigo-100/50 dark:bg-indigo-500/10 dark:text-indigo-400 dark:border-indigo-500/20">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-primary-50 text-primary-600 border border-primary-100/50 dark:bg-primary-500/10 dark:text-primary-400 dark:border-primary-500/20">
                         <Banknote className="w-3.5 h-3.5" /> Disbursed
                     </span>
                 );
@@ -183,18 +183,18 @@ export default function StaffLoanListPage() {
                 />
                 <div
                     className="absolute bottom-[10%] right-[5%] w-[30%] h-[30%] rounded-full opacity-[0.15] blur-[120px]"
-                    style={{ background: `radial-gradient(circle, ${colors.indigo[500]}, transparent)` }}
+                    style={{ background: `radial-gradient(circle, ${colors.primary[500]}, transparent)` }}
                 />
             </div>
 
             <div className="relative z-10 p-6 max-w-[1500px] mx-auto space-y-6 animate-in fade-in duration-700">
                 {/* Institutional Header */}
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-card/90 backdrop-blur-xl p-6 rounded-3xl shadow-lg border border-border-default relative overflow-hidden">
-                    <div className="absolute top-0 left-0 w-1.5 h-full" style={{ background: `linear-gradient(to bottom, ${colors.primary[600]}, ${colors.indigo[900]})` }} />
+                    <div className="absolute top-0 left-0 w-1.5 h-full" style={{ background: `linear-gradient(to bottom, ${colors.primary[600]}, ${colors.primary[900]})` }} />
 
                     <div className="flex items-center gap-5 relative z-10">
                         <div className="w-12 h-12 rounded-2xl flex items-center justify-center text-white shadow-xl shrink-0"
-                            style={{ background: `linear-gradient(135deg, ${colors.primary[600]}, ${colors.indigo[900]})` }}>
+                            style={{ background: `linear-gradient(135deg, ${colors.primary[600]}, ${colors.primary[900]})` }}>
                             <Zap className="w-6 h-6" />
                         </div>
                         <div>
@@ -246,8 +246,8 @@ export default function StaffLoanListPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {[
                         { label: 'Pending Verification', value: pendingCount, icon: AlertCircle, color: colors.warning[500], bg: colors.warning[50] },
-                        { label: 'Authorized Logs', value: approvedCount, icon: CheckCircle2, color: colors.emerald[500], bg: colors.emerald[50] },
-                        { label: 'Settled Portfolios', value: disbursedCount, icon: Banknote, color: colors.indigo[500], bg: colors.indigo[50] },
+                        { label: 'Authorized Logs', value: approvedCount, icon: CheckCircle2, color: colors.primary[500], bg: colors.primary[50] },
+                        { label: 'Settled Portfolios', value: disbursedCount, icon: Banknote, color: colors.primary[500], bg: colors.primary[50] },
                         { label: 'Asset Valuation', value: formatCurrency(totalAmount), icon: DollarSign, color: colors.primary[500], bg: colors.primary[50], wide: true }
                     ].map((stat, idx) => (
                         <div key={idx} className="group relative overflow-hidden bg-card/90 backdrop-blur-xl rounded-[1.5rem] p-6 border border-border-default shadow-lg hover:shadow-xl transition-all border-l-4"
@@ -303,7 +303,7 @@ export default function StaffLoanListPage() {
                                             </td>
                                             <td className="px-4 py-6">
                                                 <div className="flex items-center gap-2">
-                                                    <ShieldCheck className="w-3.5 h-3.5 text-indigo-400" />
+                                                    <ShieldCheck className="w-3.5 h-3.5 text-primary-400" />
                                                     <div>
                                                         <p className="text-[11px] font-black text-text-secondary uppercase">{(loan as any).product?.product_name || 'GENERAL ASSET'}</p>
                                                         <p className="text-[8px] font-bold text-text-muted uppercase tracking-[0.2em]">{(loan as any).product?.product_code || 'FC-GEN'}</p>
@@ -345,7 +345,7 @@ export default function StaffLoanListPage() {
                                                         <>
                                                             <button
                                                                 onClick={() => handleAction(loan, 'approve')}
-                                                                className="p-2.5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/20 rounded-xl transition-all active:scale-90 border border-emerald-500/20 shadow-sm"
+                                                                className="p-2.5 bg-primary-500/10 text-primary-600 dark:text-primary-400 hover:bg-primary-500/20 rounded-xl transition-all active:scale-90 border border-primary-500/20 shadow-sm"
                                                                 title="Verify & Authorize"
                                                             >
                                                                 <Check className="w-4 h-4" strokeWidth={3} />
@@ -385,7 +385,7 @@ export default function StaffLoanListPage() {
                         {actionType === 'view' ? (
                             <>
                                 <div className="p-8 border-b border-border-divider flex items-center justify-between relative overflow-hidden">
-                                    <div className="absolute top-0 left-0 w-1.5 h-full bg-indigo-500" />
+                                    <div className="absolute top-0 left-0 w-1.5 h-full bg-primary-500" />
                                     <div>
                                         <h3 className="text-2xl font-black text-text-primary tracking-tight uppercase leading-none mb-1">Entry Details</h3>
                                         <p className="text-[10px] font-black text-text-muted uppercase tracking-widest">Protocol Identification Registry</p>
@@ -432,9 +432,9 @@ export default function StaffLoanListPage() {
                             </>
                         ) : (
                             <>
-                                <div className={`p-8 ${actionType === 'approve' ? 'bg-emerald-500/5 dark:bg-emerald-500/10' : 'bg-rose-500/5 dark:bg-rose-500/10'}`}>
+                                <div className={`p-8 ${actionType === 'approve' ? 'bg-primary-500/5 dark:bg-primary-500/10' : 'bg-rose-500/5 dark:bg-rose-500/10'}`}>
                                     <div className="flex items-center gap-5 mb-8">
-                                        <div className={`w-16 h-16 rounded-3xl flex items-center justify-center text-white shadow-2xl ${actionType === 'approve' ? 'bg-emerald-600' : 'bg-rose-600'}`}>
+                                        <div className={`w-16 h-16 rounded-3xl flex items-center justify-center text-white shadow-2xl ${actionType === 'approve' ? 'bg-primary-600' : 'bg-rose-600'}`}>
                                             {actionType === 'approve' && <ShieldCheck size={32} />}
                                             {actionType === 'reject' && <AlertCircle size={32} />}
                                         </div>
@@ -454,7 +454,7 @@ export default function StaffLoanListPage() {
                                         <div className="h-px bg-border-divider opacity-20" />
                                         <div className="flex items-center justify-between">
                                             <p className="text-[10px] font-black text-text-muted uppercase tracking-widest italic opacity-50">Protocol Valuation:</p>
-                                            <p className={`text-lg font-black tracking-tighter ${actionType === 'reject' ? 'text-text-muted' : 'text-emerald-500'}`}>
+                                            <p className={`text-lg font-black tracking-tighter ${actionType === 'reject' ? 'text-text-muted' : 'text-primary-500'}`}>
                                                 {formatCurrency(Number(selectedLoan.amount))}
                                             </p>
                                         </div>
@@ -478,8 +478,8 @@ export default function StaffLoanListPage() {
 
 
                                     {!actionType || actionType === 'approve' && (
-                                        <div className="bg-emerald-50/10 p-4 rounded-xl border border-emerald-500/30 flex items-start gap-4">
-                                            <Activity className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
+                                        <div className="bg-primary-50/10 p-4 rounded-xl border border-primary-500/30 flex items-start gap-4">
+                                            <Activity className="w-5 h-5 text-primary-500 shrink-0 mt-0.5" />
                                             <p className="text-[11px] font-bold text-text-secondary leading-relaxed uppercase">Initiating verification will trigger a credit line elevation Protocol in the core ledger.</p>
                                         </div>
                                     )}
@@ -494,7 +494,7 @@ export default function StaffLoanListPage() {
                                         <button
                                             onClick={confirmAction}
                                             disabled={processing}
-                                            className={`flex-[1.8] px-8 py-4 text-white rounded-2xl text-[11px] font-black uppercase tracking-widest shadow-2xl shadow-primary-500/20 transition-all active:scale-[0.96] disabled:opacity-30 disabled:pointer-events-none flex items-center justify-center gap-3 ${actionType === 'approve' ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-rose-600 hover:bg-rose-700'}`}
+                                            className={`flex-[1.8] px-8 py-4 text-white rounded-2xl text-[11px] font-black uppercase tracking-widest shadow-2xl shadow-primary-500/20 transition-all active:scale-[0.96] disabled:opacity-30 disabled:pointer-events-none flex items-center justify-center gap-3 ${actionType === 'approve' ? 'bg-primary-600 hover:bg-primary-700' : 'bg-rose-600 hover:bg-rose-700'}`}
                                         >
                                             {processing ? (
                                                 <div className="w-5 h-5 border-3 border-white/30 border-t-white rounded-full animate-spin" />

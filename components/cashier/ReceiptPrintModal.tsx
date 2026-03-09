@@ -73,8 +73,8 @@ export function ReceiptPrintModal({ isOpen, onClose, receipt, onPrinted }: Recei
                 {/* Modal Header */}
                 <div className="px-8 py-5 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center bg-gray-50/50 dark:bg-gray-800/50 backdrop-blur-xl no-print">
                     <div className="flex items-center gap-3">
-                        <div className="p-2 bg-emerald-500/10 rounded-xl">
-                            <Printer className="w-5 h-5 text-emerald-500" />
+                        <div className="p-2 bg-primary-500/10 rounded-xl">
+                            <Printer className="w-5 h-5 text-primary-500" />
                         </div>
                         <div>
                             <h3 className="text-lg font-black text-gray-900 dark:text-white tracking-tight">Receipt Preview</h3>
@@ -222,7 +222,7 @@ export function ReceiptPrintModal({ isOpen, onClose, receipt, onPrinted }: Recei
                     </button>
                     <button
                         onClick={handlePrint}
-                        className="flex-[2] py-4 bg-emerald-600 text-white rounded-2xl font-black uppercase text-xs tracking-widest shadow-xl shadow-emerald-600/20 hover:bg-emerald-700 transition-all flex items-center justify-center gap-3"
+                        className="flex-[2] py-4 bg-primary-600 text-white rounded-2xl font-black uppercase text-xs tracking-widest shadow-xl shadow-primary-500/20 hover:bg-primary-500 transition-all flex items-center justify-center gap-3"
                     >
                         <Printer size={18} />
                         Trigger Official Print

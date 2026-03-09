@@ -251,8 +251,8 @@ export function ReportsScreen() {
                             onClick={handleOpenExportModal}
                             className="group relative flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl transition-all duration-300 active:scale-95 overflow-hidden shadow-lg"
                             style={{
-                                background: `linear-gradient(135deg, ${colors.success[600]}, ${colors.success[700]})`,
-                                boxShadow: `0 8px 16px -4px ${colors.success[600]}40`
+                                background: `linear-gradient(135deg, ${colors.primary[600]}, ${colors.primary[700]})`,
+                                boxShadow: `0 8px 16px -4px ${colors.primary[600]}40`
                             }}
                         >
                             <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300" />

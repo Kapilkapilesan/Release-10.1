@@ -293,27 +293,27 @@ export const ApprovalModal: React.FC<ApprovalModalProps> = ({
                 );
             case 3:
                 return (
-                    <div className="space-y-8 py-8 animate-in zoom-in-95 duration-300">
-                        <div className="flex flex-col items-center justify-center text-center space-y-4">
-                            <div className={`w-20 h-20 rounded-3xl flex items-center justify-center transition-all ${loan.firstApproval === 'Approved' ? 'bg-emerald-500/10 text-emerald-500' : 'bg-orange-500/10 text-orange-500'}`}>
-                                {loan.firstApproval === 'Approved' ? <CheckCircle className="w-10 h-10" /> : <ShieldCheck className="w-10 h-10" />}
+                    <div className="space-y-4 py-2 animate-in zoom-in-95 duration-300">
+                        <div className="flex flex-col items-center justify-center text-center space-y-2">
+                            <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all ${loan.firstApproval === 'Approved' ? 'bg-emerald-500/10 text-emerald-500' : 'bg-orange-500/10 text-orange-500'}`}>
+                                {loan.firstApproval === 'Approved' ? <CheckCircle className="w-6 h-6" /> : <ShieldCheck className="w-6 h-6" />}
                             </div>
                             <div>
-                                <h3 className="text-2xl font-black text-text-primary">1st Level Approval</h3>
-                                <p className="text-sm text-text-secondary font-medium">Standard validation required for all loan disbursements</p>
+                                <h3 className="text-lg font-black text-text-primary">1st Level Approval</h3>
+                                <p className="text-xs text-text-secondary font-medium">Standard validation required for all loan disbursements</p>
                             </div>
                         </div>
 
                         {loan.firstApproval === 'Pending' ? (
-                            <div className="bg-card border-2 border-dashed border-border-divider rounded-3xl p-10 flex flex-col items-center shadow-sm">
+                            <div className="bg-card border-2 border-dashed border-border-divider rounded-2xl p-5 flex flex-col items-center shadow-sm">
                                 {isManager ? (
-                                    <div className="space-y-8 w-full">
-                                        <div className="p-4 rounded-2xl border flex items-start gap-4 mx-auto max-w-lg bg-primary-500/10 border-primary-500/20">
+                                    <div className="space-y-4 w-full">
+                                        {/* <div className="p-4 rounded-2xl border flex items-start gap-4 mx-auto max-w-lg bg-primary-500/10 border-primary-500/20">
                                             <AlertCircle className="w-5 h-5 shrink-0 mt-0.5 text-primary-600" />
                                             <p className="text-sm leading-relaxed text-text-primary">
                                                 By approving this, you confirm that you have verified the customer identity, guarantor availability, and the specified loan terms are accurate.
                                             </p>
-                                        </div>
+                                        </div> */}
 
                                         {isRejecting ? (
                                             <div className="space-y-4 max-w-lg mx-auto animate-in fade-in slide-in-from-top-4">
@@ -323,7 +323,7 @@ export const ApprovalModal: React.FC<ApprovalModalProps> = ({
                                                         value={note}
                                                         onChange={(e) => setNote(e.target.value)}
                                                         placeholder="Please explain why this is being sent back..."
-                                                        className="w-full px-4 py-3 rounded-2xl border-2 border-border-divider bg-muted-bg/30 text-text-primary focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 outline-none transition-all resize-none h-32 text-sm font-medium"
+                                                        className="w-full px-4 py-2 rounded-xl border-2 border-border-divider bg-muted-bg/30 text-text-primary focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 outline-none transition-all resize-none h-20 text-sm font-medium"
                                                     />
                                                 </div>
                                                 <div className="flex gap-4">
@@ -360,7 +360,7 @@ export const ApprovalModal: React.FC<ApprovalModalProps> = ({
                                                         value={note}
                                                         onChange={(e) => setNote(e.target.value)}
                                                         placeholder="Add a note or remarks for this approval (optional)..."
-                                                        className="w-full px-4 py-3 rounded-2xl border-2 border-border-divider bg-muted-bg/30 text-text-primary focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 outline-none transition-all resize-none h-32 text-sm font-medium"
+                                                        className="w-full px-4 py-2 rounded-xl border-2 border-border-divider bg-muted-bg/30 text-text-primary focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 outline-none transition-all resize-none h-20 text-sm font-medium"
                                                     />
                                                 </div>
                                                 <div className="flex gap-4">
@@ -376,7 +376,7 @@ export const ApprovalModal: React.FC<ApprovalModalProps> = ({
                                                     <button
                                                         onClick={() => onFirstApproval(loan.id, 'approve', note)}
                                                         disabled={isProcessing}
-                                                        className="flex-1 py-3.5 bg-emerald-600 text-white font-black rounded-2xl hover:bg-emerald-700 shadow-xl shadow-emerald-500/30 transition-all flex items-center justify-center gap-2"
+                                                        className="flex-1 py-3.5 bg-primary-600 text-white font-black rounded-2xl hover:bg-primary-700 shadow-xl shadow-primary-500/30 transition-all flex items-center justify-center gap-2"
                                                     >
                                                         {isProcessing ? (
                                                             <>
@@ -408,7 +408,7 @@ export const ApprovalModal: React.FC<ApprovalModalProps> = ({
                                                         setIsRejecting(false);
                                                         setNote('');
                                                     }}
-                                                    className="flex items-center gap-3 px-12 py-4 bg-emerald-600 text-white font-black rounded-2xl hover:bg-emerald-700 shadow-xl shadow-emerald-500/30 transition-all transform hover:-translate-y-1 active:scale-95 disabled:opacity-75"
+                                                    className="flex items-center gap-3 px-12 py-4 bg-primary-600 text-white font-black rounded-2xl hover:bg-primary-700 shadow-xl shadow-primary-500/30 transition-all transform hover:-translate-y-1 active:scale-95 disabled:opacity-75"
                                                 >
                                                     <CheckCircle className="w-6 h-6" />
                                                     Confirm Approval
@@ -664,7 +664,7 @@ export const ApprovalModal: React.FC<ApprovalModalProps> = ({
                 </div>
 
                 {/* Main Content Area */}
-                <div className="flex-1 overflow-y-auto p-8 md:p-10 bg-card/50">
+                <div className="flex-1 overflow-y-auto p-8 md:p-10 bg-card/50 custom-scrollbar">
                     <div className="max-w-3xl mx-auto">
                         {renderStepContent()}
                     </div>

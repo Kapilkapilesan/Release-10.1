@@ -88,7 +88,7 @@ export function GroupMemberModal({ isOpen, onClose, group, onEdit }: GroupMember
                                         <div className="text-right">
                                             <span
                                                 className={`inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-bold capitalize ${customer.status === 'active'
-                                                    ? 'bg-emerald-500/10 text-emerald-500'
+                                                    ? 'bg-primary-500/10 text-primary-500'
                                                     : 'bg-rose-500/10 text-rose-500'
                                                     }`}
                                             >
@@ -130,7 +130,7 @@ export function GroupMemberModal({ isOpen, onClose, group, onEdit }: GroupMember
                                     <div className="text-right">
                                         <span
                                             className={`inline-flex items-center px-2 py-1 rounded-lg text-xs font-bold capitalize ${member.status === 'active'
-                                                ? 'bg-emerald-500/10 text-emerald-500'
+                                                ? 'bg-primary-500/10 text-primary-500'
                                                 : 'bg-muted-bg text-text-secondary border border-border-default'
                                                 }`}
                                         >

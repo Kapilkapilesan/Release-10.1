@@ -223,7 +223,7 @@ export const AttendanceHistoryTable: React.FC<AttendanceHistoryTableProps> = ({ 
                                         </td>
                                         <td className="px-6 py-4">
                                             <div className="flex items-center gap-2">
-                                                <Clock className="w-4 h-4 text-emerald-500" />
+                                                <Clock className="w-4 h-4 text-primary-500" />
                                                 <span className="text-sm font-bold text-text-primary">
                                                     {formatTime(session.login_at)}
                                                 </span>

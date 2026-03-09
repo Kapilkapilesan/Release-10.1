@@ -12,7 +12,8 @@ import {
     CheckCircle2,
     XCircle,
     Info,
-    Loader2
+    Loader2,
+    ChevronDown,
 } from 'lucide-react';
 import { branchService } from '@/services/branch.service';
 import { customerService } from '@/services/customer.service';
@@ -21,6 +22,7 @@ import { financeService } from '@/services/finance.service';
 import { authService } from '@/services/auth.service';
 import { toast } from 'react-toastify';
 import { ActionConfirmModal } from '../common/ActionConfirmModal';
+import { useRef, useEffect } from 'react';
 
 type OtherBranchCollectionTab = 'other-branch-collection' | 'collection-branch-history';
 
@@ -28,6 +30,130 @@ interface OtherBranchCollectionPageProps {
     date?: string;
     period?: string;
 }
+
+// === Searchable Select Component ===
+interface SearchableSelectProps {
+    label: string;
+    subLabel?: string;
+    icon: React.ReactNode;
+    placeholder: string;
+    searchPlaceholder?: string;
+    options: { value: string; label: string; sublabel?: string }[];
+    value: string;
+    onChange: (value: string) => void;
+    loading?: boolean;
+    disabled?: boolean;
+}
+
+const SearchableSelect: React.FC<SearchableSelectProps> = ({
+    label,
+    subLabel,
+    icon,
+    placeholder,
+    searchPlaceholder = 'Search...',
+    options,
+    value,
+    onChange,
+    loading = false,
+    disabled = false,
+}) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('');
+    const containerRef = useRef<HTMLDivElement>(null);
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    const selectedOption = options.find((o) => o.value === value);
+
+    const filtered = options.filter(
+        (o) =>
+            o.label.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            (o.sublabel && o.sublabel.toLowerCase().includes(searchTerm.toLowerCase()))
+    );
+
+    useEffect(() => {
+        const handleClick = (e: MouseEvent) => {
+            if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+                setIsOpen(false);
+                setSearchTerm('');
+            }
+        };
+        document.addEventListener('mousedown', handleClick);
+        return () => document.removeEventListener('mousedown', handleClick);
+    }, []);
+
+    useEffect(() => {
+        if (isOpen && inputRef.current) {
+            inputRef.current.focus();
+        }
+    }, [isOpen]);
+
+    return (
+        <div className="flex flex-col gap-2">
+            <label className="text-sm font-medium text-text-primary">{label}</label>
+            <div className="relative" ref={containerRef}>
+                <button
+                    type="button"
+                    onClick={() => { if (!disabled) setIsOpen(!isOpen); }}
+                    disabled={disabled}
+                    className={`w-full flex items-center justify-between px-4 py-3 rounded-xl border transition-all text-sm
+                        ${isOpen ? 'border-primary-500 ring-2 ring-primary-500/20' : 'border-border-default'}
+                        ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer hover:border-primary-400'}
+                        bg-card text-text-primary`}
+                >
+                    <div className="flex items-center gap-3">
+                        <span className="text-text-muted">{icon}</span>
+                        <span className={selectedOption ? 'text-text-primary' : 'text-text-muted'}>
+                            {loading ? 'Loading...' : selectedOption ? selectedOption.label : placeholder}
+                        </span>
+                    </div>
+                    <ChevronDown size={16} className={`text-text-muted transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                </button>
+
+                {isOpen && (
+                    <div className="absolute z-50 mt-2 w-full bg-card border border-border-default rounded-xl shadow-2xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                        <div className="p-3 border-b border-border-default">
+                            <div className="relative">
+                                <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted" />
+                                <input
+                                    ref={inputRef}
+                                    type="text"
+                                    value={searchTerm}
+                                    onChange={(e) => setSearchTerm(e.target.value)}
+                                    placeholder={searchPlaceholder}
+                                    className="w-full pl-9 pr-3 py-2 text-sm bg-app-background border border-border-default rounded-lg text-text-primary placeholder:text-text-muted focus:outline-none focus:border-primary-500"
+                                />
+                            </div>
+                        </div>
+                        <div className="max-h-48 overflow-y-auto custom-scrollbar">
+                            {filtered.length === 0 ? (
+                                <div className="p-4 text-center text-text-muted text-sm">No results found</div>
+                            ) : (
+                                filtered.map((option) => (
+                                    <button
+                                        key={option.value}
+                                        type="button"
+                                        onClick={() => {
+                                            onChange(option.value);
+                                            setIsOpen(false);
+                                            setSearchTerm('');
+                                        }}
+                                        className={`w-full text-left px-4 py-3 text-sm transition-colors hover:bg-hover
+                                            ${option.value === value ? 'bg-primary-500/10 text-primary-500 font-medium' : 'text-text-primary'}`}
+                                    >
+                                        <div>{option.label}</div>
+                                        {option.sublabel && (
+                                            <div className="text-xs text-text-muted mt-0.5">{option.sublabel}</div>
+                                        )}
+                                    </button>
+                                ))
+                            )}
+                        </div>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+};
 
 const OtherBranchCollectionPage: React.FC<OtherBranchCollectionPageProps> = ({ date, period }) => {
     const user = authService.getCurrentUser();
@@ -223,56 +349,31 @@ const OtherBranchCollectionPage: React.FC<OtherBranchCollectionPageProps> = ({ d
                     <div className="flex flex-col gap-6">
                         {/* Search Filters */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-card rounded-2xl border border-border-default p-6">
-                            <div className="flex flex-col gap-2">
-                                <label className="text-sm font-medium text-text-primary">Select Branch</label>
-                                <div className="relative">
-                                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                        <Building2 size={18} className="text-text-muted" />
-                                    </div>
-                                    <select
-                                        value={selectedBranch || ''}
-                                        onChange={(e) => setSelectedBranch(Number(e.target.value))}
-                                        className="w-full bg-input border border-border-default rounded-xl py-3 pl-10 pr-4 text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all appearance-none"
-                                    >
-                                        <option value="">Select a branch</option>
-                                        {branches.map((branch) => (
-                                            <option key={branch.id} value={branch.id}>
-                                                {branch.branch_name}
-                                            </option>
-                                        ))}
-                                    </select>
-                                    <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                                        <div className="w-4 h-4 border-2 border-text-muted border-t-transparent rounded-full animate-spin hidden"></div>
-                                    </div>
-                                </div>
-                            </div>
+                            <SearchableSelect
+                                label="Select Branch"
+                                icon={<Building2 size={18} />}
+                                placeholder="Select a branch"
+                                searchPlaceholder="Search branches..."
+                                options={branches.map(b => ({ value: String(b.id), label: b.branch_name }))}
+                                value={selectedBranch ? String(selectedBranch) : ''}
+                                onChange={(id) => setSelectedBranch(Number(id))}
+                            />
 
-                            <div className="flex flex-col gap-2">
-                                <label className="text-sm font-medium text-text-primary">Select Customer</label>
-                                <div className="relative">
-                                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                        <User size={18} className="text-text-muted" />
-                                    </div>
-                                    <select
-                                        value={selectedCustomer || ''}
-                                        onChange={(e) => setSelectedCustomer(e.target.value)}
-                                        disabled={!selectedBranch || loading}
-                                        className="w-full bg-input border border-border-default rounded-xl py-3 pl-10 pr-4 text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all appearance-none disabled:opacity-50 disabled:cursor-not-allowed"
-                                    >
-                                        <option value="">{loading ? 'Loading customers...' : 'Select a customer'}</option>
-                                        {customers.map((customer) => (
-                                            <option key={customer.id} value={customer.id}>
-                                                {customer.full_name} ({customer.customer_code})
-                                            </option>
-                                        ))}
-                                    </select>
-                                    {loading && (
-                                        <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
-                                            <Loader2 size={16} className="text-primary-500 animate-spin" />
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
+                            <SearchableSelect
+                                label="Select Customer"
+                                icon={<User size={18} />}
+                                placeholder={loading ? 'Loading customers...' : 'Select a customer'}
+                                searchPlaceholder="Search customers..."
+                                options={customers.map(c => ({ 
+                                    value: String(c.id), 
+                                    label: c.full_name, 
+                                    sublabel: c.customer_code 
+                                }))}
+                                value={selectedCustomer || ''}
+                                onChange={setSelectedCustomer}
+                                loading={loading}
+                                disabled={!selectedBranch}
+                            />
                         </div>
 
                         {/* Stats */}
@@ -290,8 +391,8 @@ const OtherBranchCollectionPage: React.FC<OtherBranchCollectionPageProps> = ({ d
                             </div>
                             <div className="bg-card rounded-2xl border border-border-default p-5">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
-                                        <DollarSign size={20} className="text-emerald-500" />
+                                    <div className="w-10 h-10 rounded-xl bg-primary-500/10 flex items-center justify-center">
+                                        <DollarSign size={20} className="text-primary-500" />
                                     </div>
                                     <div>
                                         <p className="text-xs text-text-muted font-medium">Total Payable</p>
@@ -364,7 +465,7 @@ const OtherBranchCollectionPage: React.FC<OtherBranchCollectionPageProps> = ({ d
                                                 <td className="px-6 py-4 text-sm text-text-muted">{payment.field_officer}</td>
                                                 <td className="px-6 py-4 text-sm text-amber-500 font-medium">LKR {payment.arrears.toLocaleString('en-IN')}</td>
                                                 <td className="px-6 py-4 text-sm text-text-primary">LKR {(payment.dueAmount - payment.arrears).toLocaleString('en-IN')}</td>
-                                                <td className="px-6 py-4 text-sm text-emerald-500 font-bold">LKR {payment.dueAmount.toLocaleString('en-IN')}</td>
+                                                <td className="px-6 py-4 text-sm text-primary-500 font-bold">LKR {payment.dueAmount.toLocaleString('en-IN')}</td>
                                                 <td className="px-6 py-4">
                                                     <button
                                                         onClick={() => setCollectModal({ isOpen: true, payment })}
@@ -407,8 +508,8 @@ const OtherBranchCollectionPage: React.FC<OtherBranchCollectionPageProps> = ({ d
                             {/* Table Header with Search */}
                             <div className="p-6 border-b border-border-default flex flex-col md:flex-row md:items-center justify-between gap-4 min-w-[1200px]">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
-                                        <Building2 size={20} className="text-emerald-500" />
+                                    <div className="w-10 h-10 rounded-xl bg-primary-500/10 flex items-center justify-center">
+                                        <Building2 size={20} className="text-primary-500" />
                                     </div>
                                     <div>
                                         <h2 className="text-lg font-bold text-text-primary">Collection History</h2>
@@ -483,7 +584,7 @@ const OtherBranchCollectionPage: React.FC<OtherBranchCollectionPageProps> = ({ d
                                                     {record.loan?.staff?.full_name || 'N/A'}
                                                 </td>
                                                 <td className="px-6 py-4 text-center whitespace-nowrap">
-                                                    <span className={`px-2 py-1 rounded-lg text-[10px] font-bold uppercase ${record.status === 'Approved' ? 'bg-emerald-500/10 text-emerald-500' :
+                                                    <span className={`px-2 py-1 rounded-lg text-[10px] font-bold uppercase ${record.status === 'Approved' ? 'bg-primary-500/10 text-primary-500' :
                                                         record.status === 'Rejected' ? 'bg-rose-500/10 text-rose-500' :
                                                             'bg-amber-500/10 text-amber-500'
                                                         }`}>
@@ -508,7 +609,7 @@ const OtherBranchCollectionPage: React.FC<OtherBranchCollectionPageProps> = ({ d
                                                                 </button>
                                                                 <button
                                                                     onClick={() => setApproveModal({ isOpen: true, id: record.id })}
-                                                                    className="px-3 py-1 bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] font-bold uppercase rounded-lg transition-colors"
+                                                                    className="px-3 py-1 bg-primary-600 hover:bg-primary-500 text-white text-[10px] font-bold uppercase rounded-lg transition-colors"
                                                                 >
                                                                     Approve
                                                                 </button>

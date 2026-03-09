@@ -46,9 +46,9 @@ export function ShareholdersTable({ records }: { records: ShareholderRecord[] })
                         />
                     </div>
 
-                    <div className="flex items-center gap-2 px-3 py-1 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg border border-emerald-100 dark:border-emerald-900/30">
-                        <div className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse" />
-                        <span className="text-[9px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest leading-none">Persistent</span>
+                    <div className="flex items-center gap-2 px-3 py-1 bg-primary-50 dark:bg-primary-900/20 rounded-lg border border-primary-100 dark:border-primary-900/30">
+                        <div className="w-1 h-1 rounded-full bg-primary-500 animate-pulse" />
+                        <span className="text-[9px] font-black text-primary-600 dark:text-primary-400 uppercase tracking-widest leading-none">Persistent</span>
                     </div>
                 </div>
 
@@ -103,7 +103,7 @@ export function ShareholdersTable({ records }: { records: ShareholderRecord[] })
                                             </div>
                                         </td>
                                         <td className="px-6 py-4 text-right">
-                                            <span className="inline-flex items-center px-3 py-1 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 rounded-lg text-[8px] font-black uppercase tracking-widest border border-emerald-100/30 dark:border-emerald-900/30">
+                                            <span className="inline-flex items-center px-3 py-1 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 rounded-lg text-[8px] font-black uppercase tracking-widest border border-primary-100/30 dark:border-primary-900/30">
                                                 Active Tier
                                             </span>
                                         </td>

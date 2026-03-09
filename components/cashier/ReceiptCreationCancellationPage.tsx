@@ -331,7 +331,7 @@ const ReceiptCreationCancellationPage: React.FC = () => {
                 </div>
                 <button
                     onClick={() => setShowCreateModal(true)}
-                    className="flex items-center gap-2 px-6 py-3 bg-emerald-500 text-white rounded-xl font-bold text-sm shadow-lg shadow-emerald-500/20 hover:bg-emerald-600 transition-all active:scale-95"
+                    className="flex items-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-xl font-bold text-sm shadow-lg shadow-primary-500/20 hover:bg-primary-500 transition-all active:scale-95"
                 >
                     <Plus size={18} />
                     Issue New Receipt
@@ -353,8 +353,8 @@ const ReceiptCreationCancellationPage: React.FC = () => {
                 </div>
                 <div className="bg-card rounded-2xl border border-border-default p-5">
                     <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
-                            <FileText size={20} className="text-emerald-500" />
+                        <div className="w-10 h-10 rounded-xl bg-primary-500/10 flex items-center justify-center">
+                            <FileText size={20} className="text-primary-500" />
                         </div>
                         <div>
                             <p className="text-xs text-text-muted font-medium">Active</p>
@@ -380,8 +380,8 @@ const ReceiptCreationCancellationPage: React.FC = () => {
                 <button
                     onClick={() => setFilterType(null)}
                     className={`px-4 py-2 rounded-xl text-xs font-bold transition-all border ${filterType === null
-                        ? 'bg-emerald-500 text-white border-emerald-500 shadow-lg shadow-emerald-500/20'
-                        : 'bg-card text-text-muted border-border-default hover:border-emerald-500/50 hover:text-emerald-500'
+                        ? 'bg-primary-600 text-white border-primary-600 shadow-lg shadow-primary-500/20'
+                        : 'bg-card text-text-muted border-border-default hover:border-primary-500/50 hover:text-primary-600'
                         }`}
                 >
                     All Receipts
@@ -397,8 +397,8 @@ const ReceiptCreationCancellationPage: React.FC = () => {
                         key={type.value}
                         onClick={() => setFilterType(type.value)}
                         className={`px-4 py-2 rounded-xl text-xs font-bold transition-all border ${filterType === type.value
-                            ? 'bg-emerald-500 text-white border-emerald-500 shadow-lg shadow-emerald-500/20'
-                            : 'bg-card text-text-muted border-border-default hover:border-emerald-500/50 hover:text-emerald-500'
+                            ? 'bg-primary-600 text-white border-primary-600 shadow-lg shadow-primary-500/20'
+                            : 'bg-card text-text-muted border-border-default hover:border-primary-500/50 hover:text-primary-600'
                             }`}
                     >
                         {type.label}
@@ -411,8 +411,8 @@ const ReceiptCreationCancellationPage: React.FC = () => {
                 <button
                     onClick={() => setFilterStatus(null)}
                     className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase transition-all border ${filterStatus === null
-                        ? 'bg-emerald-500 text-white border-emerald-500 shadow-lg shadow-emerald-500/20'
-                        : 'bg-card text-text-muted border-border-default hover:border-emerald-500/50 hover:text-emerald-500'
+                        ? 'bg-primary-600 text-white border-primary-600 shadow-lg shadow-primary-500/20'
+                        : 'bg-card text-text-muted border-border-default hover:border-primary-500/50 hover:text-primary-600'
                         }`}
                 >
                     All Statuses
@@ -427,8 +427,8 @@ const ReceiptCreationCancellationPage: React.FC = () => {
                         key={status.value}
                         onClick={() => setFilterStatus(status.value)}
                         className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase transition-all border ${filterStatus === status.value
-                            ? 'bg-emerald-500 text-white border-emerald-500 shadow-lg shadow-emerald-500/20'
-                            : 'bg-card text-text-muted border-border-default hover:border-emerald-500/50 hover:text-emerald-500'
+                            ? 'bg-primary-600 text-white border-primary-600 shadow-lg shadow-primary-500/20'
+                            : 'bg-card text-text-muted border-border-default hover:border-primary-500/50 hover:text-primary-600'
                             }`}
                     >
                         {status.label}
@@ -504,7 +504,7 @@ const ReceiptCreationCancellationPage: React.FC = () => {
                                     </td>
                                     <td className="px-6 py-4 text-xs text-text-muted">{new Date(r.created_at).toLocaleDateString()}</td>
                                     <td className="px-6 py-4">
-                                        <p className="text-sm font-black text-emerald-600 tracking-tight">
+                                        <p className="text-sm font-black text-primary-600 tracking-tight">
                                             LKR {Number(r.current_due_amount || 0).toLocaleString(undefined, { minimumFractionDigits: 2 })}
                                         </p>
                                     </td>
@@ -520,7 +520,7 @@ const ReceiptCreationCancellationPage: React.FC = () => {
                                         </div>
                                     </td>
                                     <td className="px-6 py-4">
-                                        <span className={`px-2 py-1 rounded-full text-[9px] font-black uppercase ${r.status === 'active' ? 'bg-emerald-500/10 text-emerald-500' :
+                                        <span className={`px-2 py-1 rounded-full text-[9px] font-black uppercase ${r.status === 'active' ? 'bg-primary-500/10 text-primary-600' :
                                             r.status === 'cancelled' ? 'bg-rose-500/10 text-rose-500' :
                                                 'bg-yellow-500/10 text-yellow-500'
                                             }`}>
@@ -570,7 +570,7 @@ const ReceiptCreationCancellationPage: React.FC = () => {
                         <button
                             onClick={() => fetchReceipts(currentPage - 1)}
                             disabled={currentPage === 1}
-                            className="p-2 rounded-xl bg-card border border-border-default hover:border-emerald-500/50 text-text-muted hover:text-emerald-500 transition-all disabled:opacity-30 disabled:hover:border-border-default disabled:hover:text-text-muted"
+                            className="p-2 rounded-xl bg-card border border-border-default hover:border-primary-500/50 text-text-muted hover:text-primary-600 transition-all disabled:opacity-30 disabled:hover:border-border-default disabled:hover:text-text-muted"
                         >
                             <ChevronLeft size={20} />
                         </button>
@@ -589,8 +589,8 @@ const ReceiptCreationCancellationPage: React.FC = () => {
                                         key={pageNum}
                                         onClick={() => fetchReceipts(pageNum)}
                                         className={`w-10 h-10 rounded-xl font-bold text-sm transition-all border ${currentPage === pageNum
-                                            ? 'bg-emerald-500 text-white border-emerald-500 shadow-lg shadow-emerald-500/20'
-                                            : 'bg-card text-text-muted border-border-default hover:border-emerald-500/50 hover:text-emerald-500'
+                                            ? 'bg-primary-600 text-white border-primary-600 shadow-lg shadow-primary-500/20'
+                                            : 'bg-card text-text-muted border-border-default hover:border-primary-500/50 hover:text-primary-600'
                                             }`}
                                     >
                                         {pageNum}
@@ -602,7 +602,7 @@ const ReceiptCreationCancellationPage: React.FC = () => {
                         <button
                             onClick={() => fetchReceipts(currentPage + 1)}
                             disabled={currentPage === lastPage}
-                            className="p-2 rounded-xl bg-card border border-border-default hover:border-emerald-500/50 text-text-muted hover:text-emerald-500 transition-all disabled:opacity-30 disabled:hover:border-border-default disabled:hover:text-text-muted"
+                            className="p-2 rounded-xl bg-card border border-border-default hover:border-primary-500/50 text-text-muted hover:text-primary-600 transition-all disabled:opacity-30 disabled:hover:border-border-default disabled:hover:text-text-muted"
                         >
                             <ChevronRight size={20} />
                         </button>
@@ -632,9 +632,9 @@ const ReceiptCreationCancellationPage: React.FC = () => {
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <button
                                             onClick={() => setSelectedType('INVESTMENT')}
-                                            className="group p-6 bg-card border border-border-default rounded-3xl hover:border-emerald-500/50 hover:bg-emerald-500/5 transition-all text-left space-y-3"
+                                            className="group p-6 bg-card border border-border-default rounded-3xl hover:border-primary-500/50 hover:bg-primary-500/5 transition-all text-left space-y-3"
                                         >
-                                            <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 group-hover:scale-110 transition-transform">
+                                            <div className="w-12 h-12 rounded-2xl bg-primary-500/10 flex items-center justify-center text-primary-500 group-hover:scale-110 transition-transform">
                                                 <Landmark size={24} />
                                             </div>
                                             <div>
@@ -644,9 +644,9 @@ const ReceiptCreationCancellationPage: React.FC = () => {
                                         </button>
                                         <button
                                             onClick={() => setSelectedType('STAFF_IOU')}
-                                            className="group p-6 bg-card border border-border-default rounded-3xl hover:border-emerald-500/50 hover:bg-emerald-500/5 transition-all text-left space-y-3"
+                                            className="group p-6 bg-card border border-border-default rounded-3xl hover:border-primary-500/50 hover:bg-primary-500/5 transition-all text-left space-y-3"
                                         >
-                                            <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 group-hover:scale-110 transition-transform">
+                                            <div className="w-12 h-12 rounded-2xl bg-primary-500/10 flex items-center justify-center text-primary-500 group-hover:scale-110 transition-transform">
                                                 <User size={24} />
                                             </div>
                                             <div>
@@ -656,9 +656,9 @@ const ReceiptCreationCancellationPage: React.FC = () => {
                                         </button>
                                         <button
                                             onClick={() => setSelectedType('BRANCH_ACTIVITY')}
-                                            className="group p-6 bg-card border border-border-default rounded-3xl hover:border-emerald-500/50 hover:bg-emerald-500/5 transition-all text-left space-y-3"
+                                            className="group p-6 bg-card border border-border-default rounded-3xl hover:border-primary-500/50 hover:bg-primary-500/5 transition-all text-left space-y-3"
                                         >
-                                            <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 group-hover:scale-110 transition-transform">
+                                            <div className="w-12 h-12 rounded-2xl bg-primary-500/10 flex items-center justify-center text-primary-500 group-hover:scale-110 transition-transform">
                                                 <Building2 size={24} />
                                             </div>
                                             <div>
@@ -668,9 +668,9 @@ const ReceiptCreationCancellationPage: React.FC = () => {
                                         </button>
                                         <button
                                             onClick={() => setSelectedType('OTHER_BRANCH_COLLECTION')}
-                                            className="group p-6 bg-card border border-border-default rounded-3xl hover:border-emerald-500/50 hover:bg-emerald-500/5 transition-all text-left space-y-3"
+                                            className="group p-6 bg-card border border-border-default rounded-3xl hover:border-primary-500/50 hover:bg-primary-500/5 transition-all text-left space-y-3"
                                         >
-                                            <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 group-hover:scale-110 transition-transform">
+                                            <div className="w-12 h-12 rounded-2xl bg-primary-500/10 flex items-center justify-center text-primary-500 group-hover:scale-110 transition-transform">
                                                 <FileText size={24} />
                                             </div>
                                             <div>
@@ -694,7 +694,7 @@ const ReceiptCreationCancellationPage: React.FC = () => {
                                             placeholder="Search by customer name or ID..."
                                             value={searchTerm}
                                             onChange={(e) => setSearchTerm(e.target.value)}
-                                            className="w-full pl-12 pr-6 py-4 bg-app-background border border-border-default rounded-2xl focus:outline-none focus:ring-4 focus:ring-emerald-500/10 font-bold"
+                                            className="w-full pl-12 pr-6 py-4 bg-app-background border border-border-default rounded-2xl focus:outline-none focus:ring-4 focus:ring-primary-500/10 font-bold"
                                         />
                                     </div>
 
@@ -713,10 +713,10 @@ const ReceiptCreationCancellationPage: React.FC = () => {
                                                         setSelectedInv(item);
                                                         setReceiptId(`RCP-${selectedType?.substring(0, 3)}-${Date.now().toString().slice(-6)}`);
                                                     }}
-                                                    className="w-full p-5 bg-card border border-border-default rounded-2xl hover:border-emerald-500/50 hover:bg-emerald-500/5 transition-all text-left flex justify-between items-center"
+                                                    className="w-full p-5 bg-card border border-border-default rounded-2xl hover:border-primary-500/50 hover:bg-primary-500/5 transition-all text-left flex justify-between items-center"
                                                 >
                                                     <div className="flex items-center gap-4">
-                                                        <div className="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500">
+                                                        <div className="w-10 h-10 rounded-full bg-primary-500/10 flex items-center justify-center text-primary-500">
                                                             <User size={18} />
                                                         </div>
                                                         <div>
@@ -730,7 +730,7 @@ const ReceiptCreationCancellationPage: React.FC = () => {
                                                     </div>
                                                     <div className="text-right">
                                                         <p className="text-sm font-black text-text-primary">LKR {Number(item.amount).toLocaleString()}</p>
-                                                        <p className="text-[9px] text-emerald-500 font-black uppercase">Authorized</p>
+                                                        <p className="text-[9px] text-primary-500 font-black uppercase">Authorized</p>
                                                     </div>
                                                 </button>
                                             ))
@@ -744,7 +744,7 @@ const ReceiptCreationCancellationPage: React.FC = () => {
                                         <button onClick={() => setSelectedInv(null)} className="text-[10px] font-black text-primary-500 uppercase hover:underline">Select Different</button>
                                     </div>
 
-                                    <div className="bg-emerald-500/5 p-6 rounded-3xl border border-emerald-500/10 space-y-4">
+                                    <div className="bg-primary-500/5 p-6 rounded-3xl border border-primary-500/10 space-y-4">
                                         <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-text-muted">
                                             <span>Subject</span>
                                             <span className="text-text-primary">
@@ -757,9 +757,9 @@ const ReceiptCreationCancellationPage: React.FC = () => {
                                                 {selectedType === 'INVESTMENT' ? selectedInv.product?.name : selectedType === 'STAFF_IOU' ? selectedInv.reason : `ID: ${selectedInv.id}`}
                                             </span>
                                         </div>
-                                        <div className="flex justify-between items-center pt-4 border-t border-emerald-500/10">
-                                            <span className="text-sm font-black text-emerald-600 uppercase">Collection Amount</span>
-                                            <span className="text-2xl font-black text-emerald-600">LKR {Number(selectedInv.amount).toLocaleString()}</span>
+                                        <div className="flex justify-between items-center pt-4 border-t border-primary-500/10">
+                                            <span className="text-sm font-black text-primary-600 uppercase">Collection Amount</span>
+                                            <span className="text-2xl font-black text-primary-600">LKR {Number(selectedInv.amount).toLocaleString()}</span>
                                         </div>
                                     </div>
 
@@ -772,7 +772,7 @@ const ReceiptCreationCancellationPage: React.FC = () => {
                                                 value={receiptId}
                                                 onChange={(e) => setReceiptId(e.target.value)}
                                                 placeholder="Enter receipt serial..."
-                                                className="w-full pl-14 pr-6 py-5 bg-card border-2 border-border-default rounded-2xl focus:outline-none focus:border-emerald-500 transition-all font-black text-xl tracking-widest"
+                                                className="w-full pl-14 pr-6 py-5 bg-card border-2 border-border-default rounded-2xl focus:outline-none focus:border-primary-500 transition-all font-black text-xl tracking-widest"
                                             />
                                         </div>
                                     </div>
@@ -787,7 +787,7 @@ const ReceiptCreationCancellationPage: React.FC = () => {
                                         <button
                                             onClick={handleIssueReceipt}
                                             disabled={isIssuing}
-                                            className="flex-[2] py-5 bg-emerald-500 text-white rounded-2xl font-black uppercase text-xs tracking-widest shadow-xl shadow-emerald-500/20 hover:bg-emerald-600 transition-all active:scale-95 disabled:opacity-50"
+                                            className="flex-[2] py-5 bg-primary-600 text-white rounded-2xl font-black uppercase text-xs tracking-widest shadow-xl shadow-primary-500/20 hover:bg-primary-500 transition-all active:scale-95 disabled:opacity-50"
                                         >
                                             {isIssuing ? "Processing Ledger..." : "Authorize Inflow"}
                                         </button>

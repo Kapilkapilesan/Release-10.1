@@ -127,7 +127,7 @@ export const ComplaintsTable: React.FC<ComplaintsTableProps> = ({ complaints, on
                                                 <>
                                                     <button
                                                         onClick={() => onStatusChange(complaint.id, 'Resolved')}
-                                                        className="p-2 bg-emerald-50 border border-emerald-100 text-emerald-600 rounded-lg hover:bg-emerald-600 hover:text-white hover:shadow-sm transition-all group/res"
+                                                        className="p-2 bg-primary-50 border border-primary-100 text-primary-600 rounded-lg hover:bg-primary-600 hover:text-white hover:shadow-sm transition-all group/res"
                                                         title="Mark as Resolved"
                                                     >
                                                         <CheckCircle className="w-4 h-4" />

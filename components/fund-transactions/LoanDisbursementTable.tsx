@@ -71,13 +71,13 @@ export function LoanDisbursementTable({ records, onDisburse }: Props) {
                                     <tr key={record.id} className="group hover:bg-hover transition-all duration-300">
                                         <td className="px-6 py-4.5">
                                             <div className="flex items-center gap-3">
-                                                <div className="p-2.5 rounded-xl bg-violet-50 dark:bg-violet-900/20 text-violet-600 dark:text-violet-400 group-hover:bg-violet-600 group-hover:text-white transition-all duration-300 shadow-sm">
+                                                <div className="p-2.5 rounded-xl bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 group-hover:bg-primary-600 group-hover:text-white transition-all duration-300 shadow-sm">
                                                     <FileText className="w-4 h-4" />
                                                 </div>
                                                 <div className="flex flex-col gap-1">
                                                     <code className="text-[10px] font-black text-text-primary tracking-tighter uppercase">{record.loan_id}</code>
                                                     <div className="flex items-center gap-1.5">
-                                                        <div className="w-1 h-1 rounded-full bg-border-default group-hover:bg-violet-400 transition-colors" />
+                                                        <div className="w-1 h-1 rounded-full bg-border-default group-hover:bg-primary-400 transition-colors" />
                                                         <span className="text-[8px] font-black text-text-muted uppercase tracking-widest">{record.SoapRefNo || 'INTERNAL-TRANS'}</span>
                                                     </div>
                                                 </div>
@@ -97,17 +97,17 @@ export function LoanDisbursementTable({ records, onDisburse }: Props) {
                                                 <span className="text-lg font-black text-text-primary tracking-tighter tabular-nums leading-none mb-1.5 group-hover:scale-105 origin-left transition-transform duration-300">
                                                     {parseFloat(record.approved_amount).toLocaleString()}
                                                 </span>
-                                                <div className="flex items-center gap-1.5 py-0.5 px-2 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg w-fit border border-emerald-100/50 dark:border-emerald-900/30 shadow-sm">
-                                                    <div className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse" />
-                                                    <span className="text-[8px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">Authorized</span>
+                                                <div className="flex items-center gap-1.5 py-0.5 px-2 bg-primary-50 dark:bg-primary-900/20 rounded-lg w-fit border border-primary-100/50 dark:border-primary-900/30 shadow-sm">
+                                                    <div className="w-1 h-1 rounded-full bg-primary-500 animate-pulse" />
+                                                    <span className="text-[8px] font-black text-primary-600 dark:text-primary-400 uppercase tracking-widest">Authorized</span>
                                                 </div>
                                             </div>
                                         </td>
                                         <td className="px-6 py-4.5 text-center">
                                             <div className="flex flex-col items-center gap-1.5">
                                                 <span className={`px-4 py-1.5 rounded-xl text-[9px] font-black border uppercase tracking-[0.15em] transition-all duration-300 shadow-sm min-w-[120px] ${record.status === 'awaiting_transfer'
-                                                    ? 'bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 border-purple-100 dark:border-purple-900/30 shadow-purple-100/20 dark:shadow-purple-900/20'
-                                                    : 'bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 border-emerald-100 dark:border-emerald-900/30 shadow-emerald-100/20 dark:shadow-emerald-900/20'
+                                                    ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 border-primary-100 dark:border-primary-900/30 shadow-primary-100/20 dark:shadow-primary-900/20'
+                                                    : 'bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 border-primary-100 dark:border-primary-900/30 shadow-primary-100/20 dark:shadow-primary-900/20'
                                                     }`}>
                                                     {record.status === 'awaiting_transfer' ? 'Awaiting Transfer' : record.status}
                                                 </span>
@@ -124,7 +124,7 @@ export function LoanDisbursementTable({ records, onDisburse }: Props) {
                                                     <span className="relative z-10">Process Payout</span>
                                                 </button>
                                             ) : (
-                                                <div className="inline-flex items-center gap-3 px-6 py-2.5 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 rounded-xl text-[9px] font-black uppercase tracking-[0.15em] border border-emerald-100/50 dark:border-emerald-900/30 shadow-inner ml-auto">
+                                                <div className="inline-flex items-center gap-3 px-6 py-2.5 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 rounded-xl text-[9px] font-black uppercase tracking-[0.15em] border border-primary-100/50 dark:border-primary-900/30 shadow-inner ml-auto">
                                                     <CheckCircle2 className="w-3.5 h-3.5" />
                                                     Finalized
                                                 </div>

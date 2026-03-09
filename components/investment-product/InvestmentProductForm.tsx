@@ -186,31 +186,33 @@ export function InvestmentProductForm({ isOpen, onClose, onSave, initialData }: 
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-[12px] flex items-start justify-center z-50 p-4 pt-10 animate-in fade-in duration-300 overflow-y-auto">
-            <div className="bg-card rounded-[2.5rem] max-w-4xl w-full shadow-2xl relative my-8 animate-in zoom-in duration-300 border border-border-default overflow-hidden flex flex-col">
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-[12px] flex items-center justify-center z-50 p-4 animate-in fade-in duration-300 overflow-y-auto">
+            <div className="bg-card rounded-[2rem] max-w-4xl w-full shadow-2xl relative my-4 animate-in zoom-in duration-300 border border-border-default overflow-hidden flex flex-col">
                 {/* Header */}
                 <div
-                    className="p-6 border-b border-border-divider flex items-center justify-between rounded-t-2xl"
+                    className="p-4 border-b border-border-divider flex items-center justify-between rounded-t-2xl"
                     style={{ backgroundImage: `linear-gradient(135deg, ${colors.primary[600]}, ${colors.primary[500]}, ${colors.indigo[600]})` }}
                 >
-                    <div className="flex items-center gap-4">
-                        <div className="p-2 bg-white/10 rounded-2xl backdrop-blur-xl border border-white/20 shadow-2xl">
-                            <Calculator className="w-5 h-5 text-white" />
+                    <div className="flex items-center gap-3">
+                        <div className="p-1.5 bg-white/10 rounded-xl backdrop-blur-xl border border-white/20 shadow-2xl">
+                            <Calculator className="w-4 h-4 text-white" />
                         </div>
-                        <h2 className="text-lg font-black text-white tracking-tight uppercase leading-none">{initialData ? 'Update' : 'Initialize'} Asset Product</h2>
-                        <p className="text-white/70 text-[8px] font-black uppercase tracking-[0.2em] mt-1 opacity-80">Financial Architecture & Governance</p>
+                        <div>
+                            <h2 className="text-base font-black text-white tracking-tight uppercase leading-none">{initialData ? 'Update' : 'Initialize'} Asset Product</h2>
+                            <p className="text-white/70 text-[7px] font-black uppercase tracking-[0.2em] mt-0.5 opacity-80">Financial Architecture & Governance</p>
+                        </div>
                     </div>
-                    <button onClick={onClose} className="p-2 bg-white/10 hover:bg-white/20 border border-white/10 rounded-xl transition-all group active:scale-90">
-                        <X className="w-4 h-4 text-white transition-all group-hover:rotate-90" />
+                    <button onClick={onClose} className="p-1.5 bg-white/10 hover:bg-white/20 border border-white/10 rounded-lg transition-all group active:scale-90">
+                        <X className="w-3.5 h-3.5 text-white transition-all group-hover:rotate-90" />
                     </button>
                 </div>
 
-                <div className="p-4 space-y-5 max-h-[75vh] overflow-y-auto custom-scrollbar">
+                <div className="p-3 space-y-4 max-h-[80vh] overflow-y-auto custom-scrollbar">
                     {/* Identification */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                        <div className="md:col-span-2 flex items-center gap-3 border-b border-border-divider pb-3">
-                            <Info className="w-4 h-4" style={{ color: colors.primary[600] }} />
-                            <h3 className="text-xs font-black text-text-primary uppercase tracking-[0.2em]">Product Identification</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="md:col-span-2 flex items-center gap-2 border-b border-border-divider pb-2">
+                            <Info className="w-3.5 h-3.5" style={{ color: colors.primary[600] }} />
+                            <h3 className="text-[10px] font-black text-text-primary uppercase tracking-[0.2em]">Product Identification</h3>
                         </div>
                         <div>
                             <label className="block text-[8px] font-black text-text-muted uppercase tracking-widest mb-2">Product Code</label>
@@ -222,19 +224,19 @@ export function InvestmentProductForm({ isOpen, onClose, onSave, initialData }: 
                             />
                         </div>
                         <div>
-                            <label className="block text-[10px] font-black text-text-muted uppercase tracking-widest mb-3">Product Name <span className="text-red-500">*</span></label>
+                            <label className="block text-[10px] font-black text-text-muted uppercase tracking-widest mb-1.5">Product Name <span className="text-red-500">*</span></label>
                             <input
                                 type="text"
                                 value={formData.name}
                                 onChange={e => setFormData(prev => ({ ...prev, name: e.target.value }))}
                                 onBlur={() => markTouched('name')}
                                 placeholder="e.g. Fixed Deposit - 12 Months"
-                                className={`w-full px-5 py-4 bg-muted-bg/30 border ${getFieldError('name') ? errorBorder : normalBorder} rounded-2xl focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500/50 outline-none text-text-primary transition-all uppercase`}
+                                className={`w-full px-4 py-2.5 bg-muted-bg/30 border ${getFieldError('name') ? errorBorder : normalBorder} rounded-xl focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500/50 outline-none text-text-primary text-sm transition-all uppercase`}
                             />
-                            {getFieldError('name') && <p className="text-red-500 text-[10px] mt-1 font-bold">Product name is required</p>}
+                            {getFieldError('name') && <p className="text-red-500 text-[9px] mt-1 font-bold">Product name is required</p>}
                         </div>
                         <div>
-                            <label className="block text-[10px] font-black text-text-muted uppercase tracking-widest mb-3">Age Limit (Min Years) <span className="text-red-500">*</span></label>
+                            <label className="block text-[10px] font-black text-text-muted uppercase tracking-widest mb-1.5">Age Limit (Min Years) <span className="text-red-500">*</span></label>
                             <input
                                 type="number"
                                 min="0"
@@ -244,10 +246,10 @@ export function InvestmentProductForm({ isOpen, onClose, onSave, initialData }: 
                                     setFormData(prev => ({ ...prev, age_limited: e.target.value === '' ? 18 : val }));
                                 }}
                                 onBlur={() => markTouched('age_limited')}
-                                className={`w-full px-5 py-4 bg-muted-bg/30 border ${getFieldError('age_limited') ? errorBorder : normalBorder} rounded-2xl focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500/50 outline-none text-text-primary transition-all`}
+                                className={`w-full px-4 py-2.5 bg-muted-bg/30 border ${getFieldError('age_limited') ? errorBorder : normalBorder} rounded-xl focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500/50 outline-none text-text-primary text-sm transition-all`}
                             />
                             {getFieldError('age_limited') && (
-                                <p className="text-red-500 text-[10px] mt-1 font-bold">
+                                <p className="text-red-500 text-[9px] mt-1 font-bold">
                                     {formData.age_limited > 120 ? 'Age limit cannot exceed 120' : 'Age limit is required'}
                                 </p>
                             )}
@@ -255,19 +257,19 @@ export function InvestmentProductForm({ isOpen, onClose, onSave, initialData }: 
                     </div>
 
                     {/* Rate Configuration Table */}
-                    <div className="space-y-5">
-                        <div className="flex items-center justify-between border-b border-border-divider/50 pb-4 pt-3">
-                            <div className="flex items-center gap-4">
-                                <div className="p-2 bg-primary-500/10 rounded-xl">
-                                    <Calculator className="w-4 h-4 text-primary-500" />
+                    <div className="space-y-4">
+                        <div className="flex items-center justify-between border-b border-border-divider/50 pb-2.5 pt-1">
+                            <div className="flex items-center gap-3">
+                                <div className="p-1.5 bg-primary-500/10 rounded-lg">
+                                    <Calculator className="w-3.5 h-3.5 text-primary-500" />
                                 </div>
-                                <h3 className="text-xs font-black text-text-primary uppercase tracking-[0.2em]">Asset yield matrix</h3>
+                                <h3 className="text-[10px] font-black text-text-primary uppercase tracking-[0.2em]">Asset yield matrix</h3>
                             </div>
                             <button
                                 onClick={addRateRow}
-                                className="flex items-center gap-2 px-6 py-2 bg-primary-500/10 border border-primary-500/20 rounded-xl text-[9px] font-black text-primary-600 uppercase tracking-widest hover:bg-primary-500/20 transition-all active:scale-95 shadow-lg"
+                                className="flex items-center gap-2 px-4 py-1.5 bg-primary-500/10 border border-primary-500/20 rounded-lg text-[8px] font-black text-primary-600 uppercase tracking-widest hover:bg-primary-500/20 transition-all active:scale-95 shadow-sm"
                             >
-                                <Plus className="w-3 h-3" /> Add Row
+                                <Plus className="w-2.5 h-2.5" /> Add Row
                             </button>
                         </div>
 
@@ -304,7 +306,7 @@ export function InvestmentProductForm({ isOpen, onClose, onSave, initialData }: 
                                                         }
                                                     }}
                                                     onBlur={() => markTouched(`rate_${idx}_term_months`)}
-                                                    className={`w-24 px-4 py-2.5 bg-card border ${getRateFieldError(idx, 'term_months') ? errorBorder : normalBorder} rounded-xl focus:ring-4 focus:ring-primary-500/10 focus:border-primary-500/50 outline-none text-center text-text-primary text-sm font-black shadow-inner-sm transition-all`}
+                                                    className={`w-20 px-3 py-1.5 bg-card border ${getRateFieldError(idx, 'term_months') ? errorBorder : normalBorder} rounded-lg focus:ring-4 focus:ring-primary-500/10 focus:border-primary-500/50 outline-none text-center text-text-primary text-xs font-black shadow-inner-sm transition-all`}
                                                 />
                                             </td>
                                             <td className="px-6 py-5 text-center">
@@ -318,7 +320,7 @@ export function InvestmentProductForm({ isOpen, onClose, onSave, initialData }: 
                                                         updateRateRow(idx, 'interest_monthly', e.target.value === '' ? '' : val);
                                                     }}
                                                     onBlur={() => markTouched(`rate_${idx}_interest_monthly`)}
-                                                    className={`w-24 px-4 py-2.5 bg-card border ${getRateFieldError(idx, 'interest_monthly') ? errorBorder : normalBorder} rounded-xl focus:ring-4 focus:ring-primary-500/10 focus:border-primary-500/50 outline-none text-center text-text-primary text-sm font-black shadow-inner-sm transition-all`}
+                                                    className={`w-20 px-3 py-1.5 bg-card border ${getRateFieldError(idx, 'interest_monthly') ? errorBorder : normalBorder} rounded-lg focus:ring-4 focus:ring-primary-500/10 focus:border-primary-500/50 outline-none text-center text-text-primary text-xs font-black shadow-inner-sm transition-all`}
                                                 />
                                             </td>
                                             <td className="px-6 py-5 text-center">
@@ -332,7 +334,7 @@ export function InvestmentProductForm({ isOpen, onClose, onSave, initialData }: 
                                                         updateRateRow(idx, 'interest_maturity', e.target.value === '' ? '' : val);
                                                     }}
                                                     onBlur={() => markTouched(`rate_${idx}_interest_maturity`)}
-                                                    className={`w-24 px-4 py-2.5 bg-card border ${getRateFieldError(idx, 'interest_maturity') ? errorBorder : normalBorder} rounded-xl focus:ring-4 focus:ring-primary-500/10 focus:border-primary-500/50 outline-none text-center text-text-primary text-sm font-black shadow-inner-sm transition-all`}
+                                                    className={`w-20 px-3 py-1.5 bg-card border ${getRateFieldError(idx, 'interest_maturity') ? errorBorder : normalBorder} rounded-lg focus:ring-4 focus:ring-primary-500/10 focus:border-primary-500/50 outline-none text-center text-text-primary text-xs font-black shadow-inner-sm transition-all`}
                                                 />
                                             </td>
                                             <td className="px-6 py-5 text-center">
@@ -346,7 +348,7 @@ export function InvestmentProductForm({ isOpen, onClose, onSave, initialData }: 
                                                         updateRateRow(idx, 'breakdown_monthly', e.target.value === '' ? '' : val);
                                                     }}
                                                     onBlur={() => markTouched(`rate_${idx}_breakdown_monthly`)}
-                                                    className={`w-24 px-4 py-2.5 bg-primary-500/5 border ${getRateFieldError(idx, 'breakdown_monthly') ? errorBorder : 'border-primary-500/30'} rounded-xl focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500/50 outline-none text-center text-primary-600 text-sm font-black shadow-inner-sm transition-all`}
+                                                    className={`w-20 px-3 py-1.5 bg-primary-500/5 border ${getRateFieldError(idx, 'breakdown_monthly') ? errorBorder : 'border-primary-500/30'} rounded-lg focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500/50 outline-none text-center text-primary-600 text-xs font-black shadow-inner-sm transition-all`}
                                                 />
                                             </td>
                                             <td className="px-6 py-5 text-center">
@@ -360,7 +362,7 @@ export function InvestmentProductForm({ isOpen, onClose, onSave, initialData }: 
                                                         updateRateRow(idx, 'breakdown_maturity', e.target.value === '' ? '' : val);
                                                     }}
                                                     onBlur={() => markTouched(`rate_${idx}_breakdown_maturity`)}
-                                                    className={`w-24 px-4 py-2.5 bg-primary-500/5 border ${getRateFieldError(idx, 'breakdown_maturity') ? errorBorder : 'border-primary-500/30'} rounded-xl focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500/50 outline-none text-center text-primary-600 text-sm font-black shadow-inner-sm transition-all`}
+                                                    className={`w-20 px-3 py-1.5 bg-primary-500/5 border ${getRateFieldError(idx, 'breakdown_maturity') ? errorBorder : 'border-primary-500/30'} rounded-lg focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500/50 outline-none text-center text-primary-600 text-xs font-black shadow-inner-sm transition-all`}
                                                 />
                                             </td>
                                             <td className="px-4 py-3 text-right">
@@ -376,10 +378,10 @@ export function InvestmentProductForm({ isOpen, onClose, onSave, initialData }: 
                     </div>
 
                     {/* Negotiation Config */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
-                        <div className="md:col-span-2 flex items-center gap-3 border-b border-border-divider pb-4">
-                            <Info className="w-5 h-5 text-primary-500" />
-                            <h3 className="text-xs font-black text-text-primary uppercase tracking-[0.2em]">Negotiation Configuration</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                        <div className="md:col-span-2 flex items-center gap-2 border-b border-border-divider pb-2">
+                            <Info className="w-3.5 h-3.5 text-primary-500" />
+                            <h3 className="text-[10px] font-black text-text-primary uppercase tracking-[0.2em]">Negotiation Configuration</h3>
                         </div>
                         <div>
                             <label className="block text-[9px] font-black text-text-muted uppercase tracking-widest mb-2">Negotiation Interest (Monthly) %</label>
@@ -400,7 +402,7 @@ export function InvestmentProductForm({ isOpen, onClose, onSave, initialData }: 
                                             }
                                         }));
                                     }}
-                                    className="w-full pl-10 pr-5 py-4 bg-muted-bg/30 border border-border-divider rounded-2xl focus:ring-2 focus:ring-primary-500/20 outline-none text-text-primary font-bold transition-all"
+                                    className="w-full pl-8 pr-4 py-2.5 bg-muted-bg/30 border border-border-divider rounded-xl focus:ring-2 focus:ring-primary-500/20 outline-none text-text-primary text-sm font-bold transition-all"
                                 />
                             </div>
                         </div>
@@ -423,17 +425,17 @@ export function InvestmentProductForm({ isOpen, onClose, onSave, initialData }: 
                                             }
                                         }));
                                     }}
-                                    className="w-full pl-10 pr-5 py-4 bg-muted-bg/30 border border-border-divider rounded-2xl focus:ring-2 focus:ring-primary-500/20 outline-none text-text-primary font-bold transition-all"
+                                    className="w-full pl-8 pr-4 py-2.5 bg-muted-bg/30 border border-border-divider rounded-xl focus:ring-2 focus:ring-primary-500/20 outline-none text-text-primary text-sm font-bold transition-all"
                                 />
                             </div>
                         </div>
                     </div>
 
                     {/* Limits */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
-                        <div className="md:col-span-2 flex items-center gap-3 border-b border-border-divider pb-4">
-                            <ShieldAlert className="w-5 h-5 text-primary-500" />
-                            <h3 className="text-xs font-black text-text-primary uppercase tracking-[0.2em]">Investment Limits</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                        <div className="md:col-span-2 flex items-center gap-2 border-b border-border-divider pb-2">
+                            <ShieldAlert className="w-3.5 h-3.5 text-primary-500" />
+                            <h3 className="text-[10px] font-black text-text-primary uppercase tracking-[0.2em]">Investment Limits</h3>
                         </div>
                         <div>
                             <label className="block text-[10px] font-black text-text-muted uppercase tracking-widest mb-3">Min Investment (LKR) <span className="text-red-500">*</span></label>
@@ -446,7 +448,7 @@ export function InvestmentProductForm({ isOpen, onClose, onSave, initialData }: 
                                     setFormData(prev => ({ ...prev, min_amount: raw === '' ? 0 : Math.max(0, parseFloat(raw) || 0) }));
                                 }}
                                 onBlur={() => markTouched('min_amount')}
-                                className={`w-full px-5 py-4 bg-muted-bg/30 border ${getFieldError('min_amount') ? errorBorder : normalBorder} rounded-2xl focus:ring-2 focus:ring-primary-500/20 outline-none text-text-primary font-black transition-all`}
+                                className={`w-full px-4 py-2.5 bg-muted-bg/30 border ${getFieldError('min_amount') ? errorBorder : normalBorder} rounded-xl focus:ring-2 focus:ring-primary-500/20 outline-none text-text-primary text-sm font-black transition-all`}
                             />
                             {getFieldError('min_amount') && (
                                 <p className="text-red-500 text-[10px] mt-1 font-bold">
@@ -465,7 +467,7 @@ export function InvestmentProductForm({ isOpen, onClose, onSave, initialData }: 
                                     setFormData(prev => ({ ...prev, max_amount: raw === '' ? 0 : Math.max(0, parseFloat(raw) || 0) }));
                                 }}
                                 onBlur={() => markTouched('max_amount')}
-                                className={`w-full px-5 py-4 bg-muted-bg/30 border ${getFieldError('max_amount') ? errorBorder : normalBorder} rounded-2xl focus:ring-2 focus:ring-primary-500/20 outline-none text-text-primary font-black transition-all`}
+                                className={`w-full px-4 py-2.5 bg-muted-bg/30 border ${getFieldError('max_amount') ? errorBorder : normalBorder} rounded-xl focus:ring-2 focus:ring-primary-500/20 outline-none text-text-primary text-sm font-black transition-all`}
                             />
                             {getFieldError('max_amount') && (
                                 <p className="text-red-500 text-[10px] mt-1 font-bold">
@@ -478,19 +480,19 @@ export function InvestmentProductForm({ isOpen, onClose, onSave, initialData }: 
                 </div>
 
                 {/* Footer */}
-                <div className="p-6 border-t border-border-divider flex gap-4 justify-end bg-muted-bg/30 backdrop-blur-3xl sticky bottom-0">
+                <div className="p-4 border-t border-border-divider flex gap-3 justify-end bg-muted-bg/30 backdrop-blur-3xl sticky bottom-0">
                     <button
                         onClick={onClose}
-                        className="px-8 py-3 bg-transparent border border-border-divider rounded-xl hover:bg-muted transition-all font-black text-[9px] uppercase tracking-[0.25em] text-text-secondary active:scale-95"
+                        className="px-6 py-2 bg-transparent border border-border-divider rounded-lg hover:bg-muted transition-all font-black text-[8px] uppercase tracking-[0.2em] text-text-secondary active:scale-95"
                     >
                         Cancel
                     </button>
                     <button
                         onClick={handleSubmit}
                         disabled={!isFormValid()}
-                        className={`px-12 py-4 rounded-2xl transition-all font-black text-[10px] uppercase tracking-[0.3em] active:scale-95 shadow-2xl flex items-center gap-3 ${isFormValid() ? 'bg-primary-600 text-white shadow-primary-500/40 hover:bg-primary-500 hover:shadow-primary-500/60' : 'bg-gray-300 text-gray-500 cursor-not-allowed shadow-none'}`}
+                        className={`px-8 py-2.5 rounded-xl transition-all font-black text-[9px] uppercase tracking-[0.2em] active:scale-95 shadow-xl flex items-center gap-2 ${isFormValid() ? 'bg-primary-600 text-white shadow-primary-500/40 hover:bg-primary-500 hover:shadow-primary-500/60' : 'bg-gray-300 text-gray-500 cursor-not-allowed shadow-none'}`}
                     >
-                        {initialData ? <Save className="w-4 h-4" /> : <CheckCircle2 className="w-4 h-4" />}
+                        {initialData ? <Save className="w-3.5 h-3.5" /> : <CheckCircle2 className="w-3.5 h-3.5" />}
                         {initialData ? 'Update Product' : 'Create Product'}
                     </button>
                 </div>

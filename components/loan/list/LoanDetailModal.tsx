@@ -20,7 +20,7 @@ export function LoanDetailModal({ loan, onClose }: LoanDetailModalProps) {
     const getStatusColor = (status: string) => {
         switch (status?.toLowerCase()) {
             case 'active':
-                return 'bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20';
+                return 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20';
             case 'pending':
             case 'pending_1st':
             case 'pending_2nd':

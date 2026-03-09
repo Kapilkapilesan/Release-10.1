@@ -53,12 +53,12 @@ export function PaymentModal({ isOpen, customer, onClose, onProcessPayment, isPr
                 </div>
 
                 {/* Content */}
-                <div className="p-6 space-y-6 overflow-y-auto">
+                <div className="p-6 space-y-6 overflow-y-auto custom-scrollbar">
                     {/* Breakdown Section */}
                     <div className="bg-gray-50 border border-gray-200 rounded-lg overflow-hidden shrink-0">
-                        <div className="bg-slate-800 px-4 py-2 flex justify-between items-center">
+                        <div className="bg-primary-700 px-4 py-2 flex justify-between items-center">
                             <h3 className="text-[10px] font-bold text-white uppercase tracking-widest">Payment Breakdown</h3>
-                            <span className="text-[10px] font-mono text-slate-300">Contract: {customer.contractNo}</span>
+                            <span className="text-[10px] font-mono text-primary-100">Contract: {customer.contractNo}</span>
                         </div>
 
                         <div className="p-0">

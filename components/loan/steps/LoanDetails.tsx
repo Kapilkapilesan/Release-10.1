@@ -537,21 +537,21 @@ export const LoanDetails: React.FC<LoanDetailsProps> = ({
                 )}
             </div>
 
-            <div className="pt-10 border-t border-border-divider/30">
-                <div className="flex items-center gap-3 mb-8">
-                    <div className="w-1.5 h-6 bg-primary-500 rounded-full" />
-                    <h3 className="text-lg font-black text-text-primary uppercase tracking-tight">Remarks</h3>
+            <div className="pt-6 border-t border-border-divider/30">
+                <div className="flex items-center gap-2 mb-3">
+                    <div className="w-1.5 h-4 bg-primary-500 rounded-full" />
+                    <h3 className="text-sm font-black text-text-primary uppercase tracking-tight">Remarks</h3>
                 </div>
                 <div className="relative group/textarea">
                     <textarea
                         value={formData.remarks}
                         onChange={(e) => onFieldChange('remarks', e.target.value)}
-                        rows={4}
-                        className="w-full px-8 py-6 bg-input border-2 border-border-divider/50 rounded-[2rem] focus:outline-none focus:ring-4 transition-all resize-none text-base font-black tracking-tight text-text-primary placeholder:text-text-muted/20 uppercase"
+                        rows={2}
+                        className="w-full px-5 py-3 bg-input border-2 border-border-divider/50 rounded-2xl focus:outline-none focus:ring-4 transition-all resize-none text-sm font-black tracking-tight text-text-primary placeholder:text-text-muted/20 uppercase"
                         style={{ '--tw-ring-color': `${colors.primary[500]}1A` } as any}
                         placeholder="Enter any additional remarks..."
                     />
-                    <div className="absolute right-6 bottom-6 text-[10px] font-black text-text-muted/40 uppercase tracking-widest italic group-focus-within/textarea:text-primary-500 transition-colors">
+                    <div className="absolute right-4 bottom-3 text-[9px] font-black text-text-muted/40 uppercase tracking-widest italic group-focus-within/textarea:text-primary-500 transition-colors">
                         Remarks (Optional)
                     </div>
                 </div>

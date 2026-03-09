@@ -234,7 +234,7 @@ export function ViewMeetingScheduling() {
                                 <Users className="w-6 h-6" style={{ color: colors.primary[600] }} />
                             </div>
                             <div className="flex items-center gap-2">
-                                <div className="p-1.5 rounded-full bg-muted-bg text-text-muted group-hover:bg-primary-50 group-hover:text-primary-600 transition-colors">
+                                <div className="p-1.5 rounded-full bg-muted-bg text-text-muted group-hover:bg-hover group-hover:text-text-primary transition-colors">
                                     <Eye className="w-4 h-4" />
                                 </div>
                                 <span className={`px-2 py-1 text-xs font-medium rounded-full ${center.status === 'active'
@@ -355,7 +355,7 @@ export function ViewMeetingScheduling() {
                                     type="button"
                                     onClick={() => setAssignmentForm({ ...assignmentForm, type: 'temporary' })}
                                     className={`flex items-center justify-center gap-2 p-3 rounded-xl border-2 transition-all font-bold text-sm ${assignmentForm.type === 'temporary'
-                                        ? 'border-primary-500 bg-primary-50 text-primary-600 dark:bg-primary-500/10'
+                                        ? 'border-primary-500 bg-primary-500/10 text-primary-600'
                                         : 'border-border-default bg-card text-text-secondary hover:bg-hover'
                                         }`}
                                 >
@@ -366,7 +366,7 @@ export function ViewMeetingScheduling() {
                                     type="button"
                                     onClick={() => setAssignmentForm({ ...assignmentForm, type: 'permanent' })}
                                     className={`flex items-center justify-center gap-2 p-3 rounded-xl border-2 transition-all font-bold text-sm ${assignmentForm.type === 'permanent'
-                                        ? 'border-primary-500 bg-primary-50 text-primary-600 dark:bg-primary-500/10'
+                                        ? 'border-primary-500 bg-primary-500/10 text-primary-600'
                                         : 'border-border-default bg-card text-text-secondary hover:bg-hover'
                                         }`}
                                 >

@@ -271,7 +271,7 @@ export const LeaveRequestsView: React.FC<LeaveRequestsViewProps> = ({ isAdmin: i
                                         <span
                                             className="px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-widest border shadow-sm"
                                             style={
-                                                request.status === 'Approved' ? { backgroundColor: `${colors.success[500]}15`, color: colors.success[600], borderColor: `${colors.success[500]}30` } :
+                                                request.status === 'Approved' ? { backgroundColor: `${colors.primary[500]}15`, color: colors.primary[600], borderColor: `${colors.primary[500]}30` } :
                                                     request.status === 'Rejected' ? { backgroundColor: `${colors.danger[500]}15`, color: colors.danger[600], borderColor: `${colors.danger[500]}30` } :
                                                         { backgroundColor: `${colors.warning[500]}15`, color: colors.warning[600], borderColor: `${colors.warning[500]}30` }
                                             }
@@ -288,7 +288,7 @@ export const LeaveRequestsView: React.FC<LeaveRequestsViewProps> = ({ isAdmin: i
                                                 <>
                                                     <button
                                                         onClick={() => handleApprove(request)}
-                                                        className="p-2 bg-input border border-border-default text-emerald-600 rounded-lg hover:bg-emerald-500/10 hover:border-emerald-500/30 transition-all"
+                                                        className="p-2 bg-input border border-border-default text-primary-600 rounded-lg hover:bg-primary-500/10 hover:border-primary-500/30 transition-all"
                                                         title="Approve"
                                                     >
                                                         <CheckCircle className="w-4 h-4" />

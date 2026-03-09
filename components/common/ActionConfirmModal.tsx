@@ -8,7 +8,7 @@ interface ActionConfirmModalProps {
     title: string;
     message: string;
     confirmLabel: string;
-    variant?: 'success' | 'danger' | 'warning';
+    variant?: 'success' | 'danger' | 'warning' | 'primary';
 }
 
 export function ActionConfirmModal({
@@ -51,6 +51,11 @@ export function ActionConfirmModal({
             icon: <AlertCircle className="w-6 h-6 text-amber-600 dark:text-amber-400" />,
             bg: 'bg-amber-500/10',
             button: 'bg-amber-600 hover:bg-amber-700 shadow-amber-500/10',
+        },
+        primary: {
+            icon: <CheckCircle2 className="w-6 h-6 text-primary-600 dark:text-primary-400" />,
+            bg: 'bg-primary-500/10',
+            button: 'bg-primary-600 hover:bg-primary-700 shadow-primary-500/10',
         }
     };
 

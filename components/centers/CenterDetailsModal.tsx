@@ -92,7 +92,7 @@ export function CenterDetailsModal({
                   style={{ color: colors.primary[600] }}
                 />
               </div>
-              <h2 className="text-lg font-bold text-gray-900 leading-tight">
+              <h2 className="text-lg font-bold text-text-primary leading-tight">
                 Loading...
               </h2>
             </div>
@@ -401,7 +401,7 @@ export function CenterDetailsModal({
                   onApprove(center.id);
                   onClose();
                 }}
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg text-xs font-bold hover:bg-blue-700 transition-colors shadow-md shadow-blue-200 flex items-center gap-1.5"
+                className="px-4 py-2 bg-primary-600 text-white rounded-lg text-xs font-bold hover:bg-primary-700 transition-colors shadow-md shadow-primary-200 flex items-center gap-1.5"
               >
                 <CheckCircle size={14} />
                 Approve Center

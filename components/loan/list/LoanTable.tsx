@@ -15,13 +15,12 @@ export function LoanTable({ loans, onView, onDelete }: LoanTableProps) {
     const getStatusColor = (status: string) => {
         switch (status) {
             case 'Active':
-                return 'bg-green-500/10 text-green-600 dark:text-green-400 border border-green-500/20';
-            case 'approved':
-                return 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20';
             case 'activated':
-                return 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20';
+                return 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20';
+            case 'approved':
+                return 'bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/20';
             case 'awaiting_transfer':
-                return 'bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20';
+                return 'bg-primary-500/10 text-primary-600 dark:text-primary-400 border border-primary-500/20';
             case 'Pending':
             case 'pending_1st':
             case 'pending_2nd':

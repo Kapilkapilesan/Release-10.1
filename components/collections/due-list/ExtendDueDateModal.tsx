@@ -128,7 +128,7 @@ export function ExtendDueDateModal({
                         <button
                             type="submit"
                             disabled={isLoading}
-                            className="flex-1 px-4 py-2 text-white rounded-lg font-bold transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center bg-rose-600 hover:bg-rose-700 shadow-md shadow-rose-500/20"
+                            className="flex-1 px-4 py-2 text-white rounded-lg font-bold transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center bg-primary-600 hover:bg-primary-700 shadow-md shadow-primary-500/20"
                         >
                             {isLoading ? (
                                 <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />

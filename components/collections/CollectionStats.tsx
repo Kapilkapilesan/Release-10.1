@@ -52,11 +52,11 @@ export function CollectionStats({ stats }: CollectionStatsProps) {
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-            <div className="bg-card rounded-2xl border border-border-default/50 p-4 hover:shadow-none transition-all group overflow-hidden relative">
+            <div className="bg-card rounded-2xl border border-border-default/50 p-5 hover:shadow-sm transition-all group overflow-hidden relative">
                 <div className="absolute top-0 right-0 w-24 h-24 rounded-full -mr-12 -mt-12 transition-transform group-hover:scale-110 opacity-10" style={{ backgroundColor: colors.primary[500] }} />
-                <div className="flex items-center gap-3 relative">
-                    <div className="w-10 h-10 rounded-2xl flex items-center justify-center" style={{ backgroundColor: `${colors.primary[600]}20`, color: colors.primary[600], border: `1px solid ${colors.primary[600]}30` }}>
-                        <Wallet className="w-5 h-5" />
+                <div className="flex items-center gap-4 relative z-10">
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center shadow-sm" style={{ backgroundColor: `${colors.primary[600]}20`, color: colors.primary[600], border: `1px solid ${colors.primary[600]}30` }}>
+                        <Wallet className="w-6 h-6" />
                     </div>
                     <div>
                         <p className="text-[10px] font-black text-text-muted uppercase tracking-[0.2em] mb-1 group-hover:text-text-secondary transition-colors">Total Due Today</p>
@@ -65,11 +65,11 @@ export function CollectionStats({ stats }: CollectionStatsProps) {
                 </div>
             </div>
 
-            <div className="bg-card rounded-2xl border border-border-default/50 p-4 hover:shadow-none transition-all group overflow-hidden relative">
-                <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-full -mr-12 -mt-12" />
-                <div className="flex items-center gap-3 relative">
-                    <div className="w-10 h-10 bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 rounded-2xl flex items-center justify-center shadow-xl">
-                        <CheckCircle2 className="w-5 h-5" />
+            <div className="bg-card rounded-2xl border border-border-default/50 p-5 hover:shadow-sm transition-all group overflow-hidden relative">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-full -mr-12 -mt-12 transition-transform group-hover:scale-110" />
+                <div className="flex items-center gap-4 relative z-10">
+                    <div className="w-12 h-12 bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 rounded-xl flex items-center justify-center shadow-sm">
+                        <CheckCircle2 className="w-6 h-6" />
                     </div>
                     <div>
                         <p className="text-[10px] font-black text-text-muted uppercase tracking-[0.2em] mb-1">Total Collected</p>
@@ -78,15 +78,15 @@ export function CollectionStats({ stats }: CollectionStatsProps) {
                 </div>
             </div>
 
-            <div className="bg-card rounded-2xl border border-border-default/50 p-4 hover:shadow-none transition-all group overflow-hidden relative">
-                <div className={`absolute top-0 right-0 w-24 h-24 rounded-full -mr-12 -mt-12 opacity-10 ${arrearsStyle.textColor.replace('text', 'bg')}`} />
-                <div className="flex items-center gap-3 relative">
-                    <div className={`w-10 h-10 ${arrearsStyle.iconBg.replace('bg', 'bg-opacity-10 bg')} ${arrearsStyle.textColor} border border-current/20 rounded-2xl flex items-center justify-center shadow-xl`}>
-                        <ArrearsIcon className="w-5 h-5" />
+            <div className="bg-card rounded-2xl border border-border-default/50 p-5 hover:shadow-sm transition-all group overflow-hidden relative">
+                <div className={`absolute top-0 right-0 w-24 h-24 rounded-full -mr-12 -mt-12 opacity-10 transition-transform group-hover:scale-110 ${arrearsStyle.textColor.replace('text', 'bg')}`} />
+                <div className="flex items-center gap-4 relative z-10">
+                    <div className={`w-12 h-12 ${arrearsStyle.iconBg.replace('bg', 'bg-opacity-10 bg')} ${arrearsStyle.textColor} border border-current/20 rounded-xl flex items-center justify-center shadow-sm`}>
+                        <ArrearsIcon className="w-6 h-6" />
                     </div>
                     <div>
                         <p className="text-[10px] font-black text-text-muted uppercase tracking-[0.2em] mb-1">Total Arrears</p>
-                        <p className={`text-[10px] ${arrearsStyle.subtitleColor} font-bold uppercase tracking-tight`}>{arrearsStyle.subtitle}</p>
+                        <p className={`text-[10px] ${arrearsStyle.subtitleColor} font-bold uppercase tracking-tight mb-0.5`}>{arrearsStyle.subtitle}</p>
                         <p className={`text-2xl font-black ${arrearsStyle.textColor} tracking-tight`}>
                             LKR {netArrears < 0 ? `(${Math.abs(netArrears).toLocaleString()})` : netArrears.toLocaleString()}
                         </p>
@@ -96,4 +96,3 @@ export function CollectionStats({ stats }: CollectionStatsProps) {
         </div>
     );
 }
-

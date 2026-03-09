@@ -104,7 +104,7 @@ export const SalaryHistoryTable: React.FC<SalaryHistoryTableProps> = ({ history,
                                     <td className="py-4 px-6">
                                         <span
                                             className={`px-3 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-widest border ${record.status === 'Disbursed' || record.status === 'Paid'
-                                                ? 'bg-success-500/10 text-success-600 dark:text-success-400 border-success-500/20'
+                                                ? 'bg-primary-500/10 text-primary-600 dark:text-primary-400 border-primary-500/20'
                                                 : record.status === 'Pending'
                                                     ? 'bg-warning-500/10 text-warning-600 dark:text-warning-400 border-warning-500/20'
                                                     : 'bg-primary-500/10 text-primary-600 dark:text-primary-400 border-primary-500/20'

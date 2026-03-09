@@ -85,14 +85,14 @@ export function StaffDetailsModal({
                                         className={`inline-flex items-center px-3 py-1 rounded-xl text-[10px] font-black uppercase tracking-widest border transition-all ${staff.account_status === 'locked' || staff.is_locked
                                             ? 'bg-rose-500/10 border-rose-500/20 text-rose-500'
                                             : staff.account_status === 'active' || staff.is_active
-                                                ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-500'
+                                                ? 'bg-primary-500/10 border-primary-500/20 text-primary-500'
                                                 : 'bg-muted-bg border-border-default text-text-muted'
                                             }`}
                                     >
                                         <span className={`w-1.5 h-1.5 rounded-full mr-2 ${staff.account_status === 'locked' || staff.is_locked
                                             ? 'bg-rose-500'
                                             : staff.account_status === 'active' || staff.is_active
-                                                ? 'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)] animate-pulse'
+                                                ? 'bg-primary-500 shadow-[0_0_8px_rgba(59,130,246,0.5)] animate-pulse'
                                                 : 'bg-text-muted'
                                             }`}></span>
                                         {staff.account_status === 'locked' || staff.is_locked
@@ -144,9 +144,9 @@ export function StaffDetailsModal({
 
                             {/* Contact Cell */}
                             {(staff.contact_no || staff.phone) && (
-                                <div className="flex items-start gap-4 p-4 bg-muted-bg/30 rounded-2xl border border-border-default/50 hover:border-emerald-500/30 transition-colors">
-                                    <div className="p-3 bg-emerald-500/10 rounded-xl">
-                                        <Phone className="w-5 h-5 text-emerald-500" />
+                                <div className="flex items-start gap-4 p-4 bg-muted-bg/30 rounded-2xl border border-border-default/50 hover:border-primary-500/30 transition-colors">
+                                    <div className="p-3 bg-primary-500/10 rounded-xl">
+                                        <Phone className="w-5 h-5 text-primary-500" />
                                     </div>
                                     <div>
                                         <p className="text-[10px] font-black text-text-muted uppercase tracking-widest mb-1">Contact Number</p>
@@ -239,8 +239,8 @@ export function StaffDetailsModal({
                         {!publicView && staff.address && (
                             <div className="pt-8 border-t border-border-default/30">
                                 <div className="flex items-start gap-5">
-                                    <div className="p-3 bg-emerald-500/10 rounded-2xl">
-                                        <MapPin className="w-5 h-5 text-emerald-500" />
+                                    <div className="p-3 bg-primary-500/10 rounded-2xl">
+                                        <MapPin className="w-5 h-5 text-primary-500" />
                                     </div>
                                     <div className="flex-1">
                                         <p className="text-[10px] font-black text-text-muted uppercase tracking-widest mb-1">Address</p>

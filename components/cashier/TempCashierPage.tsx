@@ -141,7 +141,7 @@ const SearchableSelect: React.FC<SearchableSelectProps> = ({
                                 />
                             </div>
                         </div>
-                        <div className="max-h-48 overflow-y-auto">
+                        <div className="max-h-48 overflow-y-auto custom-scrollbar">
                             {filtered.length === 0 ? (
                                 <div className="p-4 text-center text-text-muted text-sm">No results found</div>
                             ) : (
@@ -366,7 +366,7 @@ const AssignTempCashierModal: React.FC<AssignModalProps> = ({ isOpen, onClose, o
                 </div>
 
                 {/* Form Body */}
-                <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto px-6 py-5">
+                <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto px-6 py-5 custom-scrollbar">
                     <div className="flex flex-col gap-5">
                         {/* Target Branch (Only for Admins or if user has no branch) */}
                         {(isAdmin || userHasNoBranch) && (

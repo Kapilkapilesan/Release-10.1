@@ -124,7 +124,7 @@ export default function CreateStaffLoanPage() {
         switch (status) {
             case 'approved':
                 return (
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-emerald-50 text-emerald-600 border border-emerald-100/50 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-primary-50 text-primary-600 border border-primary-100/50 dark:bg-primary-500/10 dark:text-primary-400 dark:border-primary-500/20">
                         <CheckCircle2 className="w-3.5 h-3.5" /> Approved
                     </span>
                 );
@@ -201,7 +201,7 @@ export default function CreateStaffLoanPage() {
 
                     {/* <div className="flex items-center gap-3">
                         <div className="px-6 py-3.5 bg-input border border-border-default rounded-xl flex items-center gap-3">
-                            <Activity className="w-4 h-4 text-emerald-500" />
+                            <Activity className="w-4 h-4 text-primary-500" />
                             <span className="text-[10px] font-black uppercase tracking-widest text-text-muted">Active Profile Verified</span>
                         </div>
                     </div> */}
@@ -211,7 +211,7 @@ export default function CreateStaffLoanPage() {
                     {/* Left: Applicant Overview */}
                     <div className="lg:col-span-12 xl:col-span-4 space-y-8">
                         <div className="bg-card/80 backdrop-blur-xl rounded-[2.5rem] border border-border-default shadow-xl overflow-hidden group">
-                            <div className={`p-8 text-white relative ${isDarkMode ? 'bg-gradient-to-br from-indigo-600 to-indigo-900' : 'bg-gradient-to-br from-primary-600 to-primary-800'}`}>
+                            <div className={`p-8 text-white relative ${isDarkMode ? 'bg-gradient-to-br from-primary-600 to-primary-900' : 'bg-gradient-to-br from-primary-600 to-primary-800'}`}>
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-12 translate-x-12 blur-2xl" />
                                 <div className="relative z-10">
                                     <p className="text-[9px] font-black uppercase tracking-[0.3em] opacity-60 mb-1">Staff Information</p>
@@ -231,7 +231,7 @@ export default function CreateStaffLoanPage() {
                                 ].map((detail, idx) => (
                                     <div key={idx} className={`space-y-1.5 ${detail.full ? 'border-t border-border-divider pt-4 mt-2' : ''}`}>
                                         <p className="text-[9px] font-black text-text-muted uppercase tracking-widest flex items-center gap-2">
-                                            <detail.icon size={12} className={isDarkMode ? "text-indigo-400" : "text-primary-500"} /> {detail.label}
+                                            <detail.icon size={12} className="text-primary-500" /> {detail.label}
                                         </p>
                                         <p className="text-[11px] font-black text-text-secondary uppercase leading-relaxed">{detail.value || 'N/A'}</p>
                                     </div>

@@ -137,7 +137,7 @@ export function SessionHistoryModal({ userId, userName, onClose }: SessionHistor
     };
 
     const getStatusIcon = (type: string | null, status: string) => {
-        if (status === 'OPEN') return <Clock className="w-4 h-4 text-green-500" />;
+        if (status === 'OPEN') return <Clock className="w-4 h-4 text-primary-500" />;
         if (type === 'LOGOUT' || type === 'AUTO_LOGOUT') return <LogOut className="w-4 h-4 text-gray-500" />;
         if (type === 'ON_WORK' || type === 'STAY_IN_OFFICE') return <Briefcase className="w-4 h-4 text-blue-500" />;
         return <Minus className="w-4 h-4 text-gray-400" />;
@@ -229,9 +229,9 @@ export function SessionHistoryModal({ userId, userName, onClose }: SessionHistor
                                         </div>
 
                                         {/* Current Status */}
-                                        <div className="bg-card p-6 rounded-3xl border border-border-default shadow-sm group hover:border-emerald-500/30 transition-all">
+                                        <div className="bg-card p-6 rounded-3xl border border-border-default shadow-sm group hover:border-primary-500/30 transition-all">
                                             <div className="flex items-center gap-4 mb-4">
-                                                <div className={`p-3 rounded-2xl group-hover:scale-110 transition-transform ${summary.is_currently_logged_in ? 'bg-emerald-500/10 text-emerald-500' : 'bg-muted-bg text-text-muted'}`}>
+                                                <div className={`p-3 rounded-2xl group-hover:scale-110 transition-transform ${summary.is_currently_logged_in ? 'bg-primary-500/10 text-primary-500' : 'bg-muted-bg text-text-muted'}`}>
                                                     <Clock className="w-6 h-6" />
                                                 </div>
                                                 <h3 className="text-sm font-black text-text-primary uppercase tracking-widest">Current Status</h3>
@@ -239,7 +239,7 @@ export function SessionHistoryModal({ userId, userName, onClose }: SessionHistor
                                             <div className="mt-4">
                                                 {summary.is_currently_logged_in ? (
                                                     <div>
-                                                        <div className="text-2xl font-black text-emerald-500 uppercase tracking-widest">Online</div>
+                                                        <div className="text-2xl font-black text-primary-500 uppercase tracking-widest">Online</div>
                                                         <div className="text-xs text-text-muted font-bold uppercase tracking-widest mt-1">
                                                             Active for {formatDuration(summary.current_session_duration_minutes)}
                                                         </div>
@@ -315,7 +315,7 @@ export function SessionHistoryModal({ userId, userName, onClose }: SessionHistor
                                                 <div className="flex items-center justify-between">
                                                     <div className="flex items-center gap-5">
                                                         <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110 ${session.status === 'OPEN'
-                                                            ? 'bg-emerald-500/10 text-emerald-600'
+                                                            ? 'bg-primary-500/10 text-primary-600'
                                                             : 'bg-muted-bg text-text-muted'
                                                             }`}>
                                                             {getStatusIcon(session.logout_type, session.status)}
@@ -324,7 +324,7 @@ export function SessionHistoryModal({ userId, userName, onClose }: SessionHistor
                                                             <div className="flex items-center gap-3">
                                                                 <span className="font-black text-text-primary tracking-tight">{formatDate(session.date)}</span>
                                                                 <span className={`text-[10px] font-black px-2.5 py-1 rounded-lg uppercase tracking-widest border ${session.status === 'OPEN'
-                                                                    ? 'bg-emerald-500/10 text-emerald-600 border-emerald-500/20'
+                                                                    ? 'bg-primary-500/10 text-primary-600 border-primary-500/20'
                                                                     : 'bg-muted-bg text-text-muted border-border-default'
                                                                     }`}>
                                                                     {session.status === 'OPEN' ? 'Active' : 'Completed'}
@@ -343,7 +343,7 @@ export function SessionHistoryModal({ userId, userName, onClose }: SessionHistor
 
                                                     <div className="text-right">
                                                         {session.attendance_status !== 'PRESENT' && (
-                                                            <div className={`text-[10px] font-black px-2.5 py-1 rounded-lg inline-block mb-1 uppercase tracking-widest border ${session.attendance_status === 'APPROVED' ? 'bg-emerald-500/10 text-emerald-600 border-emerald-500/20' :
+                                                            <div className={`text-[10px] font-black px-2.5 py-1 rounded-lg inline-block mb-1 uppercase tracking-widest border ${session.attendance_status === 'APPROVED' ? 'bg-primary-500/10 text-primary-600 border-primary-500/20' :
                                                                 session.attendance_status === 'REJECTED' ? 'bg-rose-500/10 text-rose-600 border-rose-500/20' :
                                                                     'bg-amber-500/10 text-amber-600 border-amber-500/20'
                                                                 }`}>

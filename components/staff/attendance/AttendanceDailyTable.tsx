@@ -23,7 +23,7 @@ export const AttendanceDailyTable: React.FC<AttendanceDailyTableProps> = ({ reco
     };
 
     const statusConfig: Record<string, any> = {
-        'Present': { icon: CheckCircle, color: 'text-emerald-600 dark:text-emerald-400', bg: 'bg-emerald-500/10', border: 'border-emerald-500/20' },
+        'Present': { icon: CheckCircle, color: 'text-primary-600 dark:text-primary-400', bg: 'bg-primary-500/10', border: 'border-primary-500/20' },
         'Absent': { icon: XCircle, color: 'text-rose-600 dark:text-rose-400', bg: 'bg-rose-500/10', border: 'border-rose-500/20' },
         'Half Day': { icon: Clock, color: 'text-amber-600 dark:text-amber-400', bg: 'bg-amber-500/10', border: 'border-amber-500/20' },
         'Leave': {
@@ -74,14 +74,14 @@ export const AttendanceDailyTable: React.FC<AttendanceDailyTableProps> = ({ reco
                                                     )}
                                                 </div>
                                                 {record.isOnline && (
-                                                    <span className="absolute bottom-[-2px] right-[-2px] w-4 h-4 bg-emerald-500 border-4 border-card rounded-full shadow-lg animate-pulse" />
+                                                    <span className="absolute bottom-[-2px] right-[-2px] w-4 h-4 bg-primary-500 border-4 border-card rounded-full shadow-lg animate-pulse" />
                                                 )}
                                             </div>
                                             <div>
                                                 <div className="flex items-center gap-3">
                                                     <p className="text-sm font-black text-text-primary tracking-tight uppercase leading-none">{record.name}</p>
                                                     {record.isOnline && (
-                                                        <span className="bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[8px] px-2 py-0.5 rounded-lg font-black uppercase tracking-[0.1em] flex items-center gap-1.5 border border-emerald-500/20">
+                                                        <span className="bg-primary-500/10 text-primary-600 dark:text-primary-400 text-[8px] px-2 py-0.5 rounded-lg font-black uppercase tracking-[0.1em] flex items-center gap-1.5 border border-primary-500/20">
                                                             <Activity className="w-2.5 h-2.5" /> Online
                                                         </span>
                                                     )}
@@ -147,7 +147,7 @@ export const AttendanceDailyTable: React.FC<AttendanceDailyTableProps> = ({ reco
                                             </div>
                                         ) : (
                                             <div className="flex flex-col">
-                                                <span className={`text-md font-black tracking-tighter ${record.workedHours && record.workedHours >= 7 ? 'text-emerald-500' : 'text-text-primary'}`}>
+                                                <span className={`text-md font-black tracking-tighter ${record.workedHours && record.workedHours >= 7 ? 'text-primary-500' : 'text-text-primary'}`}>
                                                     {record.workedHours ? `${record.workedHours.toFixed(1)}H TOTAL` : 'NULL'}
                                                 </span>
                                                 {record.workedHours && <span className="text-[10px] text-text-muted font-black uppercase tracking-[0.2em] opacity-30 mt-1">COMPLETED LOG</span>}

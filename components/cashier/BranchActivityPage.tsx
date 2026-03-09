@@ -60,6 +60,7 @@ interface SearchableSelectProps {
     onChange: (value: string) => void;
     loading?: boolean;
     disabled?: boolean;
+    size?: 'default' | 'compact';
 }
 
 const SearchableSelect: React.FC<SearchableSelectProps> = ({
@@ -71,6 +72,7 @@ const SearchableSelect: React.FC<SearchableSelectProps> = ({
     onChange,
     loading = false,
     disabled = false,
+    size = 'default',
 }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
@@ -97,17 +99,17 @@ const SearchableSelect: React.FC<SearchableSelectProps> = ({
     }, []);
 
     return (
-        <div className="flex flex-col gap-2">
+        <div className={`flex flex-col ${size === 'compact' ? 'gap-1' : 'gap-2'}`}>
             <div className="flex items-center gap-2">
                 <span className="text-text-muted">{icon}</span>
-                <label className="text-sm font-semibold text-text-primary">{label}</label>
+                <label className={`font-black text-text-muted uppercase tracking-[0.2em] ${size === 'compact' ? 'text-[10px]' : 'text-xs'}`}>{label}</label>
             </div>
             <div className="relative" ref={containerRef}>
                 <button
                     type="button"
                     onClick={() => { if (!disabled) setIsOpen(!isOpen); }}
                     disabled={disabled}
-                    className={`w-full flex items-center justify-between px-4 py-2.5 rounded-xl border transition-all text-sm
+                    className={`w-full flex items-center justify-between ${size === 'compact' ? 'px-3 py-1.5' : 'px-4 py-2.5'} rounded-xl border transition-all text-sm
                         ${isOpen ? 'border-primary-500 ring-2 ring-primary-500/20' : 'border-border-default'}
                         ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer hover:border-primary-400'}
                         bg-card text-text-primary`}
@@ -134,7 +136,7 @@ const SearchableSelect: React.FC<SearchableSelectProps> = ({
                                 />
                             </div>
                         </div>
-                        <div className="max-h-48 overflow-y-auto">
+                        <div className="max-h-48 overflow-y-auto custom-scrollbar">
                             {filtered.length === 0 ? (
                                 <div className="p-4 text-center text-text-muted text-sm">No results found</div>
                             ) : (
@@ -659,30 +661,30 @@ const BranchActivityPage: React.FC = () => {
                 return (
                     <div className="flex flex-col gap-8">
                         {/* Recording Form */}
-                        <div className="bg-card rounded-3xl border border-border-default p-8 shadow-sm">
-                            <div className="flex items-center gap-3 mb-6">
-                                <div className="w-10 h-10 rounded-xl bg-primary-500/10 flex items-center justify-center text-primary-500">
-                                    <Plus size={20} />
+                        <div className="bg-card rounded-3xl border border-border-default p-5 shadow-sm">
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="w-8 h-8 rounded-xl bg-primary-500/10 flex items-center justify-center text-primary-500">
+                                    <Plus size={16} />
                                 </div>
                                 <div>
-                                    <h2 className="text-lg font-bold text-text-primary">Record Branch Activity</h2>
-                                    <p className="text-sm text-text-muted">Enter details for new branch money activity</p>
+                                    <h2 className="text-base font-bold text-text-primary">Record Branch Activity</h2>
+                                    <p className="text-xs text-text-muted">Enter details for new branch money activity</p>
                                 </div>
                             </div>
 
-                            <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                            <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3">
 
 
                                 {/* Type */}
-                                <div className="flex flex-col gap-2">
+                                <div className="flex flex-col gap-1">
                                     <div className="flex items-center gap-2">
-                                        <Activity size={16} className="text-text-muted" />
-                                        <label className="text-sm font-semibold text-text-primary">Type</label>
+                                        <Activity size={14} className="text-text-muted" />
+                                        <label className="text-[10px] font-black text-text-muted uppercase tracking-[0.2em]">Type</label>
                                     </div>
                                     <select
                                         value={type}
                                         onChange={(e) => setType(e.target.value as any)}
-                                        className="w-full px-4 py-2.5 rounded-xl border border-border-default bg-app-background text-text-primary text-sm focus:outline-none focus:border-primary-500"
+                                        className="w-full px-3 py-1.5 rounded-xl border border-border-default bg-app-background text-text-primary text-sm focus:outline-none focus:border-primary-500"
                                     >
                                         <option value="Inflow">Inflow (Money Received)</option>
                                         <option value="Outflow">Outflow (Money Sent)</option>
@@ -691,18 +693,19 @@ const BranchActivityPage: React.FC = () => {
 
                                 {/* Branch Selection / Auto-fetch */}
                                 {currentUser?.branch_id || currentUser?.branch ? (
-                                    <div className="flex flex-col gap-2">
+                                    <div className="flex flex-col gap-1">
                                         <div className="flex items-center gap-2">
-                                            <Building2 size={16} className="text-text-muted" />
-                                            <label className="text-sm font-semibold text-text-primary">Branch</label>
+                                            <Building2 size={14} className="text-text-muted" />
+                                            <label className="text-[10px] font-black text-text-muted uppercase tracking-[0.2em]">Branch</label>
                                         </div>
-                                        <div className="w-full px-4 py-2.5 rounded-xl border border-border-default bg-muted/30 text-text-secondary text-sm focus:outline-none cursor-not-allowed font-medium">
+                                        <div className="w-full px-3 py-1.5 rounded-xl border border-border-default bg-muted/30 text-text-secondary text-sm focus:outline-none cursor-not-allowed font-medium">
                                             {currentUser?.branch?.branch_name || currentUser?.branch?.name || 'Assigned Branch'}
                                         </div>
                                     </div>
                                 ) : (
                                     <SearchableSelect
                                         label="Branch"
+                                        size="compact"
                                         icon={<Building2 size={16} />}
                                         placeholder="Select a branch"
                                         options={branchOptions}
@@ -713,10 +716,10 @@ const BranchActivityPage: React.FC = () => {
                                 )}
 
                                 {/* Amount */}
-                                <div className="flex flex-col gap-2">
+                                <div className="flex flex-col gap-1">
                                     <div className="flex items-center gap-2">
-                                        <DollarSign size={16} className="text-text-muted" />
-                                        <label className="text-sm font-semibold text-text-primary">Amount (LKR)</label>
+                                        <DollarSign size={14} className="text-text-muted" />
+                                        <label className="text-[10px] font-black text-text-muted uppercase tracking-[0.2em]">Amount (LKR)</label>
                                     </div>
                                     <input
                                         type="number"
@@ -724,13 +727,14 @@ const BranchActivityPage: React.FC = () => {
                                         placeholder="Enter amount"
                                         value={amount}
                                         onChange={(e) => setAmount(e.target.value)}
-                                        className="w-full px-4 py-2.5 rounded-xl border border-border-default bg-app-background text-text-primary text-sm focus:outline-none focus:border-primary-500"
+                                        className="w-full px-3 py-1.5 rounded-xl border border-border-default bg-app-background text-text-primary text-sm focus:outline-none focus:border-primary-500"
                                     />
                                 </div>
 
                                 {/* Staff (Searchable) - User Requirement 1 */}
                                 <SearchableSelect
                                     label="Select Staff"
+                                    size="compact"
                                     icon={<User size={16} />}
                                     placeholder="Search by Name, ID or NIC"
                                     options={staffOptions}
@@ -740,41 +744,41 @@ const BranchActivityPage: React.FC = () => {
                                 />
 
                                 {/* Mobile No (Auto-fetch) - User Requirement 2 */}
-                                <div className="flex flex-col gap-2">
+                                <div className="flex flex-col gap-1">
                                     <div className="flex items-center gap-2">
-                                        <Phone size={16} className="text-text-muted" />
-                                        <label className="text-sm font-semibold text-text-primary">Mobile Number</label>
+                                        <Phone size={14} className="text-text-muted" />
+                                        <label className="text-[10px] font-black text-text-muted uppercase tracking-[0.2em]">Mobile Number</label>
                                     </div>
                                     <input
                                         type="text"
                                         readOnly
                                         value={staffPhone}
                                         placeholder="Auto-fetched on staff selection"
-                                        className="w-full px-4 py-2.5 rounded-xl border border-border-default bg-muted/30 text-text-secondary text-sm focus:outline-none cursor-not-allowed"
+                                        className="w-full px-3 py-1.5 rounded-xl border border-border-default bg-muted/30 text-text-secondary text-sm focus:outline-none cursor-not-allowed"
                                     />
                                 </div>
 
                                 {/* Description */}
-                                <div className="col-span-1 md:col-span-2 flex flex-col gap-2">
+                                <div className="col-span-1 md:col-span-2 flex flex-col gap-1">
                                     <div className="flex items-center gap-2">
-                                        <FileText size={16} className="text-text-muted" />
-                                        <label className="text-sm font-semibold text-text-primary">Description</label>
+                                        <FileText size={14} className="text-text-muted" />
+                                        <label className="text-[10px] font-black text-text-muted uppercase tracking-[0.2em]">Description</label>
                                     </div>
                                     <textarea
-                                        rows={3}
+                                        rows={2}
                                         placeholder="Describe the activity..."
                                         value={description}
                                         onChange={(e) => setDescription(e.target.value)}
-                                        className="w-full px-4 py-3 rounded-xl border border-border-default bg-app-background text-text-primary text-sm focus:outline-none focus:border-primary-500 resize-none"
+                                        className="w-full px-3 py-2 rounded-xl border border-border-default bg-app-background text-text-primary text-sm focus:outline-none focus:border-primary-500 resize-none"
                                     />
                                 </div>
 
                                 {/* Submit Button */}
-                                <div className="col-span-1 md:col-span-2 flex justify-end mt-2">
+                                <div className="col-span-1 md:col-span-2 flex justify-end mt-1">
                                     <button
                                         type="submit"
                                         disabled={submitting}
-                                        className="px-8 py-3 rounded-xl bg-primary-600 text-white font-bold text-sm hover:bg-primary-700 transition-all shadow-lg shadow-primary-900/20 disabled:opacity-50"
+                                        className="px-6 py-2 rounded-xl bg-primary-600 text-white font-bold text-sm hover:bg-primary-700 transition-all shadow-lg shadow-primary-900/20 disabled:opacity-50"
                                     >
                                         {submitting ? 'Creating...' : 'Create Activity'}
                                     </button>
@@ -844,7 +848,7 @@ const BranchActivityPage: React.FC = () => {
                                                 </td>
                                                 <td className="px-6 py-4">
                                                     <div className="flex flex-col">
-                                                        <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded-full w-fit mb-1 ${activity.type === 'inflow' ? 'bg-emerald-500/10 text-emerald-500' : 'bg-rose-500/10 text-rose-500'}`}>
+                                                        <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded-full w-fit mb-1 ${activity.type === 'inflow' ? 'bg-primary-500/10 text-primary-500' : 'bg-rose-500/10 text-rose-500'}`}>
                                                             {activity.type}
                                                         </span>
                                                         <span className="text-xs text-text-muted">{activity.expense_type}</span>
@@ -854,8 +858,8 @@ const BranchActivityPage: React.FC = () => {
                                                     LKR {Number(activity.amount).toLocaleString(undefined, { minimumFractionDigits: 2 })}
                                                 </td>
                                                 <td className="px-6 py-4">
-                                                    <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded-full ${activity.status === 'Approved' ? 'bg-emerald-500/10 text-emerald-500' :
-                                                        activity.status === 'Paid' ? 'bg-emerald-500 text-white' :
+                                                    <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded-full ${activity.status === 'Approved' ? 'bg-primary-500/10 text-primary-500' :
+                                                        activity.status === 'Paid' ? 'bg-primary-500 text-white' :
                                                             activity.status === 'Pending' ? 'bg-amber-500/10 text-amber-500' :
                                                                 'bg-rose-500/10 text-rose-500'
                                                         }`}>
@@ -866,7 +870,7 @@ const BranchActivityPage: React.FC = () => {
                                                     {activity.status === 'Approved' && activity.type === 'outflow' ? (
                                                         <button
                                                             onClick={() => setActivityOtpModal({ isOpen: true, activity })}
-                                                            className="px-4 py-1.5 rounded-lg bg-emerald-500 text-white text-[10px] font-bold uppercase hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-500/20"
+                                                            className="px-4 py-1.5 rounded-lg bg-primary-600 text-white text-[10px] font-bold uppercase hover:bg-primary-500 transition-all shadow-lg shadow-primary-500/20"
                                                         >
                                                             Pay Now
                                                         </button>
@@ -1004,7 +1008,7 @@ const BranchActivityPage: React.FC = () => {
                                                     {format(new Date(record.created_at), 'dd MMM yyyy')}
                                                 </td>
                                                 <td className="px-6 py-4">
-                                                    <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded-full ${record.status === 'settled' ? 'bg-emerald-500/10 text-emerald-500' : 'bg-amber-500/10 text-amber-500'}`}>
+                                                    <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded-full ${record.status === 'settled' ? 'bg-primary-500/10 text-primary-500' : 'bg-amber-500/10 text-amber-500'}`}>
                                                         {record.status}
                                                     </span>
                                                 </td>
@@ -1013,7 +1017,7 @@ const BranchActivityPage: React.FC = () => {
                                                         <button
                                                             onClick={() => handleSettle(record.id, record.staff?.user_name)}
                                                             disabled={settlingId === record.id}
-                                                            className="px-6 py-2 rounded-xl bg-emerald-500 text-white font-black text-[10px] uppercase tracking-wider hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-500/20 disabled:opacity-50"
+                                                            className="px-6 py-2 rounded-xl bg-primary-600 text-white font-black text-[10px] uppercase tracking-wider hover:bg-primary-500 transition-all shadow-lg shadow-primary-500/20 disabled:opacity-50"
                                                         >
                                                             {settlingId === record.id ? 'Settling...' : 'Settle Now'}
                                                         </button>
@@ -1117,10 +1121,10 @@ const BranchActivityPage: React.FC = () => {
                                                             <button
                                                                 onClick={() => handleApproveIou(req.id)}
                                                                 disabled={isApproving === req.id || isRejecting === req.id}
-                                                                className="p-2 rounded-lg bg-emerald-500/10 text-emerald-500 hover:bg-emerald-500 hover:text-white transition-all disabled:opacity-50"
+                                                                className="p-2 rounded-lg bg-primary-500/10 text-primary-500 hover:bg-primary-500 hover:text-white transition-all disabled:opacity-50"
                                                                 title="Approve Request"
                                                             >
-                                                                {isApproving === req.id ? <div className="w-4 h-4 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin" /> : <ShieldCheck size={18} />}
+                                                                {isApproving === req.id ? <div className="w-4 h-4 border-2 border-primary-500 border-t-transparent rounded-full animate-spin" /> : <ShieldCheck size={18} />}
                                                             </button>
                                                         </div>
                                                     </td>
@@ -1134,9 +1138,9 @@ const BranchActivityPage: React.FC = () => {
 
                         {/* 2. PAYOUT SECTION (For Cashiers/Managers) */}
                         <div className="bg-card rounded-3xl border border-border-default overflow-hidden">
-                            <div className="px-6 py-4 border-b border-border-default bg-emerald-500/5 flex justify-between items-center">
+                            <div className="px-6 py-4 border-b border-border-default bg-primary-500/5 flex justify-between items-center">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500">
+                                    <div className="w-8 h-8 rounded-lg bg-primary-500/10 flex items-center justify-center text-primary-500">
                                         <CheckCircle size={18} />
                                     </div>
                                     <h3 className="font-bold text-text-primary">Approved IOU Payouts Waiting for Cash</h3>
@@ -1187,7 +1191,7 @@ const BranchActivityPage: React.FC = () => {
                                                     <span className="text-sm font-black text-primary-500">LKR {Number(req.amount).toLocaleString()}</span>
                                                 </td>
                                                 <td className="px-6 py-4 text-center">
-                                                    <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-500 text-[10px] font-black uppercase tracking-wider">Approved</span>
+                                                    <span className="px-3 py-1 rounded-full bg-primary-500/10 text-primary-500 text-[10px] font-black uppercase tracking-wider">Approved</span>
                                                 </td>
                                                 <td className="px-6 py-4 text-right">
                                                     <button
@@ -1309,64 +1313,64 @@ const BranchActivityPage: React.FC = () => {
 
             {/* Stats Cards Section - Match Image */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="bg-card rounded-3xl border border-border-default p-6 shadow-sm relative overflow-hidden group">
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-110" />
-                    <div className="flex flex-col gap-4">
+                <div className="bg-card rounded-2xl border border-border-default p-4 shadow-sm relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 w-20 h-20 bg-primary-500/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-110" />
+                    <div className="flex flex-col gap-2">
                         <div className="flex items-center justify-between">
-                            <p className="text-xs font-bold text-emerald-500 uppercase tracking-wider">Total Income ({period})</p>
-                            <TrendingUp size={20} className="text-emerald-500" />
+                            <p className="text-[10px] font-bold text-primary-500 uppercase tracking-wider">Total Income ({period})</p>
+                            <TrendingUp size={16} className="text-primary-500" />
                         </div>
-                        <div className="flex items-baseline gap-2">
-                            <p className="text-xs text-text-muted font-bold">LKR</p>
-                            <p className="text-3xl font-black text-text-primary tracking-tight">
+                        <div className="flex items-baseline gap-1.5">
+                            <p className="text-[10px] text-text-muted font-bold">LKR</p>
+                            <p className="text-xl font-black text-text-primary tracking-tight">
                                 {stats ? Number(stats.total_income).toLocaleString() : '0'}
                             </p>
                         </div>
                     </div>
                 </div>
 
-                <div className="bg-card rounded-3xl border border-border-default p-6 shadow-sm relative overflow-hidden group">
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-rose-500/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-110" />
-                    <div className="flex flex-col gap-4">
+                <div className="bg-card rounded-2xl border border-border-default p-4 shadow-sm relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 w-20 h-20 bg-rose-500/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-110" />
+                    <div className="flex flex-col gap-2">
                         <div className="flex items-center justify-between">
-                            <p className="text-xs font-bold text-rose-500 uppercase tracking-wider">Total Expense ({period})</p>
-                            <TrendingDown size={20} className="text-rose-500" />
+                            <p className="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Total Expense ({period})</p>
+                            <TrendingDown size={16} className="text-rose-500" />
                         </div>
-                        <div className="flex items-baseline gap-2">
-                            <p className="text-xs text-text-muted font-bold">LKR</p>
-                            <p className="text-3xl font-black text-text-primary tracking-tight">
+                        <div className="flex items-baseline gap-1.5">
+                            <p className="text-[10px] text-text-muted font-bold">LKR</p>
+                            <p className="text-xl font-black text-text-primary tracking-tight">
                                 {stats ? Number(stats.total_expense).toLocaleString() : '0'}
                             </p>
                         </div>
                     </div>
                 </div>
 
-                <div className="bg-card rounded-3xl border border-border-default p-6 shadow-sm relative overflow-hidden group">
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-110" />
-                    <div className="flex flex-col gap-4">
+                <div className="bg-card rounded-2xl border border-border-default p-4 shadow-sm relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 w-20 h-20 bg-blue-500/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-110" />
+                    <div className="flex flex-col gap-2">
                         <div className="flex items-center justify-between">
-                            <p className="text-xs font-bold text-blue-500 uppercase tracking-wider">Net Flow (Cumulative)</p>
-                            <Wallet size={20} className="text-blue-500" />
+                            <p className="text-[10px] font-bold text-blue-500 uppercase tracking-wider">Net Flow (Cumulative)</p>
+                            <Wallet size={16} className="text-blue-500" />
                         </div>
-                        <div className="flex items-baseline gap-2">
-                            <p className="text-xs text-text-muted font-bold">LKR</p>
-                            <p className="text-3xl font-black text-text-primary tracking-tight">
+                        <div className="flex items-baseline gap-1.5">
+                            <p className="text-[10px] text-text-muted font-bold">LKR</p>
+                            <p className="text-xl font-black text-text-primary tracking-tight">
                                 {stats ? Number(stats.net_flow).toLocaleString() : '0'}
                             </p>
                         </div>
                     </div>
                 </div>
 
-                <div className="bg-card rounded-3xl border border-border-default p-6 shadow-sm relative overflow-hidden group border-r-primary-500/50">
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-purple-500/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-110" />
-                    <div className="flex flex-col gap-4">
+                <div className="bg-card rounded-2xl border border-border-default p-4 shadow-sm relative overflow-hidden group border-r-primary-500/50">
+                    <div className="absolute top-0 right-0 w-20 h-20 bg-purple-500/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-110" />
+                    <div className="flex flex-col gap-2">
                         <div className="flex items-center justify-between">
-                            <p className="text-xs font-bold text-purple-500 uppercase tracking-wider">Total Branch Truncation ({period})</p>
-                            <Activity size={20} className="text-purple-500" />
+                            <p className="text-[10px] font-bold text-purple-500 uppercase tracking-wider">Total Branch Truncation ({period})</p>
+                            <Activity size={16} className="text-purple-500" />
                         </div>
-                        <div className="flex items-baseline gap-2">
-                            <p className="text-xs text-text-muted font-bold">LKR</p>
-                            <p className="text-3xl font-black text-text-primary tracking-tight">
+                        <div className="flex items-baseline gap-1.5">
+                            <p className="text-[10px] text-text-muted font-bold">LKR</p>
+                            <p className="text-xl font-black text-text-primary tracking-tight">
                                 {stats ? Number(stats.total_truncation).toLocaleString() : '0'}
                             </p>
                         </div>
@@ -1438,7 +1442,7 @@ const BranchActivityPage: React.FC = () => {
                                 <button
                                     onClick={handleVerifyActivityOtp}
                                     disabled={isActivityVerifying || activityOtpValue.length !== 6}
-                                    className="w-full py-4 rounded-2xl bg-primary-600 text-white font-black text-sm uppercase tracking-wider hover:bg-primary-700 transition-all shadow-lg shadow-primary-900/20 disabled:opacity-50"
+                                    className="w-full py-4 rounded-2xl bg-primary-600 text-white font-black text-sm uppercase tracking-wider hover:bg-primary-500 transition-all shadow-lg shadow-primary-900/20 disabled:opacity-50"
                                 >
                                     {isActivityVerifying ? 'Verifying...' : 'Verify & Disburse'}
                                 </button>

@@ -599,7 +599,7 @@ export function Sidebar({
 
     return (
       <span
-        className={`inline-flex items-center justify-center bg-red-600 text-white rounded-full font-bold shadow-md transform transition-all duration-300 ${isSmall
+        className={`inline-flex items-center justify-center bg-primary-600 text-white rounded-full font-bold shadow-md transform transition-all duration-300 ${isSmall
           ? "min-w-[18px] h-[18px] text-[10px] px-1"
           : "min-w-[22px] h-[22px] text-[11px] px-1.5"
           } ${isCollapsed
@@ -609,7 +609,7 @@ export function Sidebar({
       >
         {count > 99 ? "99+" : count}
         {!isCollapsed && (
-          <span className="absolute inset-0 rounded-full bg-red-500 animate-ping opacity-25"></span>
+          <span className="absolute inset-0 rounded-full bg-primary-500 animate-ping opacity-25"></span>
         )}
       </span>
     );
@@ -624,8 +624,10 @@ export function Sidebar({
       return null;
 
     const hasSubmenu = !!item.submenu?.length;
+    const isChildActive = item.submenu?.some((sub) => sub.id === currentPage);
     const isExpanded = expandedMenus.includes(item.id as string);
     const isActive = currentPage === item.id;
+    const shouldHighlight = isActive || isChildActive;
 
     if (item.permissions && isMounted) {
       if (!item.permissions.some(p => authService.hasPermission(p))) {
@@ -640,12 +642,12 @@ export function Sidebar({
             <button
               id={isActive ? "active-sidebar-item" : undefined}
               onClick={() => toggleMenu(item.id as string)}
-              className={`w-full flex items-center justify-center aspect-square rounded-2xl transition-all group relative ${isActive ? "bg-primary-50 dark:bg-primary-100/10 border border-primary-100 dark:border-primary-500/30" : "text-text-secondary hover:bg-hover border border-transparent"
+              className={`w-full flex items-center justify-center aspect-square rounded-2xl transition-all group relative ${shouldHighlight ? "bg-primary-50 dark:bg-primary-100/10 border border-primary-100 dark:border-primary-500/30 shadow-[0_8px_20px_rgba(59,130,246,0.12)]" : "text-text-secondary hover:bg-hover border border-transparent"
                 }`}
               title={item.label}
             >
               <div
-                className={`${isActive ? "text-primary-600" : "text-text-muted group-hover:text-text-primary"
+                className={`${shouldHighlight ? "text-primary-600" : "text-text-muted group-hover:text-text-primary"
                   }`}
               >
                 {item.icon}
@@ -660,15 +662,15 @@ export function Sidebar({
               <button
                 id={isActive ? "active-sidebar-item" : undefined}
                 onClick={() => toggleMenu(item.id as string)}
-                className={`w-full flex items-center justify-between px-5 py-3 rounded-2xl transition-all duration-300 group ${isActive
-                  ? "bg-primary-50 dark:bg-primary-100/10 text-primary-600 shadow-sm border border-primary-100 dark:border-primary-500/30"
+                className={`w-full flex items-center justify-between px-5 py-3 rounded-2xl transition-all duration-300 group ${shouldHighlight
+                  ? "bg-primary-50 dark:bg-primary-100/10 text-primary-600 shadow-[0_8px_20px_rgba(59,130,246,0.12)] border border-primary-100 dark:border-primary-500/30 ring-1 ring-primary-500/5"
                   : "text-text-secondary hover:bg-hover border border-transparent"
                   }`}
               >
                 <div className="flex-1 flex items-center justify-between transition-transform duration-300 group-hover:translate-x-1">
                   <div className="flex items-center gap-3">
                     <div
-                      className={`transition-colors ${isActive ? "text-primary-600" : "text-text-muted group-hover:text-text-primary"
+                      className={`transition-colors ${shouldHighlight ? "text-primary-600" : "text-text-muted group-hover:text-text-primary"
                         }`}
                     >
                       {item.icon}
@@ -714,23 +716,37 @@ export function Sidebar({
                     const isSubActive = currentPage === subItem.id;
 
                     return (
-                      <button
-                        key={subItem.id}
-                        id={isSubActive ? "active-sidebar-item" : undefined}
-                        onClick={() => onNavigate(subItem.id)}
-                        className={`w-full flex items-center justify-between px-5 py-2.5 rounded-2xl transition-all text-sm font-bold group ${isSubActive
-                          ? "bg-primary-50 dark:bg-primary-100/10 text-primary-600 shadow-sm border border-primary-100 dark:border-primary-500/30"
-                          : "text-text-secondary hover:bg-hover hover:translate-x-1 border border-transparent"
-                          }`}
-                      >
-                        <div className="flex-1 flex items-center justify-between transition-transform duration-300 group-hover:translate-x-1">
-                          <div className="flex items-center gap-2">
-                            {subItem.icon}
-                            <span>{subItem.label}</span>
+                      <div key={subItem.id} className="relative group/sub">
+                        {isSubActive && (
+                          <div className="absolute left-[-17px] top-[-500px] bottom-1/2 w-[22px] z-10 animate-in fade-in slide-in-from-top-4 duration-700 pointer-events-none">
+                            {/* Tall Vertical segment to reach parent */}
+                            <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-primary-500 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
+                            {/* Horizontal segment to child */}
+                            <div className="absolute left-0 bottom-0 h-[2px] w-full bg-primary-500 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
+                            {/* Arrow Head on the line */}
+                            <div className="absolute right-[-2px] bottom-[-3px] w-[8px] h-[8px] border-t-2 border-r-2 border-primary-500 rotate-45" />
                           </div>
-                          {renderBadge(subItem.id as string, true)}
-                        </div>
-                      </button>
+                        )}
+                        <button
+                          id={isSubActive ? "active-sidebar-item" : undefined}
+                          onClick={() => onNavigate(subItem.id)}
+                          className={`w-full flex items-center justify-between px-5 py-2.5 rounded-2xl transition-all text-sm font-bold group ${isSubActive
+                            ? "bg-primary-50 dark:bg-primary-100/10 text-primary-600 shadow-sm border border-primary-100 dark:border-primary-500/30"
+                            : "text-text-secondary hover:bg-hover hover:translate-x-1 border border-transparent"
+                            }`}
+                        >
+                          <div className="flex-1 flex items-center justify-between transition-transform duration-300 group-hover:translate-x-1">
+                            <div className="flex items-center gap-2">
+                              {subItem.icon}
+                              <span>{subItem.label}</span>
+                            </div>
+                            {renderBadge(subItem.id as string, true)}
+                          </div>
+                          {isSubActive && (
+                            <div className="w-1.5 h-1.5 rounded-full bg-primary-500 shadow-[0_0_8px_rgba(59,130,246,0.5)] animate-pulse ml-2" />
+                          )}
+                        </button>
+                      </div>
                     );
                   })}
                 </div>
